@@ -14,7 +14,7 @@
     <!--    <context:component-scan base-package="ru.javawebinar.**.repository.datajpa"/>-->
 
     <context:component-scan base-package="ru.votingsystems.**.service"/>
-<!--    <jpa:repositories base-package="ru.javawebinar.**.repository.datajpa"/>-->
+    <!--    <jpa:repositories base-package="ru.javawebinar.**.repository.datajpa"/>-->
 
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
         <jdbc:script location="classpath:db/initDB.sql"/>
@@ -33,6 +33,20 @@
                        value="${hibernate.use_sql_comments}"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).JPA_PROXY_COMPLIANCE}" value="false"/>
                 <!--<entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}" value="${hibernate.hbm2ddl.auto}"/>-->
+
+                <!--https://github.com/hibernate/hibernate-orm/blob/master/documentation/src/main/asciidoc/userguide/chapters/caching/Caching.adoc#caching-provider-jcache-->
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).CACHE_REGION_FACTORY}"
+                       value="org.hibernate.cache.jcache.internal.JCacheRegionFactory"/>
+                <entry key="#{T(org.hibernate.cache.jcache.ConfigSettings).PROVIDER}"
+                       value="org.ehcache.jsr107.EhcacheCachingProvider"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SECOND_LEVEL_CACHE}" value="true"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_QUERY_CACHE}" value="false"/> <!--default-->
+                <!--
+                                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_ACTION}" value="drop-and-create"/>
+                                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_CREATE_TARGET}" value="${TOPJAVA_ROOT}/config/ddl/create.ddl"/>
+                                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_DROP_TARGET}" value="${TOPJAVA_ROOT}/config/ddl/drop.ddl"/>
+                                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}" value="create"/>
+                -->
             </map>
         </property>
 
@@ -43,6 +57,9 @@
         </property>
     </bean>
 
+    <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+          p:entityManagerFactory-ref="entityManagerFactory"/>
     <tx:annotation-driven/>
 
     <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
@@ -60,7 +77,7 @@
         </bean>
     -->
 
-    <beans>
+
         <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
         <!--              p:url="${database.url}"-->
         <!--no pooling-->
@@ -70,6 +87,10 @@
               p:url="H:\Java\temp\votingSystem"
               p:username="${database.username}"
               p:password="${database.password}"/>
-    </beans>
 
 </beans>
+
+<!--<beans profile="datajpa">-->
+<!--<context:component-scan base-package="ru.javawebinar.**.repository.datajpa"/>-->
+<!--<jpa:repositories base-package="ru.javawebinar.**.repository.datajpa"/>-->
+<!--</beans>-->

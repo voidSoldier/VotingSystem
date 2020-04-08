@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.votingsystems</groupId>
-    <artifactId>RestaurantVotingSystem</artifactId>
+    <artifactId>restaurantvotingsystem</artifactId>
     <packaging>war</packaging>
 
     <version>1.0-SNAPSHOT</version>
+
+    <name>Restaurant Voting System</name>
+    <!--    <url>http://topjava.herokuapp.com/</url>-->
 
     <properties>
         <java.version>12</java.version>
@@ -17,6 +18,7 @@
 
         <spring.version>5.2.0.RELEASE</spring.version>
         <spring-data-jpa.version>2.2.5.RELEASE</spring-data-jpa.version>
+        <jackson-json.version>2.10.3</jackson-json.version>
         <tomcat.version>9.0.31</tomcat.version>
 
         <!-- Logging -->
@@ -24,9 +26,11 @@
         <slf4j.version>1.7.30</slf4j.version>
 
         <!--DB-->
-<!--        <postgresql.version>42.2.10</postgresql.version>-->
+        <!--        <postgresql.version>42.2.10</postgresql.version>-->
+
         <!--    Tests  -->
-        <junit.version>4.13</junit.version>
+        <junit.jupiter.version>5.6.1</junit.jupiter.version>
+        <hamcrest.version>1.3</hamcrest.version>
 
         <!-- Hibernate -->
         <hibernate.version>5.4.12.Final</hibernate.version>
@@ -35,10 +39,17 @@
 
         <!--Tools-->
         <ehcache.version>3.8.1</ehcache.version>
+
+        <!--webjars-->
+        <webjars-bootstrap.version>4.4.1</webjars-bootstrap.version>
+        <webjars-jquery.version>3.4.1</webjars-jquery.version>
+        <webjars-datetimepicker.version>2.5.20</webjars-datetimepicker.version>
+        <webjars-noty.version>3.1.4</webjars-noty.version>
+        <webjars-datatables.version>1.10.20</webjars-datatables.version>
     </properties>
 
     <build>
-        <finalName>votingsystem</finalName>
+        <finalName>restaurantvotingsystem</finalName>
         <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
@@ -51,6 +62,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <!--https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
@@ -58,10 +70,59 @@
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
+
+            <!-- http://stackoverflow.com/questions/4305935/is-it-possible-to-supply-tomcat6s-context-xml-file-via-the-maven-cargo-plugin#4417945 -->
+            <!-- https://codehaus-cargo.github.io/cargo/Tomcat+9.x.html -->
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.7.10</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <systemProperties>
+                            <file.encoding>UTF-8</file.encoding>
+                            <!--                            <spring.profiles.active>tomcat,datajpa</spring.profiles.active>-->
+                        </systemProperties>
+                        <!--                        <dependencies>-->
+                        <!--                            <dependency>-->
+                        <!--                                <groupId>org.postgresql</groupId>-->
+                        <!--                                <artifactId>postgresql</artifactId>-->
+                        <!--                            </dependency>-->
+                        <!--                        </dependencies>-->
+                    </container>
+                    <configuration>
+                        <configfiles>
+                            <configfile>
+                                <file>src/main/resources/tomcat/context.xml</file>
+                                <todir>conf/Catalina/localhost/</todir>
+                                <tofile>${project.build.finalName}.xml</tofile>
+                            </configfile>
+                        </configfiles>
+                    </configuration>
+                    <deployables>
+                        <deployable>
+                            <groupId>ru.votingsystems</groupId>
+                            <artifactId>rastaurantvotingsystem</artifactId>
+                            <type>war</type>
+                            <properties>
+                                <context>${project.build.finalName}</context>
+                            </properties>
+                        </deployable>
+                    </deployables>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <dependencies>
+
+        <!-- DB-->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.5.0</version>
+        </dependency>
 
         <!--        <dependency>-->
         <!--            <groupId>javax.annotation</groupId>-->
@@ -81,6 +142,13 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -112,6 +180,11 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
 
         <!--http://hibernate.org/validator/documentation/getting-started/#unified-expression-language-el-->
         <dependency>
@@ -130,7 +203,7 @@
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
-            <!--            <scope>runtime</scope>-->
+            <scope>runtime</scope>
             <version>${ehcache.version}</version>
         </dependency>
 
@@ -143,9 +216,9 @@
 
         <!--Web-->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomcat.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -155,13 +228,92 @@
             <version>1.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <!-- Webjars (static dependencies distributed as JAR files) -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${webjars-jquery.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${webjars-bootstrap.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>jquery</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>datatables</artifactId>
+            <version>${webjars-datatables.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>jquery</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>datetimepicker</artifactId>
+            <version>${webjars-datetimepicker.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.webjars.bower</groupId>
+                    <artifactId>jquery</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.webjars.bower</groupId>
+                    <artifactId>php-date-formatter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>noty</artifactId>
+            <version>${webjars-noty.version}</version>
+        </dependency>
+
+        <!--JSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate5</artifactId>
+            <version>${jackson-json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-json.version}</version>
+        </dependency>
+
         <!--Test-->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -175,44 +327,6 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>hsqldb</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.hsqldb</groupId>
-                    <artifactId>hsqldb</artifactId>
-                    <version>2.3.4</version>
-                </dependency>
-            </dependencies>
-        </profile>
-
-<!--        <profile>-->
-<!--            <id>postgres</id>-->
-<!--            <dependencies>-->
-<!--                <dependency>-->
-<!--                    <groupId>org.postgresql</groupId>-->
-<!--                    <artifactId>postgresql</artifactId>-->
-<!--                    <version>${postgresql.version}</version>-->
-<!--                </dependency>-->
-<!--                <dependency>-->
-<!--                    <groupId>org.apache.tomcat</groupId>-->
-<!--                    <artifactId>tomcat-jdbc</artifactId>-->
-<!--                    <version>${tomcat.version}</version>-->
-<!--                    <scope>provided</scope>-->
-<!--                </dependency>-->
-<!--                <dependency>-->
-<!--                    <groupId>org.slf4j</groupId>-->
-<!--                    <artifactId>jul-to-slf4j</artifactId>-->
-<!--                    <version>${slf4j.version}</version>-->
-<!--                    <scope>runtime</scope>-->
-<!--                </dependency>-->
-<!--            </dependencies>-->
-<!--            <activation>-->
-<!--                <activeByDefault>true</activeByDefault>-->
-<!--            </activation>-->
-<!--        </profile>-->
-    </profiles>
 
     <dependencyManagement>
         <dependencies>
@@ -225,5 +339,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>
