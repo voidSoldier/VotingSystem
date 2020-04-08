@@ -1,5 +1,9 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
-public class Restaurant extends AbstractNamedEntity {
-    private Menu menu;
+import java.util.List;
+
+public class Restaurant extends AbstractBaseEntity {
+    private String name; // OR Id?
+    private List<Menu> menus;
+    private int rating;
 }
