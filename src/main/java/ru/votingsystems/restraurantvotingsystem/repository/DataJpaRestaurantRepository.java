@@ -3,10 +3,9 @@ package ru.votingsystems.restraurantvotingsystem.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
-import ru.votingsystems.restraurantvotingsystem.model.Menu;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
-import java.util.Arrays;
+import java.awt.*;
 import java.util.List;
 
 @Repository
@@ -41,9 +40,9 @@ public class DataJpaRestaurantRepository {
 
     }
 
-    public void updateMenu(int restaurantId, Menu menu) {
-        Restaurant restaurant = repository.getOne(restaurantId);
-    }
+//    public void updateMenu(int restaurantId, Menu menu) {
+//        Restaurant restaurant = repository.getOne(restaurantId);
+//    }
 
     public void updateRating(int restaurantId, int rating) {
         repository.updateRating(restaurantId, rating);

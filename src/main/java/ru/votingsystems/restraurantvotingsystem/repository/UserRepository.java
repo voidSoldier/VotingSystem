@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 
-import java.util.List;
 
 @Transactional(readOnly = true)
 public interface UserRepository extends JpaRepository<User, Integer> {
