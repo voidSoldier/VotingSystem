@@ -1,28 +1,64 @@
 package ru.votingsystems.restraurantvotingsystem.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.repository.DataJpaUserRepository;
 
 import java.util.List;
 
-@Service
+@Service("userService")
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserService {
 
-    @Autowired
+
     private DataJpaUserRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
-    public List<User> getAll() {return repository.getAll();}
+    public UserService(DataJpaUserRepository repository, PasswordEncoder passwordEncoder) {
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
-    public User get(int id){return repository.get(id);}
+    @Cacheable("users")
+    public List<User> getAll() {
+        return repository.getAll();
+    }
 
-    public User getByEmail(String email){return repository.getByEmail(email);}
+    public User get(int id) {
+        return repository.get(id);
+    }
 
-    public void delete(int id){repository.delete(id);}
+    public User getByEmail(String email) {
+        return repository.getByEmail(email);
+    }
 
-    public void update(int id, User user){repository.update(id, user);}
+    @CacheEvict(value = "users", allEntries = true)
+    public void delete(int id) {
+        repository.delete(id);
+    }
 
-    public void create(User user){repository.create(user);}
+    @CacheEvict(value = "users", allEntries = true)
+    @Transactional
+    public void update(int id, User user) {
+        repository.update(id, user);
+    }
+
+    @CacheEvict(value = "users", allEntries = true)
+    public void create(User user) {
+        repository.create(user);
+    }
+
+    @CacheEvict(value = "users", allEntries = true)
+    @Transactional
+    public void enable(int id, boolean enabled) {
+        User user = get(id);
+        user.setEnabled(enabled);
+    }
 
 }

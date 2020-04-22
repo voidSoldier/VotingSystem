@@ -2,6 +2,7 @@ package ru.votingsystems.restraurantvotingsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.votingsystems.restraurantvotingsystem.exception.VotingTimeoutNotExpiredException;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
@@ -9,6 +10,7 @@ import ru.votingsystems.restraurantvotingsystem.repository.DataJpaRestaurantRepo
 import ru.votingsystems.restraurantvotingsystem.repository.DataJpaUserRepository;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,18 +19,26 @@ public class RestaurantService {
 
     @Autowired
     private DataJpaRestaurantRepository repository;
+
+    @Autowired
     private DataJpaUserRepository userRepository;
+
+    public RestaurantService(DataJpaRestaurantRepository repository, DataJpaUserRepository userRepository) {
+        this.repository = repository;
+        this.userRepository = userRepository;
+    }
+
 
     public void inputNewRestaurant(Restaurant newRestaurant) {
         repository.inputNewRestaurant(newRestaurant);
     }
+
 
     public void setNewMenu(int restaurantId, Dish... dishes) {
         List menu = Arrays.asList(dishes);
         repository.setNewMenu(restaurantId, menu);
     }
 
-//    public void updateMenuOfTheDay(int restaurantId, Menu menu) {}
 
     public void increaseRating(int restaurantId) {
         int rating = repository.get(restaurantId).getRating();
@@ -47,27 +57,33 @@ public class RestaurantService {
     If it is after 11:00 then it is too late, vote can't be changed
 
      */
-    public void voteForRestaurant (User user, int restaurantId) {
+    public void voteForRestaurant(User user, int restaurantId) {
 
         LocalDateTime votingTime = user.getVotingTime();
         LocalDateTime nowVoting = LocalDateTime.now();
 
-        // add posssibility to change vote
-        if (!user.isVoted()) {
-
+        // если не голосовал ни разу
+        if (!user.isVoted() ||
+                nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
             increaseRating(restaurantId);
 
-            user.setRatedRestaurant(restaurantId);
-            userRepository.update(user.getId(), user);
+            // если прошли 24 часа
+//        } else if (nowVoting.minusDays(1).compareTo(votingTime) >= 0) {  // как быть с минутами???
+//            increaseRating(restaurantId);
 
-        } else if (nowVoting.minusDays(1).equals(votingTime)) {
+
+            // тот же день, передумал
+        } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 00))) {
 
             int oldRatedRestaurant = user.getRatedRestaurant();
             decreaseRating(oldRatedRestaurant);
             increaseRating(restaurantId);
 
-            user.setRatedRestaurant(restaurantId);
-            userRepository.update(user.getId(), user);
+        } else {
+            throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
         }
+
+        user.setRatedRestaurant(restaurantId);
+        userRepository.update(user.getId(), user);
     }
 }
