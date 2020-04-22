@@ -4,9 +4,13 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.votingsystems.restraurantvotingsystem.AuthorizedUser;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.repository.DataJpaUserRepository;
 
@@ -14,7 +18,7 @@ import java.util.List;
 
 @Service("userService")
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class UserService {
+public class UserService implements UserDetailsService {
 
 
     private DataJpaUserRepository repository;
@@ -50,8 +54,8 @@ public class UserService {
     }
 
     @CacheEvict(value = "users", allEntries = true)
-    public void create(User user) {
-        repository.create(user);
+    public User create(User user) {
+        return repository.create(user);
     }
 
     @CacheEvict(value = "users", allEntries = true)
@@ -61,4 +65,12 @@ public class UserService {
         user.setEnabled(enabled);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = repository.getByEmail(email.toLowerCase());
+        if (user == null) {
+            throw new UsernameNotFoundException("User " + email + " is not found");
+        }
+        return new AuthorizedUser(user);
+    }
 }

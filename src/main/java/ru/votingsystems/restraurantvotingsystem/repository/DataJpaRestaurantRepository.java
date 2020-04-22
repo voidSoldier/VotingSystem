@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
-import java.awt.*;
 import java.util.List;
 
 @Repository
@@ -32,11 +31,12 @@ public class DataJpaRestaurantRepository {
     }
 
     public void setNewMenu(int restaurantId, List<Dish> menu) {
-        // нужен отдельный репозиторий для таблицы с меню
-//        Menu newMenu = new Menu();
+
 //        newMenu.setDishes(Arrays.asList(dishes));
-        Restaurant restaurant = repository.getOne(restaurantId);
-        restaurant.setMenu(menu);
+//        Restaurant restaurant = repository.getOne(restaurantId);
+//        restaurant.setMenu(menu);
+        repository.updateMenu(restaurantId, menu);
+
 
     }
 

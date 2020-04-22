@@ -19,16 +19,25 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     @Query("DELETE FROM Restaurant r WHERE r.id=:id")
     int delete(@Param("id") int id);
 
-//    public void inputNewRestaurant(Restaurant newRestaurant){}
 
     @Transactional
     @Modifying
-    @Query("Restaurant r WHERE r.id=:id") // set r.menu = menu
-    void setNewMenu(@Param("id") int id, @Param("menu")List<Dish> menu);
+    @Query("UPDATE Restaurant r  SET r.menu = :menu WHERE r.id=:id")
+        // set r.menu = menu
+    void updateMenu(@Param("id") int id, @Param("menu") List<Dish> menu);
 
 
     @Transactional
     @Modifying
-    @Query("Restaurant r WHERE r.id=:id") // set r.menu = menu
+    @Query("UPDATE Restaurant r SET r.rating = :rating WHERE r.id=:id")
+        // set r.menu = menu
     void updateRating(@Param("id") int id, @Param("rating") int rating);
+
+
+    /*
+    HOW TO MAKE IT WORK???
+     */
+    @Transactional
+    @Modifying
+    void updateRestaurantMenuById(int id, List<Dish> menu);
 }

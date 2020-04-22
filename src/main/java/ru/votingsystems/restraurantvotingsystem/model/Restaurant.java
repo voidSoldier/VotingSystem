@@ -1,6 +1,5 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
-import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+@Entity
+@Table(name = "restaurants")
 public class Restaurant extends AbstractBaseEntity {
 
     @NotBlank
@@ -24,7 +25,7 @@ public class Restaurant extends AbstractBaseEntity {
     @ElementCollection(fetch = FetchType.EAGER)
 //    @Fetch(FetchMode.SUBSELECT)
 //    @BatchSize(size = 200)
-    private List<Dish> menu;
+    private List<Integer> menu;
 
 
     @Column(name = "rating")
@@ -41,11 +42,11 @@ public class Restaurant extends AbstractBaseEntity {
         this.name = name;
     }
 
-    public List<Dish> getMenu() {
+    public List<Integer> getMenu() {
         return menu;
     }
 
-    public void setMenu(List<Dish> menu) {
+    public void setMenu(List<Integer> menu) {
         this.menu = menu;
     }
 
