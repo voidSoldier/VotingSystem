@@ -10,6 +10,8 @@ import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.RestaurantService;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping(value = RestaurantRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -37,8 +39,8 @@ public class RestaurantRestController {
     }
 
 
-
-    public void inputNewMenu(int restaurantId, Dish... dishes) {
+@PostMapping(value ="/{restaurantId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void inputNewMenu(@PathVariable int restaurantId, @RequestBody List<Dish> dishes) {
         log.info("inputNewMenu {} for restaurant {}", dishes, restaurantId);
 
         service.setNewMenu(restaurantId, dishes);

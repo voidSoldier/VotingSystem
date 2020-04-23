@@ -31,9 +31,9 @@ public class RestaurantService {
     }
 
 
-    public void setNewMenu(int restaurantId, Dish... dishes) {
-        List menu = Arrays.asList(dishes);
-        repository.setNewMenu(restaurantId, menu);
+    public void setNewMenu(int restaurantId, List<Dish> dishes) {
+//        List menu = Arrays.asList(dishes);
+        repository.setNewMenu(restaurantId, dishes);
     }
 
 
