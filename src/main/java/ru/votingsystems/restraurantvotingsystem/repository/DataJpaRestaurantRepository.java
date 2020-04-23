@@ -37,7 +37,6 @@ public class DataJpaRestaurantRepository {
 //        restaurant.setMenu(menu);
         repository.updateMenu(restaurantId, menu);
 
-
     }
 
 //    public void updateMenu(int restaurantId, Menu menu) {
@@ -46,6 +45,19 @@ public class DataJpaRestaurantRepository {
 
     public void updateRating(int restaurantId, int rating) {
         repository.updateRating(restaurantId, rating);
+    }
+
+
+
+    /*
+     * WILL THEY WORK??? F-ING SPRING MAGIC!
+     */
+    public void updateRestaurantMenuById(int id, List<Dish> menu) {
+        repository.updateRestaurantMenuById(id, menu);
+    }
+
+    public void updateRestaurantRatingById(int id, int rating) {
+        repository.updateRestaurantRatingById(id, rating);
     }
 
 }

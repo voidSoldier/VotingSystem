@@ -29,10 +29,21 @@ public class Restaurant extends AbstractBaseEntity {
 
 
     @Column(name = "rating")
-    private int rating;
+    private int rating = 0;
 
+    public Restaurant() {
+    }
 
+    public Restaurant(Integer id, String name) {
+        super(id);
+        this.name = name;
+    }
 
+    public Restaurant(Integer id, String name, List<Integer> menu) {
+        super(id);
+        this.name = name;
+        this.menu = menu;
+    }
 
     public String getName() {
         return name;

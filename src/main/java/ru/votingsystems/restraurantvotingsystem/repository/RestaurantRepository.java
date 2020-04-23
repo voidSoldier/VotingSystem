@@ -35,9 +35,14 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
 
     /*
-    HOW TO MAKE IT WORK???
+     * HOW TO MAKE THESE WORK???
      */
     @Transactional
     @Modifying
     void updateRestaurantMenuById(int id, List<Dish> menu);
+
+    @Transactional
+    @Modifying
+    void updateRestaurantRatingById(int id, int rating);
+
 }

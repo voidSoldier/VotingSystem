@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.UserService;
-import ru.votingsystems.restraurantvotingsystem.to.UserTo;
-
 
 import java.net.URI;
 
@@ -36,25 +34,21 @@ public class ProfileRestController {
         service.delete(authUserId());
     }
 
-    /*
-        add creation User from USERTo
-         */
+
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public ResponseEntity<User> register(@RequestBody UserTo userTo) {
-        User created = service.create(userTo);
+    public ResponseEntity<User> register(@RequestBody User user) {
+        User created = service.create(user);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL).build().toUri();
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-    /*
-    add updating User from USERTo
-     */
+
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody UserTo userTo) {
-        service.update(userTo, authUserId());
+    public void update(@RequestBody User user) {
+        service.update(authUserId(), user);
     }
 
 }
