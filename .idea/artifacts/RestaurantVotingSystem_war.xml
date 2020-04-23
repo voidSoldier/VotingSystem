@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="restaurantvotingsystem.war">
+    <root id="archive" name="topjava.war">
       <element id="artifact" artifact-name="RestaurantVotingSystem:war exploded" />
     </root>
   </artifact>
