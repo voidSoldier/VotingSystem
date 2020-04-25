@@ -13,10 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
@@ -61,13 +58,27 @@ public class User extends AbstractBaseEntity implements Serializable {
             uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"}, name = "user_roles_unique_idx")})
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
-//    @Fetch(FetchMode.SUBSELECT)
     @BatchSize(size = 200)
     private Set<Role> roles;
 
+//
+//    @ManyToMany
+//    @JoinTable (name="student_university",
+//            joinColumns=@JoinColumn (name="student_id"),
+//            inverseJoinColumns=@JoinColumn(name="university_id"))
+
+    @ManyToMany
+    @JoinTable(name = "rated_restaurants",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns =
+                    {@JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
+                            @JoinColumn(name = "restaurant_name", referencedColumnName = "name")})
+    @BatchSize(size = 200)
+    private List<Restaurant> restaurants;
+
+
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
     private boolean enabled = true;
-
 
 
     public User() {
@@ -92,6 +103,14 @@ public class User extends AbstractBaseEntity implements Serializable {
         this.enabled = enabled;
         this.registered = registered;
         setRoles(roles);
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(List<Restaurant> restaurants) {
+        this.restaurants = restaurants;
     }
 
     public User(Integer id, String name, String email,

@@ -1,8 +1,9 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -18,17 +19,39 @@ public class Dish extends AbstractBaseEntity {
     @Column(name = "price")
     private double price;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Restaurant restaurant;
+
 
     public Dish() {
     }
 
-    public Dish (Integer id, String name, double price) {
+    public Dish(Integer id, String name, double price, Restaurant restaurant) {
+        super(id);
+        this.name = name;
+        this.price = price;
+        this.restaurant = restaurant;
+    }
+
+    public Dish(Integer id, String name, double price) {
         super(id);
         this.name = name;
         this.price = price;
     }
 
-    public String getName() { return name; }
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public void setName(String name) {
         this.name = name;

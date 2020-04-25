@@ -1,7 +1,7 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -18,18 +18,29 @@ public class Restaurant extends AbstractBaseEntity {
     private String name;
 
 
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "dishes", joinColumns = @JoinColumn(name = "restaurant_id"))
-    @Column(name = "dishes")
-    @ElementCollection(fetch = FetchType.EAGER)
-//    @Fetch(FetchMode.SUBSELECT)
-//    @BatchSize(size = 200)
-    private List<Integer> menu;
+//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @BatchSize(size = 200)
+    private List<Dish> menu;
 
 
     @Column(name = "rating")
     private int rating = 0;
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "rated_restaurants",
+            joinColumns = {@JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
+                    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")},
+            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    private List<User> users;
 
     public Restaurant() {
     }
@@ -39,7 +50,7 @@ public class Restaurant extends AbstractBaseEntity {
         this.name = name;
     }
 
-    public Restaurant(Integer id, String name, List<Integer> menu) {
+    public Restaurant(Integer id, String name, List<Dish> menu) {
         super(id);
         this.name = name;
         this.menu = menu;
@@ -53,11 +64,11 @@ public class Restaurant extends AbstractBaseEntity {
         this.name = name;
     }
 
-    public List<Integer> getMenu() {
+    public List<Dish> getMenu() {
         return menu;
     }
 
-    public void setMenu(List<Integer> menu) {
+    public void setMenu(List<Dish> menu) {
         this.menu = menu;
     }
 
