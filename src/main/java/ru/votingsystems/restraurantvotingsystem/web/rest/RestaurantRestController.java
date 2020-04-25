@@ -35,7 +35,7 @@ public class RestaurantRestController {
     public void inputNewRestaurant(@RequestBody Restaurant newRestaurant) {
         log.info("inputNewRestaurant {}", newRestaurant);
 
-        service.inputNewRestaurant(newRestaurant);
+        service.create(newRestaurant);
     }
 
 

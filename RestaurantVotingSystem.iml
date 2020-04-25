@@ -31,6 +31,8 @@
         <fileset id="fileset" name="Spring Db" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-db.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-app.xml</file>
+          <file>file://$MODULE_DIR$/src/test/resources/spring/spring-cache.xml</file>
+          <file>file://$MODULE_DIR$/src/test/resources/spring/inmemory.xml</file>
         </fileset>
       </configuration>
     </facet>

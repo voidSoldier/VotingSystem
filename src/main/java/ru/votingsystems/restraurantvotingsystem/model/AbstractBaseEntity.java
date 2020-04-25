@@ -35,6 +35,15 @@ public abstract class AbstractBaseEntity {
     }
 
 
+    public boolean isNew() {
+        return getId() == null;
+    }
+
+    // doesn't work for hibernate lazy proxy
+//    public int id() {
+//        Assert.notNull(getId(), "Entity must has id");
+//        return getId();
+//    }
 
     @Override
     public String toString() {

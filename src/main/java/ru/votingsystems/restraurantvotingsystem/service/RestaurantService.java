@@ -10,7 +10,6 @@ import ru.votingsystems.restraurantvotingsystem.util.exception.VotingTimeoutNotE
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -25,9 +24,20 @@ public class RestaurantService {
         this.userRepository = userRepository;
     }
 
+    public Restaurant get(int id) {
+        return repository.get(id);
+    }
 
-    public void inputNewRestaurant(Restaurant newRestaurant) {
-        repository.inputNewRestaurant(newRestaurant);
+    public void update(Restaurant restaurant) {
+        repository.save(restaurant);
+    }
+
+    public boolean delete(int id) {
+        return repository.delete(id);
+    }
+
+    public Restaurant create(Restaurant newRestaurant) {
+        return repository.save(newRestaurant);
     }
 
 
@@ -59,7 +69,7 @@ public class RestaurantService {
         LocalDateTime votingTime = user.getVotingTime();
         LocalDateTime nowVoting = LocalDateTime.now();
 
-        // если не голосовал ни разу
+        // если не голосовал ни разу ИЛИ прошло уже 24 ч
         if (!user.isVoted() ||
                 nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
             increaseRating(restaurantId);
@@ -70,7 +80,7 @@ public class RestaurantService {
 
 
             // тот же день, передумал
-        } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 00))) {
+        } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
 
             int oldRatedRestaurant = user.getRatedRestaurant();
             decreaseRating(oldRatedRestaurant);

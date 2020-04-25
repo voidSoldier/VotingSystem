@@ -26,8 +26,12 @@ public class DataJpaRestaurantRepository {
         return repository.delete(id) != 0;
     }
 
-    public void inputNewRestaurant(Restaurant restaurant){
-        repository.save(restaurant);
+//    public Restaurant update(Restaurant restaurant) {
+//        return repository.save(restaurant);
+//    }
+
+    public Restaurant save(Restaurant restaurant){
+        return repository.save(restaurant);
     }
 
     public void setNewMenu(int restaurantId, List<Dish> menu) {

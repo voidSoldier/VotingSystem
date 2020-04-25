@@ -16,7 +16,7 @@ VALUES ('ROLE_USER', 100000),
 
 
 INSERT INTO restaurants (name, rating)
-VALUES ('MamaS house', 2),
+VALUES ('MamaS House', 2),
        ('My own Company', 3),
        ('HoundS Pit', 10);
 

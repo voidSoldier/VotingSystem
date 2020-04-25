@@ -22,7 +22,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
     @Transactional
     @Modifying
-    @Query("UPDATE Restaurant r  SET r.menu = :menu WHERE r.id=:id")
+    @Query("UPDATE Restaurant r SET r.menu = :menu WHERE r.id=:id")
         // set r.menu = menu
     void updateMenu(@Param("id") int id, @Param("menu") List<Dish> menu);
 
