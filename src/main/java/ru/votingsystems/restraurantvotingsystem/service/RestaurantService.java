@@ -6,8 +6,7 @@ import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.repository.CrudRestaurantRepository;
-import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;
-import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.CrudUserRepository;
 import ru.votingsystems.restraurantvotingsystem.util.exception.VotingTimeoutNotExpiredException;
 
 import java.time.LocalDateTime;
@@ -19,12 +18,12 @@ public class RestaurantService {
 
 //    @Autowired
 //    private RestaurantRepository repository;
-    private CrudRestaurantRepository repository;
+    private final CrudRestaurantRepository repository;
 //    @Autowired
-    private UserRepository userRepository;
+    private final CrudUserRepository userRepository;
 
     @Autowired
-    public RestaurantService(CrudRestaurantRepository repository, UserRepository userRepository) {
+    public RestaurantService(CrudRestaurantRepository repository, CrudUserRepository userRepository) {
         this.repository = repository;
         this.userRepository = userRepository;
     }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
-import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.CrudRestaurantRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
@@ -17,7 +17,7 @@ class RestaurantServiceTest {
     private RestaurantService service;
     @Autowired
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    private RestaurantRepository repository;
+    private CrudRestaurantRepository repository;
 
 
     @Test
@@ -40,7 +40,7 @@ class RestaurantServiceTest {
     @Test
     void delete() throws Exception {
         service.delete(RESTAURANT1_ID);
-        Assertions.assertNull(repository.get(RESTAURANT1_ID));
+        Assertions.assertNull(repository.findById(RESTAURANT1_ID).orElse(null));
     }
 
 

@@ -1,12 +1,11 @@
 package ru.votingsystems.restraurantvotingsystem.repository;
 
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Repository;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 
 import java.util.List;
 
-@Repository
+//@Repository
 public class UserRepository {
 
 

@@ -1,12 +1,11 @@
 package ru.votingsystems.restraurantvotingsystem.repository;
 
-import org.springframework.stereotype.Repository;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
 import java.util.List;
 
-@Repository
+//@Repository
 public class RestaurantRepository {
 //@Autowired
     private final CrudRestaurantRepository repository;

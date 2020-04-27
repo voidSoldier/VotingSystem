@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.votingsystems.restraurantvotingsystem.AuthorizedUser;
 import ru.votingsystems.restraurantvotingsystem.model.User;
-import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.CrudUserRepository;
 
 import java.util.List;
 
@@ -21,21 +21,21 @@ import java.util.List;
 public class UserService implements UserDetailsService {
 
 
-    private UserRepository repository;
+    private final CrudUserRepository repository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
+    public UserService(CrudUserRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Cacheable("users")
     public List<User> getAll() {
-        return repository.getAll();
+        return repository.findAll();
     }
 
     public User get(int id) {
-        return repository.get(id);
+        return repository.findById(id).orElse(null);
     }
 
     public User getByEmail(String email) {
@@ -54,8 +54,8 @@ public class UserService implements UserDetailsService {
     }
 
     @CacheEvict(value = "users", allEntries = true)
-    public User create(User user) {
-        return repository.create(user);
+    public void create(User user) {
+         repository.create(user);
     }
 
     @CacheEvict(value = "users", allEntries = true)
