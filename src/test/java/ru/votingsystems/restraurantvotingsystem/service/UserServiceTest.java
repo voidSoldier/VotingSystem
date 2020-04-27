@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import ru.votingsystems.restraurantvotingsystem.model.Role;
 import ru.votingsystems.restraurantvotingsystem.model.User;
-import ru.votingsystems.restraurantvotingsystem.repository.DataJpaUserRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 
 import java.util.List;
@@ -20,7 +20,7 @@ class UserServiceTest extends AbstractServiceTest {
     protected UserService service;
     @Autowired
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    private DataJpaUserRepository repository;
+    private UserRepository repository;
 
 
     @Test

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.votingsystems.restraurantvotingsystem.AuthorizedUser;
 import ru.votingsystems.restraurantvotingsystem.model.User;
-import ru.votingsystems.restraurantvotingsystem.repository.DataJpaUserRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
 
 import java.util.List;
 
@@ -21,10 +21,10 @@ import java.util.List;
 public class UserService implements UserDetailsService {
 
 
-    private DataJpaUserRepository repository;
+    private UserRepository repository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(DataJpaUserRepository repository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }

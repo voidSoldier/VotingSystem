@@ -1,48 +1,66 @@
 package ru.votingsystems.restraurantvotingsystem.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
 import java.util.List;
 
-@Transactional(readOnly = true)
-public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
+@Repository
+public class RestaurantRepository {
+//@Autowired
+    private final CrudRestaurantRepository repository;
 
 
-    @Transactional
-    @Modifying
-    @Query("DELETE FROM Restaurant r WHERE r.id=:id")
-    int delete(@Param("id") int id);
+    public RestaurantRepository(CrudRestaurantRepository repository) {
+        this.repository = repository;
+    }
 
 
-    @Transactional
-    @Modifying
-    @Query("UPDATE Restaurant r SET r.menu = :menu WHERE r.id=:id")
-        // set r.menu = menu
-    void updateMenu(@Param("id") int id, @Param("menu") List<Dish> menu);
+    public Restaurant get(int id) {
+        return repository.findById(id).orElse(null);
+    }
 
+    public boolean delete(int id) {
+        return repository.delete(id) != 0;
+    }
 
-    @Transactional
-    @Modifying
-    @Query("UPDATE Restaurant r SET r.rating = :rating WHERE r.id=:id")
-        // set r.menu = menu
-    void updateRating(@Param("id") int id, @Param("rating") int rating);
+//    public Restaurant update(Restaurant restaurant) {
+//        return repository.save(restaurant);
+//    }
+
+    public Restaurant save(Restaurant restaurant){
+        return repository.save(restaurant);
+    }
+
+    public void setNewMenu(int restaurantId, List<Dish> menu) {
+
+//        newMenu.setDishes(Arrays.asList(dishes));
+//        Restaurant restaurant = repository.getOne(restaurantId);
+//        restaurant.setMenu(menu);
+        repository.updateMenu(restaurantId, menu);
+
+    }
+
+//    public void updateMenu(int restaurantId, Menu menu) {
+//        Restaurant restaurant = repository.getOne(restaurantId);
+//    }
+
+    public void updateRating(int restaurantId, int rating) {
+        repository.updateRating(restaurantId, rating);
+    }
+
 
 
     /*
-     * HOW TO MAKE THESE WORK???
+     * WILL THEY WORK??? F-ING SPRING MAGIC!
      */
-    @Transactional
-    @Modifying
-    void updateRestaurantMenuById(int id, List<Dish> menu);
+    public void updateRestaurantMenuById(int id, List<Dish> menu) {
+        repository.updateRestaurantMenuById(id, menu);
+    }
 
-    @Transactional
-    @Modifying
-    void updateRestaurantRatingById(int id, int rating);
+    public void updateRestaurantRatingById(int id, int rating) {
+        repository.updateRestaurantRatingById(id, rating);
+    }
 
 }

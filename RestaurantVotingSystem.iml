@@ -31,8 +31,6 @@
         <fileset id="fileset" name="Spring Db" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-db.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-app.xml</file>
-          <file>file://$MODULE_DIR$/src/test/resources/spring/spring-cache.xml</file>
-          <file>file://$MODULE_DIR$/src/test/resources/spring/inmemory.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -44,6 +42,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -94,15 +93,8 @@
     <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.jvnet.staxex:stax-ex:1.8" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-servlet-api:9.0.31" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.2.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars:jquery:3.4.1" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.bower:bootstrap:4.4.1" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars:datatables:1.10.20" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.bower:datetimepicker:2.5.20" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.bower:jquery-mousewheel:3.1.13" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.bower:noty:3.1.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.3" level="project" />
@@ -119,9 +111,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.2.5.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.security:spring-security-test:5.3.1.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.15.0" level="project" />
-    <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.2.10" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-jdbc:9.0.31" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-juli:9.0.31" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jul-to-slf4j:1.7.30" level="project" />
+    <orderEntry type="library" name="Maven: org.hsqldb:hsqldb:2.5.0" level="project" />
   </component>
 </module>

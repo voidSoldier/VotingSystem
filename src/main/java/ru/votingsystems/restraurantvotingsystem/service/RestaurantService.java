@@ -1,11 +1,13 @@
 package ru.votingsystems.restraurantvotingsystem.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
-import ru.votingsystems.restraurantvotingsystem.repository.DataJpaRestaurantRepository;
-import ru.votingsystems.restraurantvotingsystem.repository.DataJpaUserRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.CrudRestaurantRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
 import ru.votingsystems.restraurantvotingsystem.util.exception.VotingTimeoutNotExpiredException;
 
 import java.time.LocalDateTime;
@@ -15,17 +17,20 @@ import java.util.List;
 @Service
 public class RestaurantService {
 
+//    @Autowired
+//    private RestaurantRepository repository;
+    private CrudRestaurantRepository repository;
+//    @Autowired
+    private UserRepository userRepository;
 
-    private DataJpaRestaurantRepository repository;
-    private DataJpaUserRepository userRepository;
-
-    public RestaurantService(DataJpaRestaurantRepository repository, DataJpaUserRepository userRepository) {
+    @Autowired
+    public RestaurantService(CrudRestaurantRepository repository, UserRepository userRepository) {
         this.repository = repository;
         this.userRepository = userRepository;
     }
 
     public Restaurant get(int id) {
-        return repository.get(id);
+        return repository.findById(id).orElse(null);
     }
 
     public void update(Restaurant restaurant) {
@@ -33,7 +38,7 @@ public class RestaurantService {
     }
 
     public boolean delete(int id) {
-        return repository.delete(id);
+        return repository.delete(id) != 0;
     }
 
     public Restaurant create(Restaurant newRestaurant) {
@@ -43,17 +48,17 @@ public class RestaurantService {
 
     public void setNewMenu(int restaurantId, List<Dish> dishes) {
 //        List menu = Arrays.asList(dishes);
-        repository.setNewMenu(restaurantId, dishes);
+        repository.updateMenu(restaurantId, dishes);
     }
 
 
     public void increaseRating(int restaurantId) {
-        int rating = repository.get(restaurantId).getRating();
+        int rating = repository.findById(restaurantId).orElse(null).getRating();
         repository.updateRating(restaurantId, ++rating);
     }
 
     public void decreaseRating(int restaurantId) {
-        int rating = repository.get(restaurantId).getRating();
+        int rating = repository.findById(restaurantId).orElse(null).getRating();
         repository.updateRating(restaurantId, --rating);
     }
 

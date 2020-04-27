@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
-import ru.votingsystems.restraurantvotingsystem.repository.DataJpaRestaurantRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
@@ -17,7 +17,7 @@ class RestaurantServiceTest {
     private RestaurantService service;
     @Autowired
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    private DataJpaRestaurantRepository repository;
+    private RestaurantRepository repository;
 
 
     @Test

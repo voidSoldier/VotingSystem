@@ -11,7 +11,8 @@
     <!--<context:annotation-config/>-->
 
     <context:component-scan base-package="ru.votingsystems.**.service"/>
+    <context:component-scan base-package="ru.votingsystems.**.repository"/>
 
-    <context:component-scan base-package="ru.votingsystems.**.web"/>
+        <context:component-scan base-package="ru.votingsystems.**.web"/>
 
 </beans>
