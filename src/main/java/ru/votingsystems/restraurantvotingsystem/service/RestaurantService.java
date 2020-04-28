@@ -55,7 +55,7 @@ public class RestaurantService {
         repository.save(restaurant);
     }
 
-//    public void changeRating(int restaurantId, boolean increase) {
+//    private void changeRating(int restaurantId, boolean increase) {
 //        Restaurant restaurant = repository.findById(restaurantId).orElse(null);
 //
 //        if (restaurant == null) throw new NotFoundException("Restaurant doesn't exist.");
@@ -65,7 +65,7 @@ public class RestaurantService {
 //        }
 //    }
 
-//    public void increaseRating(int restaurantId) {
+//    private void increaseRating(int restaurantId) {
 //        Restaurant restaurant = repository.findById(restaurantId).orElse(null);
 //
 //        if (restaurant == null) throw new NotFoundException("Restaurant doesn't exist.");
@@ -75,7 +75,7 @@ public class RestaurantService {
 //        }
 //    }
 //
-//    public void decreaseRating(int restaurantId) {
+//    private void decreaseRating(int restaurantId) {
 //        Restaurant restaurant = repository.findById(restaurantId).orElse(null);
 //
 //        if (restaurant == null) throw new NotFoundException("Restaurant doesn't exist.");
@@ -85,7 +85,7 @@ public class RestaurantService {
 //        }
 //    }
 
-    public void setRating(int restaurantId, int newRating) {
+    private void setRating(int restaurantId, int newRating) {
         repository.updateRating(restaurantId, newRating);
     }
 

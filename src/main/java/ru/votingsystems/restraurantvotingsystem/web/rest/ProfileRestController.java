@@ -23,18 +23,18 @@ public class ProfileRestController {
 
     static final String REST_URL = "/rest/user/profile";
 
-//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    public User get() {
-//        return service.get(authUserId());
-//    }
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public User get() {
+        return service.get(authUserId());  // what's with authUserId??? what's it for?
+    }
 
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete() {
         service.delete(authUserId());
-    }
+    } // what's with authUserId??? what's it for?
 
-
+    // WHAT'S HAPPENING HERE???
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.CREATED)
     public ResponseEntity<User> register(@RequestBody User user) {
@@ -51,4 +51,11 @@ public class ProfileRestController {
         service.update(authUserId(), user);
     }
 
+// UPDATE FROM USERTO???
+
+    //  @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    //    @ResponseStatus(HttpStatus.NO_CONTENT)
+    //    public void update(@RequestBody UserTo userTo) {
+    //        super.update(userTo, authUserId());
+    //    }
 }
