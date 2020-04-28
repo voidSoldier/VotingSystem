@@ -18,7 +18,6 @@ import java.util.List;
 public class RestaurantRestController {
 
     static final String REST_URL = "/rest/restaurants";
-
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired

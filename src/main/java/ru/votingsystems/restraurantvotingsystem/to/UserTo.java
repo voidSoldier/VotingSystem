@@ -1,9 +1,12 @@
 package ru.votingsystems.restraurantvotingsystem.to;
 
+import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 public class UserTo implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -25,15 +28,18 @@ public class UserTo implements Serializable {
     private String password;
 
 
+    private List<Restaurant> restaurants;
+
+
     public UserTo() {
     }
 
-    public UserTo(Integer id, String name, String email, String password) {
+    public UserTo(Integer id, String name, String email, String password, List<Restaurant> restaurants) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-
+        this.restaurants = restaurants;
     }
 
     public Integer getId() {
@@ -66,6 +72,14 @@ public class UserTo implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(List<Restaurant> restaurants) {
+        this.restaurants = restaurants;
     }
 
     @Override

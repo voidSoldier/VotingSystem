@@ -1,5 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -64,4 +65,20 @@ public class Dish extends AbstractBaseEntity {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) {
+            return true;
+        }
+        if (o == null || !getClass().equals(Hibernate.getClass(o))) {
+            return false;
+        }
+        Dish that = (Dish) o;
+        return name != null && name.equals(that.name)
+                && price == that.price
+                && restaurant != null && restaurant.equals(that.restaurant);
+    }
+
 }

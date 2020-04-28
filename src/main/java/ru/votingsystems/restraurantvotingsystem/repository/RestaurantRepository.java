@@ -1,65 +1,33 @@
 package ru.votingsystems.restraurantvotingsystem.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
-import java.util.List;
+import java.util.Collection;
 
-//@Repository
-public class RestaurantRepository {
-//@Autowired
-    private final CrudRestaurantRepository repository;
+@Transactional(readOnly = true)
+public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
 
-
-    public RestaurantRepository(CrudRestaurantRepository repository) {
-        this.repository = repository;
-    }
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Restaurant r WHERE r.id=:id")
+    int delete(@Param("id") int id);
 
 
-    public Restaurant get(int id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public boolean delete(int id) {
-        return repository.delete(id) != 0;
-    }
-
-//    public Restaurant update(Restaurant restaurant) {
-//        return repository.save(restaurant);
-//    }
-
-    public Restaurant save(Restaurant restaurant){
-        return repository.save(restaurant);
-    }
-
-    public void setNewMenu(int restaurantId, List<Dish> menu) {
-
-//        newMenu.setDishes(Arrays.asList(dishes));
-//        Restaurant restaurant = repository.getOne(restaurantId);
-//        restaurant.setMenu(menu);
-        repository.updateMenu(restaurantId, menu);
-
-    }
-
-//    public void updateMenu(int restaurantId, Menu menu) {
-//        Restaurant restaurant = repository.getOne(restaurantId);
-//    }
-
-    public void updateRating(int restaurantId, int rating) {
-        repository.updateRating(restaurantId, rating);
-    }
+    @Transactional
+    @Modifying
+    @Query("UPDATE Restaurant r SET r.menu = :menu WHERE r.id=:id")
+    void updateMenu(@Param("id") int id, @Param("menu") Collection<Dish> menu);
 
 
-
-    /*
-     * WILL THEY WORK??? F-ING SPRING MAGIC!
-     */
-    public void updateRestaurantMenuById(int id, List<Dish> menu) {
-        repository.updateRestaurantMenuById(id, menu);
-    }
-
-    public void updateRestaurantRatingById(int id, int rating) {
-        repository.updateRestaurantRatingById(id, rating);
-    }
+    @Transactional
+    @Modifying
+    @Query("UPDATE Restaurant r SET r.rating = :rating WHERE r.id=:id")
+    void updateRating(@Param("id") int id, @Param("rating") int rating);
 
 }

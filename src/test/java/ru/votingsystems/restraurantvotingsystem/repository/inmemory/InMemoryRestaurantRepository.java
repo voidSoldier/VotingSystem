@@ -4,33 +4,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.votingsystems.restraurantvotingsystem.RTestData;
-import ru.votingsystems.restraurantvotingsystem.UTestData;
+import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class InMemoryRestaurantRepository {
     private static final Logger log = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
 
-    // Map  userId -> mealRepository
-    private Map<Integer, InMemoryBaseRepository<Restaurant>> usersMealsMap = new ConcurrentHashMap<>();
+    private InMemoryBaseRepository<Restaurant> restaurants = new InMemoryBaseRepository<>();
 
     {
-        var userMeals = new InMemoryBaseRepository<Restaurant>();
-        RTestData.RESTAURANTS.forEach(meal -> userMeals.map.put(meal.getId(), meal));
-        usersMealsMap.put(UTestData.USER_ID, userMeals);
+        RTestData.RESTAURANTS.forEach(restaurant -> restaurants.save(restaurant));
     }
 
 
 //    @Override
-    public Restaurant save(Restaurant meal, int userId) {
-        Objects.requireNonNull(meal, "meal must not be null");
-        var meals = usersMealsMap.computeIfAbsent(userId, uid -> new InMemoryBaseRepository<>());
-        return meals.save(meal);
+    public Restaurant save(Restaurant restaurant, List<Dish> menu) {
+        Objects.requireNonNull(restaurant, "Restaurant must not be null");
+        restaurant.setMenu(menu);
+        return restaurants.save(restaurant);
     }
 
     @PostConstruct
@@ -43,23 +41,20 @@ public class InMemoryRestaurantRepository {
         log.info("+++ PreDestroy");
     }
 
-//    @Override
-    public boolean delete(int id, int userId) {
-        var meals = usersMealsMap.get(userId);
-        return meals != null && meals.delete(id);
-    }
 
-//    @Override
-    public Restaurant get(int id, int userId) {
-        var meals = usersMealsMap.get(userId);
-        return meals == null ? null : meals.get(id);
+    public boolean delete(int restaurantId) {
+        return restaurants.delete(restaurantId);
     }
 
 
-////    @Override
-//    public List<Restaurant> getAll(int userId) {
-//        return getAllFiltered(userId, meal -> true);
-//    }
+    public Restaurant get(int restaurantId) {
+       return restaurants.get(restaurantId);
+    }
+
+
+    public List<Restaurant> getAll(int userId) {
+        return new ArrayList<>(restaurants.getCollection());
+    }
 
 
 }

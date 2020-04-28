@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
-import ru.votingsystems.restraurantvotingsystem.repository.CrudRestaurantRepository;
-import ru.votingsystems.restraurantvotingsystem.repository.CrudUserRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
+import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 import ru.votingsystems.restraurantvotingsystem.util.exception.VotingTimeoutNotExpiredException;
 
 import java.time.LocalDateTime;
@@ -16,20 +17,21 @@ import java.util.List;
 @Service
 public class RestaurantService {
 
-//    @Autowired
-//    private RestaurantRepository repository;
-    private final CrudRestaurantRepository repository;
-//    @Autowired
-    private final CrudUserRepository userRepository;
+    private final RestaurantRepository repository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public RestaurantService(CrudRestaurantRepository repository, CrudUserRepository userRepository) {
+    public RestaurantService(RestaurantRepository repository, UserRepository userRepository) {
         this.repository = repository;
         this.userRepository = userRepository;
     }
 
     public Restaurant get(int id) {
-        return repository.findById(id).orElse(null);
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("Restaurant doesn't exist."));
+    }
+
+    public List<Restaurant> getAll() {
+        return repository.findAll();
     }
 
     public void update(Restaurant restaurant) {
@@ -37,7 +39,9 @@ public class RestaurantService {
     }
 
     public boolean delete(int id) {
-        return repository.delete(id) != 0;
+        int result  = repository.delete(id);
+        if (result != 0) return true;
+        else throw new NotFoundException("Restaurant doesn't exist.");
     }
 
     public Restaurant create(Restaurant newRestaurant) {
@@ -46,55 +50,66 @@ public class RestaurantService {
 
 
     public void setNewMenu(int restaurantId, List<Dish> dishes) {
-//        List menu = Arrays.asList(dishes);
-        repository.updateMenu(restaurantId, dishes);
+        Restaurant restaurant = get(restaurantId);
+        restaurant.setMenu(dishes);
+        repository.save(restaurant);
     }
 
+//    public void changeRating(int restaurantId, boolean increase) {
+//        Restaurant restaurant = repository.findById(restaurantId).orElse(null);
+//
+//        if (restaurant == null) throw new NotFoundException("Restaurant doesn't exist.");
+//        else {
+//            int rating = restaurant.getRating();
+//            repository.updateRating(restaurantId, increase ? ++rating : --rating);
+//        }
+//    }
 
-    public void increaseRating(int restaurantId) {
-        int rating = repository.findById(restaurantId).orElse(null).getRating();
-        repository.updateRating(restaurantId, ++rating);
+//    public void increaseRating(int restaurantId) {
+//        Restaurant restaurant = repository.findById(restaurantId).orElse(null);
+//
+//        if (restaurant == null) throw new NotFoundException("Restaurant doesn't exist.");
+//        else {
+//            int rating = restaurant.getRating();
+//            setRating(restaurantId, ++rating);
+//        }
+//    }
+//
+//    public void decreaseRating(int restaurantId) {
+//        Restaurant restaurant = repository.findById(restaurantId).orElse(null);
+//
+//        if (restaurant == null) throw new NotFoundException("Restaurant doesn't exist.");
+//        else {
+//            int rating = restaurant.getRating();
+//            setRating(restaurantId, --rating);
+//        }
+//    }
+
+    public void setRating(int restaurantId, int newRating) {
+        repository.updateRating(restaurantId, newRating);
     }
 
-    public void decreaseRating(int restaurantId) {
-        int rating = repository.findById(restaurantId).orElse(null).getRating();
-        repository.updateRating(restaurantId, --rating);
-    }
-
-    /*
-    If user votes again the same day:
-
-    If it is before 11:00 we asume that he changed his mind.
-    If it is after 11:00 then it is too late, vote can't be changed
-
-     */
     public void voteForRestaurant(User user, int restaurantId) {
-
         LocalDateTime votingTime = user.getVotingTime();
         LocalDateTime nowVoting = LocalDateTime.now();
 
         // если не голосовал ни разу ИЛИ прошло уже 24 ч
         if (!user.isVoted() ||
                 nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
-            increaseRating(restaurantId);
-
-            // если прошли 24 часа
-//        } else if (nowVoting.minusDays(1).compareTo(votingTime) >= 0) {  // как быть с минутами???
 //            increaseRating(restaurantId);
-
-
+            setRating(restaurantId, get(restaurantId).getRating() + 1);
             // тот же день, передумал
         } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
-
-            int oldRatedRestaurant = user.getRatedRestaurant();
-            decreaseRating(oldRatedRestaurant);
-            increaseRating(restaurantId);
+            int oldRatedRestaurant = user.getRestaurantId();
+            setRating(oldRatedRestaurant, get(oldRatedRestaurant).getRating() - 1);
+            setRating(restaurantId, get(restaurantId).getRating() + 1);
+//            decreaseRating(oldRatedRestaurant);
 
         } else {
             throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
         }
 
-        user.setRatedRestaurant(restaurantId);
-        userRepository.update(user.getId(), user);
+        user.setRestaurantId(restaurantId);
+        userRepository.save(user);
     }
 }

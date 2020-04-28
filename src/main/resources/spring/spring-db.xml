@@ -11,11 +11,10 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <bean>
-        <context:component-scan base-package="ru.votingsystems.**.service"/>
-        <context:component-scan base-package="ru.votingsystems.**.repository"/>
-        <jpa:repositories base-package="ru.votingsystems.**.repository"/>
-    </bean>
+
+    <context:component-scan base-package="ru.votingsystems.**.service"/>
+    <!--        <context:component-scan base-package="ru.votingsystems.**.repository"/>-->
+    <jpa:repositories base-package="ru.votingsystems.**.repository"/>
 
 
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
@@ -43,12 +42,7 @@
                        value="org.ehcache.jsr107.EhcacheCachingProvider"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SECOND_LEVEL_CACHE}" value="true"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_QUERY_CACHE}" value="false"/> <!--default-->
-                <!--
-                                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_ACTION}" value="drop-and-create"/>
-                                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_CREATE_TARGET}" value="${TOPJAVA_ROOT}/config/ddl/create.ddl"/>
-                                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_SCRIPTS_DROP_TARGET}" value="${TOPJAVA_ROOT}/config/ddl/drop.ddl"/>
-                                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}" value="create"/>
-                -->
+
             </map>
         </property>
 
@@ -66,28 +60,15 @@
     <tx:annotation-driven/>
 
 
-    <!--        <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">-->
-    <!--            <constructor-arg ref="dataSource"/>-->
-    <!--        </bean>-->
-
-    <!--        <bean id="namedJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">-->
-    <!--            <constructor-arg ref="jdbcTemplate"/>-->
-    <!--        </bean>-->
-
-
     <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
-    <!--              p:url="${database.url}"-->
+
     <!--no pooling-->
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-          p:driverClassName="org.hsqldb.jdbcDriver"
-          p:url="H:\Java\temp\votingSystem"
+          p:driverClassName="org.hsqldb.jdbc.JDBCDriver"
+          p:url="${database.url}"
           p:username="${database.username}"
           p:password="${database.password}"/>
-
+    <!--    p:url="jdbc:hsqldb://localhost:5432/RestaurantVotingSystem"-->
+    <!--          p:url="H:\Java\temp\Restaurant VS"-->
 </beans>
-
-        <!--<beans profile="datajpa">-->
-        <!--<context:component-scan base-package="ru.javawebinar.**.repository.datajpa"/>-->
-        <!--<jpa:repositories base-package="ru.javawebinar.**.repository.datajpa"/>-->
-        <!--</beans>-->

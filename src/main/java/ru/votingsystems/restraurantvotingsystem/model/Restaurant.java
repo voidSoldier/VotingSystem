@@ -27,13 +27,6 @@ public class Restaurant extends AbstractBaseEntity {
     @Column(name = "rating")
     private int rating = 0;
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 
     @ManyToMany
     @JoinTable(name = "rated_restaurants",
@@ -78,5 +71,22 @@ public class Restaurant extends AbstractBaseEntity {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", menu='" + menu + '\'' +
+                '}';
     }
 }

@@ -3,11 +3,12 @@ package ru.votingsystems.restraurantvotingsystem.model;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
-public abstract class AbstractBaseEntity {
+public abstract class AbstractBaseEntity implements Serializable {
 
     public static final int START_SEQ = 100000;
 
@@ -52,6 +53,7 @@ public abstract class AbstractBaseEntity {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) {
             return true;
         }

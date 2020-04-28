@@ -1,43 +1,20 @@
 package ru.votingsystems.restraurantvotingsystem.repository;
 
-import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 
-import java.util.List;
+@Transactional(readOnly = true)
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-//@Repository
-public class UserRepository {
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM User u WHERE u.id=:id")
+    int delete(@Param("id") int id);
 
+    User findUserByEmail(String email);
 
-    private static final Sort SORT_NAME_EMAIL = Sort.by(Sort.Direction.ASC, "name", "email");
-
-
-    private final CrudUserRepository repository;
-
-
-    public UserRepository(CrudUserRepository repository) {
-        this.repository = repository;
-    }
-
-    public List<User> getAll() {
-        return repository.findAll(SORT_NAME_EMAIL);
-    }
-
-    public User get(int id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public User getByEmail(String email) {
-        return repository.getByEmail(email);
-    }
-
-    public boolean delete(int id) {
-        return repository.delete(id) != 0;
-    }
-
-    public void update(int id, User user) {repository.update(id, user);}
-
-    public User create(User user) {
-        return repository.save(user);
-    }
 }

@@ -1,8 +1,13 @@
-DELETE FROm RATED_RESTAURANTS;
-DELETE FROM user_roles;
-DELETE FROM users;
-DELETE FROM restaurants;
-DELETE FROM dishes;
+DELETE
+FROm RATED_RESTAURANTS;
+DELETE
+FROM user_roles;
+DELETE
+FROM users;
+DELETE
+FROM restaurants;
+DELETE
+FROM dishes;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (name, email, password)
@@ -10,9 +15,9 @@ VALUES ('User', 'user@yandex.ru', 'password'),
        ('Admin', 'admin@gmail.com', 'admin');
 
 INSERT INTO user_roles (role, user_id)
-VALUES ('ROLE_USER', 100000),
-       ('ROLE_USER', 100001),
-       ('ROLE_ADMIN', 100001);
+VALUES ('USER', 100000),
+       ('USER', 100001),
+       ('ADMIN', 100001);
 
 
 INSERT INTO restaurants (name, rating)
@@ -43,15 +48,16 @@ VALUES (100000, 100002, 'MamaS house'),
 
 INSERT INTO dishes (restaurant_id, name, price)
 VALUES (100002, 'soup', 10.99),
-       (100002, 'roastbeef', 13.02),
-       (100003, 'pancakes', 5.10),
+       (100002, 'roast beef', 13.02),
        (100002, 'fried eggs', 11.00),
        (100002, 'muffin', 6.33),
-       (100004, 'cheesburger', 7.55),
+       (100003, 'pancakes', 5.10),
+       (100003, 'ice cream', 12.10),
+       (100003, 'vanilla cake', 17.00),
+       (100004, 'cheeseburger', 7.55),
        (100004, 'pizza', 15.00),
-       (100004, 'lasagna', 14.20),
-       (100003, 'icecream', 12.10),
-       (100003, 'vanilla cake', 17.00);
+       (100004, 'lasagna', 14.20);
+
 
 
 --        INSERT INTO dishes (menu_id, name, price)

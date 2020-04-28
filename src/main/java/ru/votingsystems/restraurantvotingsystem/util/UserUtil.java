@@ -9,20 +9,21 @@ import ru.votingsystems.restraurantvotingsystem.to.UserTo;
 
 public class UserUtil {
 
-    public static final int DEFAULT_CALORIES_PER_DAY = 2000;
-
     public static User createNewFromTo(UserTo userTo) {
-        return new User(null, userTo.getName(), userTo.getEmail().toLowerCase(), userTo.getPassword(), Role.USER);
+        User newUser = new User(null, userTo.getName(), userTo.getEmail().toLowerCase(), userTo.getPassword(), Role.USER);
+        newUser.setRestaurants(userTo.getRestaurants());
+        return newUser;
     }
 
     public static UserTo asTo(User user) {
-        return new UserTo(user.getId(), user.getName(), user.getEmail(), user.getPassword());
+        return new UserTo(user.getId(), user.getName(), user.getEmail(), user.getPassword(), user.getRestaurants());
     }
 
     public static User updateFromTo(User user, UserTo userTo) {
         user.setName(userTo.getName());
         user.setEmail(userTo.getEmail().toLowerCase());
         user.setPassword(userTo.getPassword());
+        user.setRestaurants(userTo.getRestaurants());
         return user;
     }
 
