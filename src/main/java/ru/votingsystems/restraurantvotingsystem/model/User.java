@@ -14,8 +14,6 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
-import javax.persistence.Column;
-import javax.persistence.UniqueConstraint;
 
 
 @Entity
@@ -195,6 +193,7 @@ public class User extends AbstractBaseEntity implements Serializable {
     }
 
     public List<Restaurant> getRestaurants() {
+        if (restaurants == null) return new ArrayList<Restaurant>();
         return restaurants;
     }
 

@@ -19,8 +19,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.readFromJson;
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.userHttpBasic;
 import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
-import static ru.votingsystems.restraurantvotingsystem.util.exception.ErrorType.VALIDATION_ERROR;
-import static ru.votingsystems.restraurantvotingsystem.web.ExceptionInfoHandler.EXCEPTION_DUPLICATE_EMAIL;
 import static ru.votingsystems.restraurantvotingsystem.web.rest.ProfileRestController.REST_URL;
 
 public class ProfileRestControllerTest extends AbstractControllerTest {
@@ -88,7 +86,6 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
                 .content(JsonUtil.writeValue(updatedTo)))
                 .andDo(print())
                 .andExpect(status().isUnprocessableEntity())
-                .andExpect(errorType(VALIDATION_ERROR))
                 .andDo(print());
     }
 
@@ -101,8 +98,7 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
                 .with(userHttpBasic(USER))
                 .content(JsonUtil.writeValue(updatedTo)))
                 .andExpect(status().isUnprocessableEntity())
-                .andExpect(errorType(VALIDATION_ERROR))
-                .andExpect(detailMessage(EXCEPTION_DUPLICATE_EMAIL))
                 .andDo(print());
     }
+
 }

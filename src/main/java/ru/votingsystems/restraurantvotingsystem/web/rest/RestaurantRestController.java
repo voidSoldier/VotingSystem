@@ -10,7 +10,6 @@ import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.RestaurantService;
-import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 
 import java.util.List;
 
@@ -41,6 +40,7 @@ public class RestaurantRestController {
 
 
     @PostMapping(value = "/{restaurantId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void inputNewMenu(@PathVariable int restaurantId, @RequestBody List<Dish> dishes) {
         log.info("inputNewMenu {} for restaurant {}", dishes, restaurantId);
 

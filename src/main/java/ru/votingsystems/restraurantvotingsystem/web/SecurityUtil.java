@@ -2,8 +2,6 @@ package ru.votingsystems.restraurantvotingsystem.web;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import ru.votingsystems.restraurantvotingsystem.AuthorizedUser;
-
 
 import static java.util.Objects.requireNonNull;
 

@@ -22,8 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.readFromJson;
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.userHttpBasic;
 import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
-import static ru.votingsystems.restraurantvotingsystem.util.exception.ErrorType.VALIDATION_ERROR;
-import static ru.votingsystems.restraurantvotingsystem.web.ExceptionInfoHandler.EXCEPTION_DUPLICATE_EMAIL;
+
 
 public class AdminRestControllerTest extends AbstractControllerTest {
     private static final String REST_URL = AdminRestController.REST_URL + '/';
@@ -147,7 +146,6 @@ public class AdminRestControllerTest extends AbstractControllerTest {
                 .with(userHttpBasic(ADMIN))
                 .content(JsonUtil.writeValue(expected)))
                 .andExpect(status().isUnprocessableEntity())
-                .andExpect(errorType(VALIDATION_ERROR))
                 .andDo(print());
     }
 
@@ -161,7 +159,6 @@ public class AdminRestControllerTest extends AbstractControllerTest {
                 .content(JsonUtil.writeValue(updated)))
                 .andExpect(status().isUnprocessableEntity())
                 .andDo(print())
-                .andExpect(errorType(VALIDATION_ERROR))
                 .andDo(print());
     }
 
@@ -175,8 +172,6 @@ public class AdminRestControllerTest extends AbstractControllerTest {
                 .with(userHttpBasic(ADMIN))
                 .content(jsonWithPassword(updated, "password")))
                 .andExpect(status().isUnprocessableEntity())
-                .andExpect(errorType(VALIDATION_ERROR))
-                .andExpect(detailMessage(EXCEPTION_DUPLICATE_EMAIL))
                 .andDo(print());
     }
 
@@ -189,8 +184,6 @@ public class AdminRestControllerTest extends AbstractControllerTest {
                 .with(userHttpBasic(ADMIN))
                 .content(jsonWithPassword(expected, "newPass")))
                 .andExpect(status().isUnprocessableEntity())
-                .andExpect(errorType(VALIDATION_ERROR))
-                .andExpect(detailMessage(EXCEPTION_DUPLICATE_EMAIL))
                 .andDo(print());
 
     }

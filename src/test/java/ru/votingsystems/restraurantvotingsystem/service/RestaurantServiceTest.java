@@ -3,7 +3,6 @@ package ru.votingsystems.restraurantvotingsystem.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.votingsystems.restraurantvotingsystem.TestMatcher;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;

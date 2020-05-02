@@ -1,4 +1,4 @@
-package ru.votingsystems.restraurantvotingsystem;
+package ru.votingsystems.restraurantvotingsystem.web;
 
 
 import ru.votingsystems.restraurantvotingsystem.model.User;

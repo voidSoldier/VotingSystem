@@ -1,4 +1,4 @@
-package ru.votingsystems.restraurantvotingsystem;
+package ru.votingsystems.restraurantvotingsystem.web;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
-import ru.votingsystems.restraurantvotingsystem.web.ExceptionInfoHandler;
 
 @Component
 public class UniqueMailValidator implements org.springframework.validation.Validator {
@@ -24,7 +23,7 @@ public class UniqueMailValidator implements org.springframework.validation.Valid
         User user = ((User) target);
         User dbUser = repository.findUserByEmail(user.getEmail().toLowerCase());
         if (dbUser != null && !dbUser.getId().equals(user.getId())) {
-            errors.rejectValue("email", ExceptionInfoHandler.EXCEPTION_DUPLICATE_EMAIL);
+            errors.rejectValue("email", "User with this email already exists");
         }
     }
 }

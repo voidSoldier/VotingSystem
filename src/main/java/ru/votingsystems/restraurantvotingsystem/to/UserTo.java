@@ -78,6 +78,7 @@ public class UserTo extends AbstractBaseEntity implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", restaurants='" + restaurants + '\'' +
                 '}';
     }
 }

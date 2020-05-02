@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import ru.votingsystems.restraurantvotingsystem.UniqueMailValidator;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.UserService;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
 import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
-import ru.votingsystems.restraurantvotingsystem.util.exception.ModificationRestrictionException;
+import ru.votingsystems.restraurantvotingsystem.web.UniqueMailValidator;
 
 import java.util.List;
 
@@ -33,12 +32,6 @@ public abstract class AbstractUserController {
     private UniqueMailValidator emailValidator;
 
     private boolean modificationRestriction;
-
-//    @Autowired
-//    @SuppressWarnings("deprecation")
-//    public void setEnvironment(Environment environment) {
-//        modificationRestriction = environment.acceptsProfiles(Profiles.HEROKU);
-//    }
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -71,14 +64,12 @@ public abstract class AbstractUserController {
 
     public void delete(int id) {
         log.info("delete {}", id);
-        checkModificationAllowed(id);
         service.delete(id);
     }
 
     protected void checkAndValidateForUpdate(AbstractBaseEntity user, int id) throws BindException {
         log.info("update {} with id={}", user, id);
         assureIdConsistent(user, id);
-        checkModificationAllowed(id);
         binder.validate();
         if (binder.getBindingResult().hasErrors()) {
             throw new BindException(binder.getBindingResult());
@@ -88,7 +79,6 @@ public abstract class AbstractUserController {
     public void update(UserTo userTo, int id) {
         log.info("update {} with id={}", userTo, id);
         assureIdConsistent(userTo, id);
-        checkModificationAllowed(id);
         service.update(userTo);
     }
 
@@ -99,13 +89,7 @@ public abstract class AbstractUserController {
 
     public void enable(int id, boolean enabled) {
         log.info(enabled ? "enable {}" : "disable {}", id);
-        checkModificationAllowed(id);
         service.enable(id, enabled);
     }
 
-    private void checkModificationAllowed(int id) {
-        if (modificationRestriction && id < AbstractBaseEntity.START_SEQ + 2) {
-            throw new ModificationRestrictionException();
-        }
-    }
 }

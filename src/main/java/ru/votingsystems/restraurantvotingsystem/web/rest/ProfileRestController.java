@@ -7,10 +7,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.votingsystems.restraurantvotingsystem.AuthorizedUser;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
-import ru.votingsystems.restraurantvotingsystem.web.rest.AbstractUserController;
+import ru.votingsystems.restraurantvotingsystem.web.AuthorizedUser;
 
 import javax.validation.Valid;
 import java.net.URI;

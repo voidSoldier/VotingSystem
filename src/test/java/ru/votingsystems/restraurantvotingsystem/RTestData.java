@@ -4,7 +4,6 @@ import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity.START_SEQ;
@@ -13,6 +12,7 @@ public class RTestData {
 
 
     public static TestMatcher<Restaurant> RESTAURANT_MATCHER = TestMatcher.usingFieldsComparator(Restaurant.class, "rating", "users", "menu");
+    public static TestMatcher<Dish> DISH_MATCHER = TestMatcher.usingFieldsComparator(Dish.class, "restaurant");
 
     public static final int RESTAURANT1_ID = START_SEQ + 2;
 

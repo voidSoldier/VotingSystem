@@ -12,13 +12,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import ru.votingsystems.restraurantvotingsystem.AuthorizedUser;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
-import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
+import ru.votingsystems.restraurantvotingsystem.web.AuthorizedUser;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static ru.votingsystems.restraurantvotingsystem.util.UserUtil.prepareToSave;
@@ -75,7 +75,7 @@ public class UserService implements UserDetailsService {
         User user = get(userTo.getId());
     }
     @CacheEvict(value = "users", allEntries = true)
-    public User create(User user) {
+    public User create(@Valid User user) {
         return repository.save(user);
     }
 

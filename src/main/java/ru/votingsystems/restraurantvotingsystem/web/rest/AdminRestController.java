@@ -8,7 +8,6 @@ import org.springframework.validation.BindException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.votingsystems.restraurantvotingsystem.View;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.UserService;
 
@@ -59,7 +58,7 @@ public class AdminRestController extends AbstractUserController {
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> createWithLocation(@Validated(View.Web.class) @RequestBody User user) {
+    public ResponseEntity<User> createWithLocation(@Validated @RequestBody User user) {
         checkNew(user);
         User created = userService.create(user);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()

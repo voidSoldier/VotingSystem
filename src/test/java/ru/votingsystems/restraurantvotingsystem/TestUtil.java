@@ -7,6 +7,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import ru.votingsystems.restraurantvotingsystem.model.User;
+import ru.votingsystems.restraurantvotingsystem.web.AuthorizedUser;
 import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 
 import java.io.UnsupportedEncodingException;
