@@ -85,7 +85,7 @@ public class RestaurantService {
 //        }
 //    }
 
-    private void setRating(int restaurantId, int newRating) {
+    public void setRating(int restaurantId, int newRating) {
         repository.updateRating(restaurantId, newRating);
     }
 

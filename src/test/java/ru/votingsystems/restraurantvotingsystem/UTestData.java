@@ -2,6 +2,7 @@ package ru.votingsystems.restraurantvotingsystem;
 
 import ru.votingsystems.restraurantvotingsystem.model.Role;
 import ru.votingsystems.restraurantvotingsystem.model.User;
+import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 
 import java.util.Collections;
 
@@ -27,6 +28,10 @@ public class UTestData {
             updated.setRoles(Collections.singletonList(Role.ADMIN));
             return updated;
         }
+
+    public static String jsonWithPassword(User user, String passw) {
+        return JsonUtil.writeAdditionProps(user, "password", passw);
+    }
     }
 
 

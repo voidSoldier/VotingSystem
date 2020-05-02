@@ -1,5 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.to;
 
+import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
 import javax.validation.constraints.Email;
@@ -8,11 +9,8 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
-public class UserTo implements Serializable {
+public class UserTo extends AbstractBaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-
-
-    protected Integer id;
 
     @NotBlank
     @Size(min = 2, max = 100)
@@ -40,14 +38,6 @@ public class UserTo implements Serializable {
         this.email = email;
         this.password = password;
         this.restaurants = restaurants;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getPassword() {

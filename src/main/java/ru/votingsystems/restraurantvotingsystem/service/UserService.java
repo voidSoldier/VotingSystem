@@ -11,12 +11,17 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import ru.votingsystems.restraurantvotingsystem.AuthorizedUser;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
+import ru.votingsystems.restraurantvotingsystem.to.UserTo;
+import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 
 import java.util.List;
+
+import static ru.votingsystems.restraurantvotingsystem.util.UserUtil.prepareToSave;
 
 @Service("userService")
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -24,17 +29,13 @@ public class UserService implements UserDetailsService {
 
 
     private final UserRepository repository;
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     private static final Sort SORT_NAME_EMAIL = Sort.by(Sort.Direction.ASC, "name", "email");
 
-//    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
-//        this.repository = repository;
-//        this.passwordEncoder = passwordEncoder;
-//    }
-    public UserService(UserRepository repository) {
+    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
-
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Cacheable("users")
@@ -57,12 +58,22 @@ public class UserService implements UserDetailsService {
         else throw new NotFoundException("User doesn't exist.");
     }
 
+//    @CacheEvict(value = "users", allEntries = true)
+//    @Transactional
+//    public void update(int id, User user) {
+//        repository.save(user);
+//    }
+
+    @CacheEvict(value = "users", allEntries = true)
+    public void update(User user) {
+        Assert.notNull(user, "user must not be null");
+        prepareAndSave(user);
+    }
     @CacheEvict(value = "users", allEntries = true)
     @Transactional
-    public void update(int id, User user) {
-        repository.save(user);
+    public void update(UserTo userTo) {
+        User user = get(userTo.getId());
     }
-
     @CacheEvict(value = "users", allEntries = true)
     public User create(User user) {
         return repository.save(user);
@@ -82,5 +93,10 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("User " + email + " is not found");
         }
         return new AuthorizedUser(user);
+    }
+
+
+    private User prepareAndSave(User user) {
+        return repository.save(prepareToSave(user, passwordEncoder));
     }
 }

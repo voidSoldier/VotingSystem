@@ -1,8 +1,11 @@
 package ru.votingsystems.restraurantvotingsystem;
 
+import org.springframework.test.web.servlet.ResultMatcher;
+
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static ru.votingsystems.restraurantvotingsystem.TestUtil.readListFromJsonMvcResult;
 
 
 public class TestMatcher<T> {
@@ -44,22 +47,16 @@ public class TestMatcher<T> {
         }
     }
 
-    /*
-     *
-     * JSON content matching methods. Are they necessary for no-view CRUD?
-     *
-     */
+    public ResultMatcher contentJson(T expected) {
+        return result -> assertMatch(TestUtil.readFromJsonMvcResult(result, clazz), expected);
+    }
 
-//    public ResultMatcher contentJson(T expected) {
-//        return result -> assertMatch(TestUtil.readFromJsonMvcResult(result, clazz), expected);
-//    }
-//
-//    public ResultMatcher contentJson(T... expected) {
-//        return contentJson(List.of(expected));
-//    }
-//
-//    public ResultMatcher contentJson(Iterable<T> expected) {
-//        return result -> assertMatch(readListFromJsonMvcResult(result, clazz), expected);
-//    }
+    public ResultMatcher contentJson(T... expected) {
+        return contentJson(List.of(expected));
+    }
+
+    public ResultMatcher contentJson(Iterable<T> expected) {
+        return result -> assertMatch(readListFromJsonMvcResult(result, clazz), expected);
+    }
+
 }
-
