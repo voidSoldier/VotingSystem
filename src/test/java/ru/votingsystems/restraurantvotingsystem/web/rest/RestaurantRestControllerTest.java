@@ -25,12 +25,13 @@ import static ru.votingsystems.restraurantvotingsystem.TestUtil.readFromJson;
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.userAuth;
 import static ru.votingsystems.restraurantvotingsystem.UTestData.ADMIN;
 import static ru.votingsystems.restraurantvotingsystem.UTestData.USER;
-import static ru.votingsystems.restraurantvotingsystem.web.rest.RestaurantRestController.REST_URL;
 
 public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Autowired
     RestaurantService service;
+
+    private static final String REST_URL = RestaurantRestController.REST_URL + '/';
 
     @Test
     void create() throws Exception {

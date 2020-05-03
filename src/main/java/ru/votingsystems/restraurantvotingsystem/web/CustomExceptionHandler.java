@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import org.springframework.web.servlet.ModelAndView;
 import ru.votingsystems.restraurantvotingsystem.util.ValidationUtil;
 import ru.votingsystems.restraurantvotingsystem.util.exception.FieldNotUniqueException;
 import ru.votingsystems.restraurantvotingsystem.util.exception.IllegalRequestDataException;
@@ -21,7 +20,6 @@ import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException
 import ru.votingsystems.restraurantvotingsystem.util.exception.VotingTimeoutNotExpiredException;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 
 @RestControllerAdvice
@@ -60,23 +58,23 @@ public class CustomExceptionHandler {
          logExceptionInfo(req, e, false);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
-        log.error("Exception at request " + req.getRequestURL(), e);
-        Throwable rootCause = ValidationUtil.getRootCause(e);
-
-        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-        ModelAndView mav = new ModelAndView("exception",
-                Map.of("exception", rootCause, "message", rootCause.toString(), "status", httpStatus));
-        mav.setStatus(httpStatus);
-
-        // Interceptor is not invoked, put userTo
-        AuthorizedUser authorizedUser = SecurityUtil.safeGet();
-        if (authorizedUser != null) {
-            mav.addObject("userTo", authorizedUser.getUserTo());
-        }
-        return mav;
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+//        log.error("Exception at request " + req.getRequestURL(), e);
+//        Throwable rootCause = ValidationUtil.getRootCause(e);
+//
+//        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+//        ModelAndView mav = new ModelAndView("exception",
+//                Map.of("exception", rootCause, "message", rootCause.toString(), "status", httpStatus));
+//        mav.setStatus(httpStatus);
+//
+//        // Interceptor is not invoked, put userTo
+//        AuthorizedUser authorizedUser = SecurityUtil.safeGet();
+//        if (authorizedUser != null) {
+//            mav.addObject("userTo", authorizedUser.getUserTo());
+//        }
+//        return mav;
+//    }
 
 
     //    https://stackoverflow.com/questions/538870/should-private-helper-methods-be-static-if-they-can-be-static

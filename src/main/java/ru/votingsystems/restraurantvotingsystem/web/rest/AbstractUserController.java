@@ -31,8 +31,6 @@ public abstract class AbstractUserController {
     @Autowired
     private UniqueMailValidator emailValidator;
 
-    private boolean modificationRestriction;
-
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         if (binder.getTarget() != null && emailValidator.supports(binder.getTarget().getClass())) {

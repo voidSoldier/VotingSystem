@@ -1,6 +1,7 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "restaurants")
+@JsonIgnoreProperties(value = "menu")
 public class Restaurant extends AbstractBaseEntity {
 
     @NotBlank

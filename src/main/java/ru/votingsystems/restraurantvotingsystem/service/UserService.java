@@ -68,12 +68,16 @@ public class UserService implements UserDetailsService {
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
         prepareAndSave(user);
+//        repository.save(user);
     }
+
     @CacheEvict(value = "users", allEntries = true)
     @Transactional
     public void update(UserTo userTo) {
         User user = get(userTo.getId());
     }
+
+
     @CacheEvict(value = "users", allEntries = true)
     public User create(@Valid User user) {
         return repository.save(user);

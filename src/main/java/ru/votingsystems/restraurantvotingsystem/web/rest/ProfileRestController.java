@@ -19,15 +19,26 @@ import java.net.URI;
 public class ProfileRestController extends AbstractUserController {
     static final String REST_URL = "/rest/profile";
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public User get(@AuthenticationPrincipal AuthorizedUser authUser) {
-        return super.get(authUser.getId());
+//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    public User get(@AuthenticationPrincipal AuthorizedUser authUser) {
+//        return super.get(authUser.getId());
+//    }
+
+    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public User get(@PathVariable int id) {
+        return super.get(id);
     }
 
-    @DeleteMapping
+//    @DeleteMapping
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void delete(@AuthenticationPrincipal AuthorizedUser authUser) {
+//        super.delete(authUser.getId());
+//    }
+
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@AuthenticationPrincipal AuthorizedUser authUser) {
-        super.delete(authUser.getId());
+    public void delete(@PathVariable int id) {
+        super.delete(id);
     }
 
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)

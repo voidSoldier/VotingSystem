@@ -16,19 +16,18 @@ import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.votingsystems.restraurantvotingsystem.TestUtil.readFromJson;
-import static ru.votingsystems.restraurantvotingsystem.TestUtil.userHttpBasic;
+import static ru.votingsystems.restraurantvotingsystem.TestUtil.*;
 import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
-import static ru.votingsystems.restraurantvotingsystem.web.rest.ProfileRestController.REST_URL;
 
 public class ProfileRestControllerTest extends AbstractControllerTest {
     @Autowired
     private UserService userService;
 
+    private static final String REST_URL = ProfileRestController.REST_URL + '/';
     @Test
     void get() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL)
-                .with(userHttpBasic(USER)))
+        perform(MockMvcRequestBuilders.get(REST_URL + USER_ID)
+                .with(userAuth(USER)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(USER_MATCHER.contentJson(USER));
@@ -42,7 +41,7 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
 
     @Test
     void delete() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL)
+        perform(MockMvcRequestBuilders.delete(REST_URL + USER_ID)
                 .with(userHttpBasic(USER)))
                 .andExpect(status().isNoContent());
         USER_MATCHER.assertMatch(userService.getAll(), ADMIN);
