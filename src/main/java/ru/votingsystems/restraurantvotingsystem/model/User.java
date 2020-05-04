@@ -1,5 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
@@ -18,6 +19,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends AbstractBaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -80,16 +82,22 @@ public class User extends AbstractBaseEntity implements Serializable {
     }
 
     public User(User u) {
-        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(),
-                u.getRegistered(), u.isEnabled(), u.getRoles(),
-                u.getVotingTime(), u.isVoted(), u.getRestaurantId());
+        super(u.getId());
+        this.name = u.getName();
+        this.email = u.getEmail();
+        this.password = u.getPassword();
+        this.registered = u.getRegistered();
+        this.enabled = u.isEnabled();
+        setRoles(u.getRoles());
+        this.votingTime =  u.getVotingTime();
+        this.voted = u.isVoted();
+        this.restaurantId = u.getRestaurantId();
         this.restaurants = u.getRestaurants();
     }
 
-    public User(Integer id, String name, String email, String password, Role role, Role... roles) {
+    public User(Integer id, String name, String email, String password,  Role role, Role... roles) {
         this(id, name, email, password, new Date(), true, EnumSet.of(role, roles));
     }
-
 
     public User(Integer id, String name, String email, String password, Date registered, boolean enabled, Collection<Role> roles) {
         super(id);
@@ -102,23 +110,23 @@ public class User extends AbstractBaseEntity implements Serializable {
     }
 
 
-    public User(Integer id, String name, String email,
-                String password, Date registered, boolean enabled,
-                Collection<Role> roles, LocalDateTime votingTime,
-                boolean voted, int restaurantId, Restaurant... restaurants) {
-
-        super(id);
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.enabled = enabled;
-        this.registered = registered;
-        setRoles(roles);
-        this.votingTime = votingTime;
-        this.voted = voted;
-        this.restaurantId = restaurantId;
-        this.restaurants = Arrays.asList(restaurants);
-    }
+//    public User(Integer id, String name, String email,
+//                String password, Date registered, boolean enabled,
+//                Collection<Role> roles, LocalDateTime votingTime,
+//                boolean voted, int restaurantId, Restaurant... restaurants) {
+//
+//        super(id);
+//        this.name = name;
+//        this.email = email;
+//        this.password = password;
+//        this.enabled = enabled;
+//        this.registered = registered;
+//        setRoles(roles);
+//        this.votingTime = votingTime;
+//        this.voted = voted;
+//        this.restaurantId = restaurantId;
+//        this.restaurants = Arrays.asList(restaurants);
+//    }
 
     public LocalDateTime getVotingTime() {
         return votingTime;

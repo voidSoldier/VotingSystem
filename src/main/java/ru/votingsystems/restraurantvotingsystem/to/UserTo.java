@@ -1,5 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.to;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserTo extends AbstractBaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +35,7 @@ public class UserTo extends AbstractBaseEntity implements Serializable {
     }
 
     public UserTo(Integer id, String name, String email, String password, List<Restaurant> restaurants) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.email = email;
         this.password = password;

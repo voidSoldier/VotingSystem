@@ -101,6 +101,8 @@ public class RestaurantService {
             // тот же день, передумал
         } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
             int oldRatedRestaurant = user.getRestaurantId();
+
+            //сделать в одном методе одним запросом? !!!!!!!!!!!!!!!!
             setRating(oldRatedRestaurant, get(oldRatedRestaurant).getRating() - 1);
             setRating(restaurantId, get(restaurantId).getRating() + 1);
 
@@ -109,6 +111,36 @@ public class RestaurantService {
         }
 
         user.setRestaurantId(restaurantId);
+        userRepository.save(user);
+    }
+
+    public void voteForRestaurantArrayList(User user, int restaurantId) {
+        LocalDateTime votingTime = user.getVotingTime();
+        LocalDateTime nowVoting = LocalDateTime.now();
+
+        List<Integer> allRestaurants = user.getRestaurantsIds();
+
+        if (!user.isVoted() ||
+                nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
+            setRating(restaurantId, get(restaurantId).getRating() + 1);
+
+            allRestaurants.add(restaurantId);
+
+            // тот же день, передумал
+        } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
+            int oldRatedRestaurant = allRestaurants.get(allRestaurants.size() - 1);
+
+        //сделать в одном методе одним запросом? !!!!!!!!!!!!!!!!
+            setRating(oldRatedRestaurant, get(oldRatedRestaurant).getRating() - 1);
+            setRating(restaurantId, get(restaurantId).getRating() + 1);
+
+            allRestaurants.set(allRestaurants.size() - 1, restaurantId);
+
+        } else {
+            throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
+        }
+
+        user.setRestaurantsIds(allRestaurants);
         userRepository.save(user);
     }
 }

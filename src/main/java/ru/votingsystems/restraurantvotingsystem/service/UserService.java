@@ -15,6 +15,7 @@ import org.springframework.util.Assert;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
+import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 import ru.votingsystems.restraurantvotingsystem.web.AuthorizedUser;
 
@@ -29,14 +30,18 @@ public class UserService implements UserDetailsService {
 
 
     private final UserRepository repository;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
     private static final Sort SORT_NAME_EMAIL = Sort.by(Sort.Direction.ASC, "name", "email");
 
-    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
-        this.repository = repository;
-        this.passwordEncoder = passwordEncoder;
-    }
+//    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
+//        this.repository = repository;
+//        this.passwordEncoder = passwordEncoder;
+//    }
+public UserService(UserRepository repository) {
+    this.repository = repository;
+
+}
 
     @Cacheable("users")
     public List<User> getAll() {
@@ -67,14 +72,16 @@ public class UserService implements UserDetailsService {
     @CacheEvict(value = "users", allEntries = true)
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
-        prepareAndSave(user);
-//        repository.save(user);
+//        prepareAndSave(user);
+        repository.save(user);
     }
 
     @CacheEvict(value = "users", allEntries = true)
     @Transactional
     public void update(UserTo userTo) {
         User user = get(userTo.getId());
+        User updated = UserUtil.updateFromTo(user, userTo);
+        repository.save(updated);
     }
 
 
@@ -82,6 +89,8 @@ public class UserService implements UserDetailsService {
     public User create(@Valid User user) {
         return repository.save(user);
     }
+
+
 
     @CacheEvict(value = "users", allEntries = true)
     @Transactional
@@ -100,7 +109,7 @@ public class UserService implements UserDetailsService {
     }
 
 
-    private User prepareAndSave(User user) {
-        return repository.save(prepareToSave(user, passwordEncoder));
-    }
+//    private User prepareAndSave(User user) {
+//        return repository.save(prepareToSave(user, passwordEncoder));
+//    }
 }

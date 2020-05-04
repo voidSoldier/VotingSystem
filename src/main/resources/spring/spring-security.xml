@@ -16,7 +16,7 @@ http://www.springframework.org/schema/security ">
         <csrf disabled="true"/>
     </http>
 
-    <beans:bean class="org.springframework.security.crypto.factory.PasswordEncoderFactories" id="passwordEncoder" factory-method="createDelegatingPasswordEncoder"/>
+<!--    <beans:bean class="org.springframework.security.crypto.factory.PasswordEncoderFactories" id="passwordEncoder" factory-method="createDelegatingPasswordEncoder"/>-->
 
     <http>
         <intercept-url pattern="/login" access="permitAll()"/>
@@ -32,9 +32,9 @@ http://www.springframework.org/schema/security ">
         <!--<csrf disabled="true"/>-->
     </http>
 
-    <authentication-manager>
-        <authentication-provider user-service-ref="userService">
-            <password-encoder ref="passwordEncoder"/>
-        </authentication-provider>
-    </authentication-manager>
+<!--    <authentication-manager>-->
+<!--        <authentication-provider user-service-ref="userService">-->
+<!--            <password-encoder ref="passwordEncoder"/>-->
+<!--        </authentication-provider>-->
+<!--    </authentication-manager>-->
 </beans:beans>

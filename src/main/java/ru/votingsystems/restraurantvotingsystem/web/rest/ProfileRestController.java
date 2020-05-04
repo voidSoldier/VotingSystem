@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(ProfileRestController.REST_URL)
+@RequestMapping(value = ProfileRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProfileRestController extends AbstractUserController {
     static final String REST_URL = "/rest/profile";
 
@@ -24,7 +24,7 @@ public class ProfileRestController extends AbstractUserController {
 //        return super.get(authUser.getId());
 //    }
 
-    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public User get(@PathVariable int id) {
         return super.get(id);
     }
@@ -41,6 +41,7 @@ public class ProfileRestController extends AbstractUserController {
         super.delete(id);
     }
 
+
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.CREATED)
     public ResponseEntity<User> register(@Valid @RequestBody UserTo userTo) {
@@ -56,5 +57,12 @@ public class ProfileRestController extends AbstractUserController {
         checkAndValidateForUpdate(userTo, authUser.getId());
         service.update(userTo);
     }
+
+//    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void update(@RequestBody UserTo userTo) throws BindException {
+////        checkAndValidateForUpdate(userTo, authUser.getId());
+//        service.update(userTo);
+//    }
 
 }
