@@ -72,7 +72,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
     void update() throws Exception {
         Restaurant updated = RTestData.getUpdated();
 
-        perform(MockMvcRequestBuilders.put(REST_URL + RESTAURANT1_ID)
+        perform(MockMvcRequestBuilders.put(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(updated))
                 .with(userAuth(ADMIN)))

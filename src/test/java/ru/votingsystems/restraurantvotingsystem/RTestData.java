@@ -11,7 +11,7 @@ import static ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity.
 public class RTestData {
 
 
-    public static TestMatcher<Restaurant> RESTAURANT_MATCHER = TestMatcher.usingFieldsComparator(Restaurant.class, "rating", "users", "menu");
+    public static TestMatcher<Restaurant> RESTAURANT_MATCHER = TestMatcher.usingFieldsComparator(Restaurant.class, "rating", "menu");
     public static TestMatcher<Dish> DISH_MATCHER = TestMatcher.usingFieldsComparator(Dish.class, "restaurant");
 
     public static final int RESTAURANT1_ID = START_SEQ + 2;

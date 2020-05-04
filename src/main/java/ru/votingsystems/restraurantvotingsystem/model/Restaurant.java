@@ -30,12 +30,12 @@ public class Restaurant extends AbstractBaseEntity {
     private int rating = 0;
 
 
-    @ManyToMany
-    @JoinTable(name = "rated_restaurants",
-            joinColumns = {@JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
-                    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")},
-            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-    private List<User> users;
+//    @ManyToMany
+//    @JoinTable(name = "rated_restaurants",
+//            joinColumns = {@JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
+//                    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")},
+//            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+//    private List<User> users;
 
     public Restaurant() {
     }
@@ -75,13 +75,13 @@ public class Restaurant extends AbstractBaseEntity {
         this.rating = rating;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+//    public List<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<User> users) {
+//        this.users = users;
+//    }
 
     @Override
     public String toString() {

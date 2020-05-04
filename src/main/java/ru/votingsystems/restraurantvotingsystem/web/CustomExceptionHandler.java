@@ -58,24 +58,6 @@ public class CustomExceptionHandler {
          logExceptionInfo(req, e, false);
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
-//        log.error("Exception at request " + req.getRequestURL(), e);
-//        Throwable rootCause = ValidationUtil.getRootCause(e);
-//
-//        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-//        ModelAndView mav = new ModelAndView("exception",
-//                Map.of("exception", rootCause, "message", rootCause.toString(), "status", httpStatus));
-//        mav.setStatus(httpStatus);
-//
-//        // Interceptor is not invoked, put userTo
-//        AuthorizedUser authorizedUser = SecurityUtil.safeGet();
-//        if (authorizedUser != null) {
-//            mav.addObject("userTo", authorizedUser.getUserTo());
-//        }
-//        return mav;
-//    }
-
 
     //    https://stackoverflow.com/questions/538870/should-private-helper-methods-be-static-if-they-can-be-static
     private static void logExceptionInfo(HttpServletRequest req, Exception e, boolean logException) {

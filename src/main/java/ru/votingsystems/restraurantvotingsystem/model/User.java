@@ -52,8 +52,8 @@ public class User extends AbstractBaseEntity implements Serializable {
     @Column(name = "has_voted", nullable = false, columnDefinition = "bool default false")
     private boolean voted = false;
 
-    @Column(name = "restaurant_id")// JOIN TABLES!!!
-    private int restaurantId;
+//    @Column(name = "restaurant_id")// JOIN TABLES!!!
+//    private int restaurantId;
 
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @Enumerated(EnumType.STRING)
@@ -64,14 +64,21 @@ public class User extends AbstractBaseEntity implements Serializable {
     @BatchSize(size = 200)
     private Set<Role> roles;
 
-    @ManyToMany
-    @JoinTable(name = "rated_restaurants",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns =
-                    {@JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
-                            @JoinColumn(name = "restaurant_name", referencedColumnName = "name")})
+//    @ManyToMany
+//    @JoinTable(name = "rated_restaurants",
+//            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+//            inverseJoinColumns =
+//                    {@JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
+//                            @JoinColumn(name = "restaurant_name", referencedColumnName = "name")})
+//    @BatchSize(size = 200)
+//    private List<Restaurant> restaurants;
+
+    @CollectionTable(name = "rated_restaurants", joinColumns = @JoinColumn(name = "user_id"),
+    uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "restaurant_id"}, name = "user_rests_unique_ids")})
+    @Column(name = "restaurant_id")
+    @ElementCollection(fetch = FetchType.LAZY)
     @BatchSize(size = 200)
-    private List<Restaurant> restaurants;
+    private List<Integer> ratedRestaurants;
 
 
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
@@ -91,8 +98,9 @@ public class User extends AbstractBaseEntity implements Serializable {
         setRoles(u.getRoles());
         this.votingTime =  u.getVotingTime();
         this.voted = u.isVoted();
-        this.restaurantId = u.getRestaurantId();
-        this.restaurants = u.getRestaurants();
+//        this.restaurantId = u.getRestaurantId();
+//        this.restaurants = u.getRestaurants();
+        this.ratedRestaurants = u.getRatedRestaurants();
     }
 
     public User(Integer id, String name, String email, String password,  Role role, Role... roles) {
@@ -110,23 +118,16 @@ public class User extends AbstractBaseEntity implements Serializable {
     }
 
 
-//    public User(Integer id, String name, String email,
-//                String password, Date registered, boolean enabled,
-//                Collection<Role> roles, LocalDateTime votingTime,
-//                boolean voted, int restaurantId, Restaurant... restaurants) {
-//
-//        super(id);
-//        this.name = name;
-//        this.email = email;
-//        this.password = password;
-//        this.enabled = enabled;
-//        this.registered = registered;
-//        setRoles(roles);
-//        this.votingTime = votingTime;
-//        this.voted = voted;
-//        this.restaurantId = restaurantId;
-//        this.restaurants = Arrays.asList(restaurants);
-//    }
+
+
+    public List<Integer> getRatedRestaurants() {
+        if (ratedRestaurants == null) return new ArrayList<Integer>();
+        return ratedRestaurants;
+    }
+
+    public void setRatedRestaurants(List<Integer> restaurants) {
+        ratedRestaurants = restaurants;
+    }
 
     public LocalDateTime getVotingTime() {
         return votingTime;
@@ -136,13 +137,13 @@ public class User extends AbstractBaseEntity implements Serializable {
         this.votingTime = votingTime;
     }
 
-    public int getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(int ratedRestaurant) {
-        this.restaurantId = ratedRestaurant;
-    }
+//    public int getRestaurantId() {
+//        return restaurantId;
+//    }
+//
+//    public void setRestaurantId(int ratedRestaurant) {
+//        this.restaurantId = ratedRestaurant;
+//    }
 
     public String getName() {
         return name;
@@ -200,14 +201,14 @@ public class User extends AbstractBaseEntity implements Serializable {
         this.enabled = enabled;
     }
 
-    public List<Restaurant> getRestaurants() {
-        if (restaurants == null) return new ArrayList<Restaurant>();
-        return restaurants;
-    }
-
-    public void setRestaurants(List<Restaurant> restaurants) {
-        this.restaurants = restaurants;
-    }
+//    public List<Restaurant> getRestaurants() {
+//        if (restaurants == null) return new ArrayList<Restaurant>();
+//        return restaurants;
+//    }
+//
+//    public void setRestaurants(List<Restaurant> restaurants) {
+//        this.restaurants = restaurants;
+//    }
 
     @Override
     public String toString() {

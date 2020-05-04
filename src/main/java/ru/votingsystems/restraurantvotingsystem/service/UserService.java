@@ -30,18 +30,18 @@ public class UserService implements UserDetailsService {
 
 
     private final UserRepository repository;
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     private static final Sort SORT_NAME_EMAIL = Sort.by(Sort.Direction.ASC, "name", "email");
 
-//    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
-//        this.repository = repository;
-//        this.passwordEncoder = passwordEncoder;
-//    }
-public UserService(UserRepository repository) {
-    this.repository = repository;
-
-}
+    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+    }
+//public UserService(UserRepository repository) {
+//    this.repository = repository;
+//
+//}
 
     @Cacheable("users")
     public List<User> getAll() {
@@ -72,8 +72,8 @@ public UserService(UserRepository repository) {
     @CacheEvict(value = "users", allEntries = true)
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
-//        prepareAndSave(user);
-        repository.save(user);
+        prepareAndSave(user);
+//        repository.save(user);
     }
 
     @CacheEvict(value = "users", allEntries = true)
@@ -109,7 +109,7 @@ public UserService(UserRepository repository) {
     }
 
 
-//    private User prepareAndSave(User user) {
-//        return repository.save(prepareToSave(user, passwordEncoder));
-//    }
+    private User prepareAndSave(User user) {
+        return repository.save(prepareToSave(user, passwordEncoder));
+    }
 }

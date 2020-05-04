@@ -2,7 +2,6 @@ package ru.votingsystems.restraurantvotingsystem.to;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
-import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -28,18 +27,18 @@ public class UserTo extends AbstractBaseEntity implements Serializable {
     private String password;
 
 
-    private List<Restaurant> restaurants;
+    private List<Integer> ratedRestaurants;
 
 
     public UserTo() {
     }
 
-    public UserTo(Integer id, String name, String email, String password, List<Restaurant> restaurants) {
+    public UserTo(Integer id, String name, String email, String password, List<Integer> restaurants) {
         super(id);
         this.name = name;
         this.email = email;
         this.password = password;
-        this.restaurants = restaurants;
+        this.ratedRestaurants = restaurants;
     }
 
     public String getPassword() {
@@ -66,12 +65,12 @@ public class UserTo extends AbstractBaseEntity implements Serializable {
         this.email = email;
     }
 
-    public List<Restaurant> getRestaurants() {
-        return restaurants;
+    public List<Integer> getRatedRestaurants() {
+        return ratedRestaurants;
     }
 
-    public void setRestaurants(List<Restaurant> restaurants) {
-        this.restaurants = restaurants;
+    public void setRatedRestaurants(List<Integer> restaurants) {
+        this.ratedRestaurants = restaurants;
     }
 
     @Override
@@ -80,7 +79,7 @@ public class UserTo extends AbstractBaseEntity implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", restaurants='" + restaurants + '\'' +
+                ", restaurants='" + ratedRestaurants + '\'' +
                 '}';
     }
 }

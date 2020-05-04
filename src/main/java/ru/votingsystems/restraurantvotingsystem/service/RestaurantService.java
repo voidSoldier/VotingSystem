@@ -90,38 +90,16 @@ public class RestaurantService {
     }
 
 
+
     public void voteForRestaurant(User user, int restaurantId) {
         LocalDateTime votingTime = user.getVotingTime();
         LocalDateTime nowVoting = LocalDateTime.now();
 
-        // если не голосовал ни разу ИЛИ прошло уже 24 ч
-        if (!user.isVoted() ||
-                nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
-            setRating(restaurantId, get(restaurantId).getRating() + 1);
-            // тот же день, передумал
-        } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
-            int oldRatedRestaurant = user.getRestaurantId();
-
-            //сделать в одном методе одним запросом? !!!!!!!!!!!!!!!!
-            setRating(oldRatedRestaurant, get(oldRatedRestaurant).getRating() - 1);
-            setRating(restaurantId, get(restaurantId).getRating() + 1);
-
-        } else {
-            throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
-        }
-
-        user.setRestaurantId(restaurantId);
-        userRepository.save(user);
-    }
-
-    public void voteForRestaurantArrayList(User user, int restaurantId) {
-        LocalDateTime votingTime = user.getVotingTime();
-        LocalDateTime nowVoting = LocalDateTime.now();
-
-        List<Integer> allRestaurants = user.getRestaurantsIds();
+        List<Integer> allRestaurants = user.getRatedRestaurants();
 
         if (!user.isVoted() ||
                 nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
+            // одним запросом????
             setRating(restaurantId, get(restaurantId).getRating() + 1);
 
             allRestaurants.add(restaurantId);
@@ -140,7 +118,7 @@ public class RestaurantService {
             throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
         }
 
-        user.setRestaurantsIds(allRestaurants);
+        user.setRatedRestaurants(allRestaurants);
         userRepository.save(user);
     }
 }

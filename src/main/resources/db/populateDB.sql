@@ -1,13 +1,8 @@
-DELETE
-FROm RATED_RESTAURANTS;
-DELETE
-FROM user_roles;
-DELETE
-FROM users;
-DELETE
-FROM restaurants;
-DELETE
-FROM dishes;
+DELETE FROM rated_restaurants;
+DELETE FROM user_roles;
+DELETE FROM users;
+DELETE FROM restaurants;
+DELETE FROM dishes;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (name, email, password)
@@ -25,10 +20,10 @@ VALUES ('MamaS House', 2),
        ('My own Company', 3),
        ('HoundS Pit', 10);
 
-INSERT INTO RATED_RESTAURANTS (user_id, restaurant_id, RESTAURANT_NAME)
-VALUES (100000, 100002, 'MamaS house'),
-       (100001, 100003, 'My own Company'),
-       (100000, 100004, 'HoundS Pit');
+INSERT INTO rated_restaurants (user_id, restaurant_id)
+VALUES (100000, 100002),
+       (100001, 100003),
+       (100000, 100004);
 
 -- INSERT INTO menus (restaurant_id)
 -- VALUES (100002),
