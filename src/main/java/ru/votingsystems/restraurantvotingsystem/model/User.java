@@ -19,8 +19,8 @@ import java.util.*;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class User extends AbstractBaseEntity implements Serializable {
+//@JsonIgnoreProperties(ignoreUnknown = true)
+public class User extends AbstractBaseEntity implements Serializable, AbstractUser {
     private static final long serialVersionUID = 1L;
 
 
@@ -216,6 +216,7 @@ public class User extends AbstractBaseEntity implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", registered='" + registered + '\'' +
                 '}';
     }
 }

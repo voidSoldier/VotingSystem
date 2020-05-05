@@ -13,6 +13,8 @@ import ru.votingsystems.restraurantvotingsystem.to.UserTo;
 import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
 import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 
+import java.util.ArrayList;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -49,7 +51,7 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
 
     @Test
     void register() throws Exception {
-        UserTo newTo = new UserTo(null, "newName", "newemail@ya.ru", "newPassword", null);
+        UserTo newTo = new UserTo(null, "newName", "newemail@ya.ru", "newPassword", new ArrayList<Integer>());
         User newUser = UserUtil.createNewFromTo(newTo);
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL + "/register")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -66,7 +68,7 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
 
     @Test
     void update() throws Exception {
-        UserTo updatedTo = new UserTo(null, "newName", "newemail@ya.ru", "newPassword", null);
+        UserTo updatedTo = new UserTo(USER_ID, "newName", "newemail@ya.ru", "newPassword", new ArrayList<Integer>());
         perform(MockMvcRequestBuilders.put(REST_URL).contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(USER))
                 .content(JsonUtil.writeValue(updatedTo)))
@@ -78,7 +80,7 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
 
     @Test
     void updateInvalid() throws Exception {
-        UserTo updatedTo = new UserTo(null, null, "password", null, null);
+        UserTo updatedTo = new UserTo(null, null, "password", null, new ArrayList<Integer>());
         perform(MockMvcRequestBuilders.put(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(USER))
@@ -91,7 +93,7 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
     @Test
     @Transactional(propagation = Propagation.NEVER)
     void updateDuplicate() throws Exception {
-        UserTo updatedTo = new UserTo(null, "newName", "admin@gmail.com", "newPassword", null);
+        UserTo updatedTo = new UserTo(null, "newName", "admin@gmail.com", "newPassword", new ArrayList<Integer>());
 
         perform(MockMvcRequestBuilders.put(REST_URL).contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(USER))

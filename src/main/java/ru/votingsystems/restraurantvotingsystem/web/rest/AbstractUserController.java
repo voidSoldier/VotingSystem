@@ -68,6 +68,7 @@ public abstract class AbstractUserController {
     protected void checkAndValidateForUpdate(AbstractBaseEntity user, int id) throws BindException {
         log.info("update {} with id={}", user, id);
         assureIdConsistent(user, id);
+        if(binder == null)  throw new IllegalArgumentException("_________________Binder is null");
         binder.validate();
         if (binder.getBindingResult().hasErrors()) {
             throw new BindException(binder.getBindingResult());
