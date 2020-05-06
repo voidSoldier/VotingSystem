@@ -5,13 +5,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.RestaurantService;
 
+import java.net.URI;
 import java.util.List;
+
+import static ru.votingsystems.restraurantvotingsystem.util.ValidationUtil.checkNew;
 
 
 @RestController
@@ -32,10 +37,16 @@ public class RestaurantRestController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void inputNewRestaurant(@RequestBody Restaurant newRestaurant) {
+    public ResponseEntity<Restaurant> inputNewRestaurant(@RequestBody Restaurant newRestaurant) {
         log.info("inputNewRestaurant {}", newRestaurant);
 
-        service.create(newRestaurant);
+//        service.create(newRestaurant);
+        checkNew(newRestaurant);
+        Restaurant created = service.create(newRestaurant);
+        URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path(REST_URL + "/{id}")
+                .buildAndExpand(created.getId()).toUri();
+        return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
 

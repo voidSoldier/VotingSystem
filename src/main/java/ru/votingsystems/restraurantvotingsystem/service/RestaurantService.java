@@ -53,6 +53,7 @@ public class RestaurantService {
         Restaurant restaurant = get(restaurantId);
         restaurant.setMenu(dishes);
         repository.save(restaurant);
+//        repository.updateMenu(restaurantId, dishes);
     }
 
 //    private void changeRating(int restaurantId, boolean increase) {

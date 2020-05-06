@@ -7,6 +7,7 @@ import org.hibernate.annotations.BatchSize;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Restaurant extends AbstractBaseEntity {
     private String name;
 
 
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    //    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @BatchSize(size = 200)
     private List<Dish> menu;
@@ -60,6 +61,7 @@ public class Restaurant extends AbstractBaseEntity {
     }
 
     public List<Dish> getMenu() {
+        if (menu == null) return new ArrayList<>();
         return menu;
     }
 
@@ -75,13 +77,6 @@ public class Restaurant extends AbstractBaseEntity {
         this.rating = rating;
     }
 
-//    public List<User> getUsers() {
-//        return users;
-//    }
-//
-//    public void setUsers(List<User> users) {
-//        this.users = users;
-//    }
 
     @Override
     public String toString() {

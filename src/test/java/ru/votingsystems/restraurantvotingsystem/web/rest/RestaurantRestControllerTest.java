@@ -14,6 +14,7 @@ import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException
 import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -38,15 +39,34 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
         Restaurant newRestaurant = getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(newRestaurant))
-                .with(userAuth(ADMIN)));
+                .with(userAuth(ADMIN))
+                .content(JsonUtil.writeValue(newRestaurant)))
+                .andExpect(status().isCreated());
 
         Restaurant created = readFromJson(action, Restaurant.class);
         int newId = created.getId();
         newRestaurant.setId(newId);
         RESTAURANT_MATCHER.assertMatch(created, newRestaurant);
         RESTAURANT_MATCHER.assertMatch(service.get(newId), newRestaurant);
+//        DISH_MATCHER.assertMatch(created.getMenu(), newRestaurant.getMenu());
     }
+/*
+ @Test
+    void createWithLocation() throws Exception {
+        User newUser = UserTestData.getNew();
+        ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(userHttpBasic(ADMIN))
+                .content(UserTestData.jsonWithPassword(newUser, "newPass")))
+                .andExpect(status().isCreated());
+
+        User created = readFromJson(action, User.class);
+        int newId = created.id();
+        newUser.setId(newId);
+        USER_MATCHER.assertMatch(created, newUser);
+        USER_MATCHER.assertMatch(userService.get(newId), newUser);
+    }
+ */
 
 
     @Test
@@ -85,7 +105,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
     void updateWithNewMenu() throws Exception {
         List<Dish> menu = RESTAURANT2.getMenu();
 
-        perform(MockMvcRequestBuilders.put(REST_URL + RESTAURANT1_ID)
+        perform(MockMvcRequestBuilders.post(REST_URL + RESTAURANT1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(menu))
                 .with(userAuth(ADMIN)))

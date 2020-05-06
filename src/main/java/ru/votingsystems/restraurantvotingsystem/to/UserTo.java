@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 //@JsonIgnoreProperties(ignoreUnknown = true)
@@ -27,7 +28,6 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
     @Size(min = 5, max = 32, message = "length must be between 5 and 32 characters")
     private String password;
 
-
     private List<Integer> ratedRestaurants;
 
 
@@ -41,6 +41,7 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
         this.password = password;
         this.ratedRestaurants = restaurants;
     }
+
 
     public String getPassword() {
         return password;

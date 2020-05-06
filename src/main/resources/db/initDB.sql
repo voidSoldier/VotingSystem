@@ -18,8 +18,8 @@ CREATE TABLE users
     registered    TIMESTAMP DEFAULT now() NOT NULL,
     enabled       BOOLEAN   DEFAULT TRUE  NOT NULL,
     has_voted     BOOLEAN   DEFAULT FALSE,
-    voting_time   DATETIME,
-    restaurant_id INTEGER   DEFAULT 0
+    voting_time   DATETIME
+--     restaurant_id INTEGER   DEFAULT 0
 --     FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS (id)
 
 );

@@ -19,10 +19,10 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     int delete(@Param("id") int id);
 
 
-    @Transactional
-    @Modifying
-    @Query("UPDATE Restaurant r SET r.menu = :menu WHERE r.id=:id")
-    void updateMenu(@Param("id") int id, @Param("menu") Collection<Dish> menu);
+//    @Transactional
+//    @Modifying
+//    @Query("UPDATE Restaurant r SET r.menu = :menu WHERE r.id=:id")
+//    void updateMenu(@Param("id") int id, @Param("menu") Collection<Dish> menu);
 
 
     @Transactional

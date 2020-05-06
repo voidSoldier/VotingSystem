@@ -3,7 +3,9 @@ package ru.votingsystems.restraurantvotingsystem;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity.START_SEQ;
@@ -45,10 +47,10 @@ public class RTestData {
     public static final List<Restaurant> RESTAURANTS = List.of(RESTAURANT1, RESTAURANT2, RESTAURANT3);
 
     public static Restaurant getNew() {
-//        Restaurant newRestaurant = new Restaurant(3, "New Restaurant");
-//        newRestaurant.setMenu(Collections.singletonList(new Dish(null, null, 0, newRestaurant)));
+//        Restaurant newRestaurant = new Restaurant(null, "New Restaurant");
+//        newRestaurant.setMenu(Collections.singletonList(new Dish(null, "new dish", 0, newRestaurant)));
 //        return newRestaurant;
-        return new Restaurant(null, "NEW", null);
+        return new Restaurant(null, "NEW", new ArrayList<>());
     }
 
     public static Restaurant getUpdated() {

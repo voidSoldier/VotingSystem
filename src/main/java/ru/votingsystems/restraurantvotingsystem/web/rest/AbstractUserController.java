@@ -7,6 +7,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
+import ru.votingsystems.restraurantvotingsystem.model.AbstractUser;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.UserService;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
@@ -68,7 +69,6 @@ public abstract class AbstractUserController {
     protected void checkAndValidateForUpdate(AbstractBaseEntity user, int id) throws BindException {
         log.info("update {} with id={}", user, id);
         assureIdConsistent(user, id);
-        if(binder == null)  throw new IllegalArgumentException("_________________Binder is null");
         binder.validate();
         if (binder.getBindingResult().hasErrors()) {
             throw new BindException(binder.getBindingResult());

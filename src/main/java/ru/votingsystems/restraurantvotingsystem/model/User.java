@@ -1,5 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.BatchSize;
@@ -19,7 +20,6 @@ import java.util.*;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
-//@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends AbstractBaseEntity implements Serializable, AbstractUser {
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
 
     @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date registered;
 
     @Column(name = "voting_time")
@@ -201,14 +201,15 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
         this.enabled = enabled;
     }
 
-//    public List<Restaurant> getRestaurants() {
-//        if (restaurants == null) return new ArrayList<Restaurant>();
-//        return restaurants;
-//    }
-//
-//    public void setRestaurants(List<Restaurant> restaurants) {
-//        this.restaurants = restaurants;
-//    }
+
+    public List<Integer> getRestaurants() {
+        if (ratedRestaurants == null) return new ArrayList<>();
+        return ratedRestaurants;
+    }
+
+    public void setRestaurants(List<Integer> restaurants) {
+        this.ratedRestaurants = restaurants;
+    }
 
     @Override
     public String toString() {
