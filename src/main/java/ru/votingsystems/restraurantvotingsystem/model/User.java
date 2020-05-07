@@ -1,7 +1,5 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;
@@ -17,7 +15,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
 
-
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
 public class User extends AbstractBaseEntity implements Serializable, AbstractUser {
@@ -218,6 +216,8 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", registered='" + registered + '\'' +
+                ", roles='" + roles + '\'' +
+                ", rated_restaurants='" + ratedRestaurants + '\'' +
                 '}';
     }
 }

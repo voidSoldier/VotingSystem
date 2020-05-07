@@ -19,8 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.votingsystems.restraurantvotingsystem.TestUtil.readFromJson;
-import static ru.votingsystems.restraurantvotingsystem.TestUtil.userHttpBasic;
+import static ru.votingsystems.restraurantvotingsystem.TestUtil.*;
 import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
 
 
@@ -32,13 +31,19 @@ public class AdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void get() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + ADMIN_ID)
-                .with(userHttpBasic(ADMIN)))
+        ResultActions action =  perform(MockMvcRequestBuilders.get(REST_URL + ADMIN_ID)
+                .with(userAuth(ADMIN)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 // https://jira.spring.io/browse/SPR-14472
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(USER_MATCHER.contentJson(ADMIN));
+
+        User created = readFromJson(action, User.class);
+        int newId = created.getId();
+//        newUser.setId(newId);
+        USER_MATCHER.assertMatch(created, ADMIN);
+//        USER_MATCHER.assertMatch(userService.get(newId), newUser);
     }
 
     @Test
