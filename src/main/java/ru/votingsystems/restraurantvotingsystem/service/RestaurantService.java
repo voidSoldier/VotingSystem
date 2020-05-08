@@ -10,6 +10,7 @@ import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 import ru.votingsystems.restraurantvotingsystem.util.exception.VotingTimeoutNotExpiredException;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -30,8 +31,16 @@ public class RestaurantService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Restaurant doesn't exist."));
     }
 
+    public Restaurant getWithMenu(int id) {
+        return repository.getWithMenu(id);
+    }
+
     public List<Restaurant> getAll() {
         return repository.findAll();
+    }
+
+    public List<Restaurant> getAllWithMenu() {
+        return repository.getAllWithMenu();
     }
 
     public void update(Restaurant restaurant) {
@@ -48,11 +57,11 @@ public class RestaurantService {
         return repository.save(newRestaurant);
     }
 
-
+    @Transactional
     public void setNewMenu(int restaurantId, List<Dish> dishes) {
         Restaurant restaurant = get(restaurantId);
         restaurant.setMenu(dishes);
-        repository.save(restaurant);
+        repository.save(restaurant); // needed?
 //        repository.updateMenu(restaurantId, dishes);
     }
 
@@ -67,23 +76,17 @@ public class RestaurantService {
 //    }
 
 //    private void increaseRating(int restaurantId) {
-//        Restaurant restaurant = repository.findById(restaurantId).orElse(null);
+//        Restaurant restaurant = repository.findById(restaurantId).orElseThrow(() -> new NotFoundException("Restaurant doesn't exist."));
 //
-//        if (restaurant == null) throw new NotFoundException("Restaurant doesn't exist.");
-//        else {
 //            int rating = restaurant.getRating();
 //            setRating(restaurantId, ++rating);
-//        }
+//
 //    }
-//
 //    private void decreaseRating(int restaurantId) {
-//        Restaurant restaurant = repository.findById(restaurantId).orElse(null);
+//        Restaurant restaurant = repository.findById(restaurantId).orElseThrow(() -> new NotFoundException("Restaurant doesn't exist."));
 //
-//        if (restaurant == null) throw new NotFoundException("Restaurant doesn't exist.");
-//        else {
 //            int rating = restaurant.getRating();
 //            setRating(restaurantId, --rating);
-//        }
 //    }
 
     public void setRating(int restaurantId, int newRating) {
@@ -91,7 +94,7 @@ public class RestaurantService {
     }
 
 
-
+    @Transactional
     public void voteForRestaurant(User user, int restaurantId) {
         LocalDateTime votingTime = user.getVotingTime();
         LocalDateTime nowVoting = LocalDateTime.now();
@@ -101,7 +104,7 @@ public class RestaurantService {
         if (!user.isVoted() ||
                 nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
             // одним запросом????
-            setRating(restaurantId, get(restaurantId).getRating() + 1);
+//            setRating(restaurantId, get(restaurantId).getRating() + 1);
 
             allRestaurants.add(restaurantId);
 
@@ -109,17 +112,34 @@ public class RestaurantService {
         } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
             int oldRatedRestaurant = allRestaurants.get(allRestaurants.size() - 1);
 
-        //сделать в одном методе одним запросом? !!!!!!!!!!!!!!!!
-            setRating(oldRatedRestaurant, get(oldRatedRestaurant).getRating() - 1);
-            setRating(restaurantId, get(restaurantId).getRating() + 1);
+            List<Restaurant> restaurants = repository.getOldAndNew(oldRatedRestaurant, restaurantId);
+            Restaurant oldR = null;
+            Restaurant newR = null;
+            for (Restaurant r : restaurants) {
+                if (r.getId() == oldRatedRestaurant) oldR = r;
+                else if (r.getId() == restaurantId) newR = r;
+            }
+            assert oldR != null;
+            int oldRating = oldR.getRating();
+            oldR.setRating(--oldRating);
 
-            allRestaurants.set(allRestaurants.size() - 1, restaurantId);
+            assert newR != null;
+            int newRating = newR.getRating();
+            newR.setRating(++newRating);
+
+//            setRating(oldRatedRestaurant, get(oldRatedRestaurant).getRating() - 1);
+//            setRating(restaurantId, get(restaurantId).getRating() + 1);
+
+//            decreaseRating(oldRatedRestaurant);
+//            increaseRating(restaurantId);
+//
+//            allRestaurants.set(allRestaurants.size() - 1, restaurantId);
 
         } else {
             throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
         }
 
-        user.setRatedRestaurants(allRestaurants);
-        userRepository.save(user);
+//        user.setRatedRestaurants(allRestaurants); // needed?
+//        userRepository.save(user);   // needed?
     }
 }

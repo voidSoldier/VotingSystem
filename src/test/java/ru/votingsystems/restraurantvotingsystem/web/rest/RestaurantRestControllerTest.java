@@ -151,6 +151,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isConflict());
     }
 
+
     @Test
     void voteFirstTime() throws Exception {
         User user = new User(USER);

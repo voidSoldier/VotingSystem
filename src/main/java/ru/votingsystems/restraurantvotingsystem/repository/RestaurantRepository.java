@@ -35,7 +35,20 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
 
     //    https://stackoverflow.com/a/46013654/548473
-//    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
+    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
     @Query("SELECT r FROM Restaurant r")
     List<Restaurant> getAllWithMenu();
+
+    @Transactional
+    @Query("SELECT r FROM Restaurant r WHERE r.id IN(:oldId, :newId)")
+    List<Restaurant> getOldAndNew(@Param("oldId") int oldId, @Param("newId") int newId);
+
+
+    //    https://stackoverflow.com/a/46013654/548473
+    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
+    @Query("SELECT r FROM Restaurant r WHERE r.id = :id")
+    Restaurant getWithMenu(@Param("id") int id);
+
+//    @Query("SELECT r, d.name, d.price AS menu FROM Restaurant r LEFT JOIN  Dish d WHERE d.restaurant_id = r.id")
+//    List<Restaurant> getAllWithMenu();
 }

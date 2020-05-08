@@ -43,7 +43,7 @@ CREATE TABLE dishes
     price         DOUBLE       NOT NULL,
     FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS (id) ON DELETE CASCADE
 );
-CREATE UNIQUE INDEX dishes_unique_restaurant_name_price_idx ON DISHES (restaurant_id, name, price);
+-- CREATE UNIQUE INDEX dishes_unique_restaurant_idx ON DISHES (restaurant_id);
 
 
 CREATE TABLE user_roles
@@ -64,5 +64,5 @@ CREATE TABLE rated_restaurants
 --     FOREIGN KEY (restaurant_id) REFERENCES RESTAURANTS (id) ON DELETE CASCADE
 --     FOREIGN KEY (restaurant_name ) REFERENCES RESTAURANTS (name)
 );
-CREATE UNIQUE INDEX user_restaurants_unique_idx ON rated_restaurants (user_id, restaurant_id);
+-- CREATE UNIQUE INDEX user_restaurants_unique_idx ON rated_restaurants (user_id, restaurant_id);
 

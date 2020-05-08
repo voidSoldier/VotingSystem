@@ -1,12 +1,13 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.*;
 import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -60,6 +61,7 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     @BatchSize(size = 200)
+//    @Fetch(FetchMode.SUBSELECT)
     private Set<Role> roles;
 
 //    @ManyToMany
@@ -71,11 +73,11 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
 //    @BatchSize(size = 200)
 //    private List<Restaurant> restaurants;
 
-    @CollectionTable(name = "rated_restaurants", joinColumns = @JoinColumn(name = "user_id"),
-    uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "restaurant_id"}, name = "user_rests_unique_ids")})
+    @CollectionTable(name = "rated_restaurants", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "restaurant_id")
     @ElementCollection(fetch = FetchType.LAZY)
     @BatchSize(size = 200)
+//    @Fetch(FetchMode.SUBSELECT)
     private List<Integer> ratedRestaurants;
 
 

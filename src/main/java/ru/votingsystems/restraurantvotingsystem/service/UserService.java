@@ -52,6 +52,11 @@ public class UserService implements UserDetailsService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("User doesn't exist."));
     }
 
+    // TESTS!!!!
+    public User getWithRestaurants(int id) {
+        return repository.getWithRestaurants(id);
+    }
+
     public User getByEmail(String email) {
         return repository.findUserByEmail(email);
     }

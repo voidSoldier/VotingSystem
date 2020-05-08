@@ -22,6 +22,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     //    https://stackoverflow.com/a/46013654/548473
     @EntityGraph(attributePaths = {"ratedRestaurants"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("SELECT u FROM User u")
-    List<User> getAllWithRestaurants();
+    @Query("SELECT u FROM User u WHERE u.id = :id")
+    User getWithRestaurants(@Param("id") int id);
 }
