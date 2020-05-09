@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
+import ru.votingsystems.restraurantvotingsystem.model.Vote;
 import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;
 import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService {
@@ -62,38 +64,6 @@ public class RestaurantService {
         restaurant.setMenu(dishes);
     }
 
-//    @Transactional
-//    public void voteForRestaurant(User user, int restaurantId) {
-//        LocalDateTime votingTime = user.getVotingTime();
-//        LocalDateTime nowVoting = LocalDateTime.now();
-//
-//        List<Integer> allRestaurants = user.getRatedRestaurants();
-//
-//        // voting first time
-//        // or on the next day
-//        if (!user.isVoted() ||
-//                nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
-//            repository.incrementRating(restaurantId);
-//            allRestaurants.add(restaurantId);
-//
-//            // voting the same day again to change the vote
-//            // possible if it's before 11:00 a.m.
-//        } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
-//            int oldRatedRestaurant = allRestaurants.get(allRestaurants.size() - 1);
-//            repository.decrementRating(oldRatedRestaurant);
-//            repository.incrementRating(restaurantId);
-//            allRestaurants.set(allRestaurants.size() - 1, restaurantId);
-//        } else {
-//            throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
-//        }
-//
-//        allRestaurants.add(restaurantId);
-//        user.setVotingTime(nowVoting);
-////        user.setRatedRestaurants(allRestaurants); // needed?
-////        userRepository.save(user);   // needed?
-//    }
-
-
     @Transactional
     public void voteForRestaurant(User user, int restaurantId) {
         LocalDateTime votingTime = user.getVotingTime();
@@ -104,24 +74,52 @@ public class RestaurantService {
         if (!user.isVoted() ||
                 nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
             repository.incrementRating(restaurantId);
-            user.getVotes().put(nowVoting, restaurantId);
-
+//
             // voting the same day again to change the vote
             // possible if it's before 11:00 a.m.
         } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
-            int lastRatedRestaurant = user.getVotes().get(votingTime);
-            repository.decrementRating(lastRatedRestaurant);
+            int lastRatedRestaurantId = getLastRatedRestaurantId(user, votingTime);
+
+            repository.decrementRating(lastRatedRestaurantId);
             repository.incrementRating(restaurantId);
-            user.getVotes().remove(votingTime);
-//            user.getVotes().put(nowVoting, restaurantId);
+
+            removeVote(user, votingTime);
         } else {
             throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
         }
 
         user.setVotingTime(nowVoting);
-        user.getVotes().put(nowVoting, restaurantId);
+        saveVote(restaurantId, nowVoting, user);
 
 //        user.setRatedRestaurants(allRestaurants); // needed?
 //        userRepository.save(user);   // needed?
+    }
+
+    private void saveVote(int restaurantId, LocalDateTime voteTime, User user) {
+        List<Vote> votes = user.getVotes();
+        Restaurant restaurant = get(restaurantId);
+
+        List<String> menu = restaurant.getMenu()
+                .stream()
+                .map(d -> d.getName() + " - " + d.getPrice())
+                .collect(Collectors.toList());
+
+        votes.add(new Vote(null, voteTime, restaurant.getName(), menu, user, restaurant.getId()));
+
+    }
+
+    private int getLastRatedRestaurantId(User user, LocalDateTime voteTime) {
+        return user.getVotes()
+                .stream()
+                .filter(v -> v.getVoteDate().equals(voteTime))
+                .map(Vote::getRestaurantId)
+                .findAny().orElse(0);
+    }
+
+    private void removeVote(User user, LocalDateTime voteTime) {
+        user.setVotes(user.getVotes()
+                .stream()
+                .filter(v -> v.getVoteDate().equals(voteTime))
+                .collect(Collectors.toList()));
     }
 }

@@ -2,6 +2,7 @@ package ru.votingsystems.restraurantvotingsystem.to;
 
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractUser;
+import ru.votingsystems.restraurantvotingsystem.model.Vote;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -25,18 +26,18 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
     @Size(min = 5, max = 32, message = "length must be between 5 and 32 characters")
     private String password;
 
-    private List<Integer> ratedRestaurants;
+    private List<Vote> votes;
 
 
     public UserTo() {
     }
 
-    public UserTo(Integer id, String name, String email, String password, List<Integer> restaurants) {
+    public UserTo(Integer id, String name, String email, String password, List<Vote> restaurants) {
         super(id);
         this.name = name;
         this.email = email;
         this.password = password;
-        this.ratedRestaurants = restaurants;
+        this.votes = restaurants;
     }
 
 
@@ -64,12 +65,12 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
         this.email = email;
     }
 
-    public List<Integer> getRatedRestaurants() {
-        return ratedRestaurants;
+    public List<Vote> getVotes() {
+        return votes;
     }
 
-    public void setRatedRestaurants(List<Integer> restaurants) {
-        this.ratedRestaurants = restaurants;
+    public void setVotes(List<Vote> restaurants) {
+        this.votes = restaurants;
     }
 
     @Override
@@ -78,7 +79,7 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", restaurants='" + ratedRestaurants + '\'' +
+                ", restaurants='" + votes + '\'' +
                 '}';
     }
 }

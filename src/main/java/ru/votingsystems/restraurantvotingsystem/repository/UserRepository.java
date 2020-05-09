@@ -20,6 +20,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findUserByEmail(String email);
 
     //    https://stackoverflow.com/a/46013654/548473
-    @EntityGraph(attributePaths = {"ratedRestaurants"}, type = EntityGraph.EntityGraphType.LOAD)
+    @EntityGraph(attributePaths = {"votes"}, type = EntityGraph.EntityGraphType.LOAD)
     User findUserById(int id);
 }

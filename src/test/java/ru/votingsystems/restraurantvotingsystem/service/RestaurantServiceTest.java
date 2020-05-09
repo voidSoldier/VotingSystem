@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
+import ru.votingsystems.restraurantvotingsystem.model.Vote;
 import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 
@@ -115,7 +116,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
         user.setVoted(true);
         user.setVotingTime(LocalDateTime.now().withHour(10));
 
-        List<Integer> oldList = new ArrayList<>(user.getRatedRestaurants());
+        List<Vote> oldList = new ArrayList<>(user.getVotes());
 //
         int old04Rating = service.get(100004).getRating();
         int old02Rating = service.get(100002).getRating();
@@ -125,7 +126,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
         int new04Rating = service.get(100004).getRating();
         int new02Rating = service.get(100002).getRating();
 //
-        List<Integer> newList = new ArrayList<>(userService.getWithRestaurants(USER_ID).getRatedRestaurants());
+        List<Vote> newList = new ArrayList<>(userService.getWithRestaurants(USER_ID).getVotes());
 //
         assertTrue(old04Rating > new04Rating);
         assertTrue(old02Rating < new02Rating);

@@ -81,15 +81,15 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
 //    private List<Integer> ratedRestaurants;
 
 
-    @ElementCollection(fetch = FetchType.LAZY)
-    @MapKeyColumn(name = "date_time")
-    @Column(name = "restaurant_id")
-    @JoinTable(name = "user_votes",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "restaurant_id", referencedColumnName = "id")},
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "vote_date_unique_idx")})
-    @BatchSize(size = 200)
-    private Map<LocalDateTime, Integer> votes;
+//    @ElementCollection(fetch = FetchType.LAZY)
+//    @MapKeyColumn(name = "date_time")
+//    @Column(name = "restaurant_id")
+//    @JoinTable(name = "user_votes",
+//            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+//            inverseJoinColumns = {@JoinColumn(name = "restaurant_id", referencedColumnName = "id")},
+//            uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "vote_date_unique_idx")})
+//    @BatchSize(size = 200)
+//    private Map<LocalDateTime, Integer> votes;
 
 //    @OneToMany()
 //    @JoinTable(name = "user_votes",
@@ -98,11 +98,15 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
 //    @MapKey(name = "date_time")
 //    private Map<LocalDateTime, Restaurant> votes;
 
-    public Map<LocalDateTime, Integer> getVotes() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @BatchSize(size = 200)
+    private List<Vote> votes;
+
+    public List<Vote> getVotes() {
         return votes;
     }
 
-    public void setVotes(HashMap<LocalDateTime, Integer> votes) {
+    public void setVotes(List<Vote> votes) {
         this.votes = votes;
     }
 

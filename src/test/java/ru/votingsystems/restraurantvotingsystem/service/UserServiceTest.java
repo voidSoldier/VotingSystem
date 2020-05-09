@@ -64,7 +64,7 @@ class UserServiceTest extends AbstractServiceTest {
     void getWithRestaurants() throws Exception {
         User user = service.getWithRestaurants(ADMIN_ID);
 //        USER_MATCHER_WITH_RESTAURANTS.assertMatch(user, ADMIN);
-        assertEquals(ADMIN.getRatedRestaurants(), user.getRatedRestaurants());
+        assertEquals(ADMIN.getVotes(), user.getVotes());
     }
 
     @Test
