@@ -62,29 +62,64 @@ public class RestaurantService {
         restaurant.setMenu(dishes);
     }
 
+//    @Transactional
+//    public void voteForRestaurant(User user, int restaurantId) {
+//        LocalDateTime votingTime = user.getVotingTime();
+//        LocalDateTime nowVoting = LocalDateTime.now();
+//
+//        List<Integer> allRestaurants = user.getRatedRestaurants();
+//
+//        // voting first time
+//        // or on the next day
+//        if (!user.isVoted() ||
+//                nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
+//            repository.incrementRating(restaurantId);
+//            allRestaurants.add(restaurantId);
+//
+//            // voting the same day again to change the vote
+//            // possible if it's before 11:00 a.m.
+//        } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
+//            int oldRatedRestaurant = allRestaurants.get(allRestaurants.size() - 1);
+//            repository.decrementRating(oldRatedRestaurant);
+//            repository.incrementRating(restaurantId);
+//            allRestaurants.set(allRestaurants.size() - 1, restaurantId);
+//        } else {
+//            throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
+//        }
+//
+//        allRestaurants.add(restaurantId);
+//        user.setVotingTime(nowVoting);
+////        user.setRatedRestaurants(allRestaurants); // needed?
+////        userRepository.save(user);   // needed?
+//    }
+
+
     @Transactional
     public void voteForRestaurant(User user, int restaurantId) {
         LocalDateTime votingTime = user.getVotingTime();
         LocalDateTime nowVoting = LocalDateTime.now();
-
-        List<Integer> allRestaurants = user.getRatedRestaurants();
 
         // voting first time
         // or on the next day
         if (!user.isVoted() ||
                 nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
             repository.incrementRating(restaurantId);
-            allRestaurants.add(restaurantId);
+            user.getVotes().put(nowVoting, restaurantId);
 
-       // voting the same day again to change the vote
-       // possible if it's before 11:00 a.m.
+            // voting the same day again to change the vote
+            // possible if it's before 11:00 a.m.
         } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
-            int oldRatedRestaurant = allRestaurants.get(allRestaurants.size() - 1);
-            repository.decrementRating(oldRatedRestaurant);
+            int lastRatedRestaurant = user.getVotes().get(votingTime);
+            repository.decrementRating(lastRatedRestaurant);
             repository.incrementRating(restaurantId);
+            user.getVotes().remove(votingTime);
+//            user.getVotes().put(nowVoting, restaurantId);
         } else {
             throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
         }
+
+        user.setVotingTime(nowVoting);
+        user.getVotes().put(nowVoting, restaurantId);
 
 //        user.setRatedRestaurants(allRestaurants); // needed?
 //        userRepository.save(user);   // needed?

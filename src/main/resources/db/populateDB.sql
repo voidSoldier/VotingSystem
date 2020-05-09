@@ -1,8 +1,13 @@
-DELETE FROM rated_restaurants;
-DELETE FROM user_roles;
-DELETE FROM users;
-DELETE FROM restaurants;
-DELETE FROM dishes;
+DELETE
+FROM user_votes;
+DELETE
+FROM user_roles;
+DELETE
+FROM users;
+DELETE
+FROM restaurants;
+DELETE
+FROM dishes;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (name, email, password)
@@ -20,10 +25,12 @@ VALUES ('MamaS House', 2),
        ('My own Company', 3),
        ('HoundS Pit', 10);
 
-INSERT INTO rated_restaurants (user_id, restaurant_id)
-VALUES (100000, 100002),
-       (100001, 100003),
-       (100000, 100004);
+
+INSERT INTO user_votes (user_id, date_time, restaurant_id)
+VALUES (100000, '2020-01-30 10:00:00', 100002),
+       (100001, '2020-01-30 20:00:00', 100003),
+       (100000, '2020-01-31 0:00:00', 100004);
+
 
 INSERT INTO dishes (restaurant_id, name, price)
 VALUES (100002, 'soup', 10.99),
