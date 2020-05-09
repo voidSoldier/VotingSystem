@@ -70,7 +70,7 @@ public class CustomExceptionHandler {
             log.warn(msg);
         }
 
-        e.printStackTrace();
+//        e.printStackTrace();
     }
 
 

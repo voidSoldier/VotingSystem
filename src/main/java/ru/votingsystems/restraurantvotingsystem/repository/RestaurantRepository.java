@@ -6,11 +6,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
-import ru.votingsystems.restraurantvotingsystem.model.User;
 
-import java.util.Collection;
 import java.util.List;
 
 @Transactional(readOnly = true)
@@ -18,37 +15,26 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM Restaurant r WHERE r.id=:id")
-    int delete(@Param("id") int id);
-
-
-//    @Transactional
-//    @Modifying
-//    @Query("UPDATE Restaurant r SET r.menu = :menu WHERE r.id=:id")
-//    void updateMenu(@Param("id") int id, @Param("menu") Collection<Dish> menu);
-
+    int deleteRestaurantById(int id);
 
     @Transactional
     @Modifying
-    @Query("UPDATE Restaurant r SET r.rating = :rating WHERE r.id=:id")
-    void updateRating(@Param("id") int id, @Param("rating") int rating);
-
-
-    //    https://stackoverflow.com/a/46013654/548473
-    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("SELECT r FROM Restaurant r")
-    List<Restaurant> getAllWithMenu();
+    @Query("UPDATE Restaurant r SET r.rating = r.rating + 1 WHERE r.id=:id")
+    void incrementRating(@Param("id") int id);
 
     @Transactional
-    @Query("SELECT r FROM Restaurant r WHERE r.id IN(:oldId, :newId)")
-    List<Restaurant> getOldAndNew(@Param("oldId") int oldId, @Param("newId") int newId);
+    @Modifying
+    @Query("UPDATE Restaurant r SET r.rating = r.rating - 1 WHERE r.id=:id")
+    void decrementRating(@Param("id") int id);
 
-
-    //    https://stackoverflow.com/a/46013654/548473
+    //  https://stackoverflow.com/a/46013654/548473
+    // with menu
     @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("SELECT r FROM Restaurant r WHERE r.id = :id")
-    Restaurant getWithMenu(@Param("id") int id);
+    List<Restaurant> findAll();
 
-//    @Query("SELECT r, d.name, d.price AS menu FROM Restaurant r LEFT JOIN  Dish d WHERE d.restaurant_id = r.id")
-//    List<Restaurant> getAllWithMenu();
+    // with menu
+    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
+    Restaurant findRestaurantById(int id);
+
+
 }

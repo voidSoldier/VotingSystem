@@ -47,6 +47,15 @@ public class AdminRestControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    void getAll() throws Exception {
+        perform(MockMvcRequestBuilders.get(REST_URL)
+                .with(userHttpBasic(ADMIN)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(USER_MATCHER.contentJson(ADMIN, USER));
+    }
+
+    @Test
     void getNotFound() throws Exception {
         perform(MockMvcRequestBuilders.get(REST_URL + 1)
                 .with(userHttpBasic(ADMIN)))
@@ -123,14 +132,7 @@ public class AdminRestControllerTest extends AbstractControllerTest {
         USER_MATCHER.assertMatch(userService.get(newId), newUser);
     }
 
-    @Test
-    void getAll() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL)
-                .with(userHttpBasic(ADMIN)))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(USER_MATCHER.contentJson(ADMIN, USER));
-    }
+
 
     @Test
     void enable() throws Exception {

@@ -14,7 +14,6 @@ import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException
 import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -50,24 +49,6 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
         RESTAURANT_MATCHER.assertMatch(service.get(newId), newRestaurant);
 //        DISH_MATCHER.assertMatch(created.getMenu(), newRestaurant.getMenu());
     }
-/*
- @Test
-    void createWithLocation() throws Exception {
-        User newUser = UserTestData.getNew();
-        ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
-                .contentType(MediaType.APPLICATION_JSON)
-                .with(userHttpBasic(ADMIN))
-                .content(UserTestData.jsonWithPassword(newUser, "newPass")))
-                .andExpect(status().isCreated());
-
-        User created = readFromJson(action, User.class);
-        int newId = created.id();
-        newUser.setId(newId);
-        USER_MATCHER.assertMatch(created, newUser);
-        USER_MATCHER.assertMatch(userService.get(newId), newUser);
-    }
- */
-
 
     @Test
     void get() throws Exception {

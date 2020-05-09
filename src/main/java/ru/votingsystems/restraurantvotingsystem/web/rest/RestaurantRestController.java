@@ -39,8 +39,7 @@ public class RestaurantRestController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Restaurant> inputNewRestaurant(@RequestBody Restaurant newRestaurant) {
         log.info("inputNewRestaurant {}", newRestaurant);
-
-//        service.create(newRestaurant);
+;
         checkNew(newRestaurant);
         Restaurant created = service.create(newRestaurant);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()

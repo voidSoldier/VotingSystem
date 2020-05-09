@@ -55,7 +55,7 @@ public abstract class AbstractUserController {
         return create(UserUtil.createNewFromTo(userTo));
     }
 
-    public User create(User user) {
+    private User create(User user) {
         log.info("create {}", user);
         checkNew(user);
         return service.create(user);
@@ -75,13 +75,19 @@ public abstract class AbstractUserController {
         }
     }
 
-    public void update(UserTo userTo, int id) {
-        log.info("update {} with id={}", userTo, id);
-        assureIdConsistent(userTo, id);
-        service.update(userTo);
-    }
+//    public void update(User user, int id) {
+//        log.info("update {} with id={}", user, id);
+//        assureIdConsistent(user, id);
+//        service.update(user);
+//    }
+//
+//    public void update(UserTo userTo, int id) {
+//        log.info("update {} with id={}", userTo, id);
+//        assureIdConsistent(userTo, id);
+//        service.update(userTo);
+//    }
 
-    public User getByMail(String email) {
+    public User getByEmail(String email) {
         log.info("getByEmail {}", email);
         return service.getByEmail(email);
     }

@@ -32,7 +32,7 @@ public class UTestData {
         public static User getUpdated() {
             User updated = new User(USER);
             updated.setName("UpdatedName");
-            updated.setRoles(Collections.singletonList(Role.ADMIN));
+            updated.setRoles(Collections.singletonList(Role.USER));
             return updated;
         }
 

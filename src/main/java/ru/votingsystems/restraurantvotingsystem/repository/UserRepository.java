@@ -15,13 +15,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM User u WHERE u.id=:id")
-    int delete(@Param("id") int id);
+    int deleteUserById(int id);
 
     User findUserByEmail(String email);
 
     //    https://stackoverflow.com/a/46013654/548473
     @EntityGraph(attributePaths = {"ratedRestaurants"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("SELECT u FROM User u WHERE u.id = :id")
-    User getWithRestaurants(@Param("id") int id);
+    User findUserById(int id);
 }

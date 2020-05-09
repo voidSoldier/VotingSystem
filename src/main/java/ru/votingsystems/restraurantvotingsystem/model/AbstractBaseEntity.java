@@ -37,12 +37,6 @@ public abstract class AbstractBaseEntity implements Serializable {
         return getId() == null;
     }
 
-    // doesn't work for hibernate lazy proxy
-//    public int id() {
-//        Assert.notNull(getId(), "Entity must has id");
-//        return getId();
-//    }
-
     @Override
     public String toString() {
         return getClass().getSimpleName() + ":" + id;

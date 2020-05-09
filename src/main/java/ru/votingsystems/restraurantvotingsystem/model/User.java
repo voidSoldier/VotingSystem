@@ -98,8 +98,6 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
         setRoles(u.getRoles());
         this.votingTime =  u.getVotingTime();
         this.voted = u.isVoted();
-//        this.restaurantId = u.getRestaurantId();
-//        this.restaurants = u.getRestaurants();
         this.ratedRestaurants = u.getRatedRestaurants();
     }
 
@@ -121,7 +119,7 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
 
 
     public List<Integer> getRatedRestaurants() {
-        if (ratedRestaurants == null) return new ArrayList<Integer>();
+        if (ratedRestaurants == null) return new ArrayList<>();
         return ratedRestaurants;
     }
 
@@ -136,14 +134,6 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
     public void setVotingTime(LocalDateTime votingTime) {
         this.votingTime = votingTime;
     }
-
-//    public int getRestaurantId() {
-//        return restaurantId;
-//    }
-//
-//    public void setRestaurantId(int ratedRestaurant) {
-//        this.restaurantId = ratedRestaurant;
-//    }
 
     public String getName() {
         return name;

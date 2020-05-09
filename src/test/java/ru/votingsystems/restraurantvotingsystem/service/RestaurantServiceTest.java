@@ -24,8 +24,9 @@ class RestaurantServiceTest extends AbstractServiceTest {
     @Autowired
     private RestaurantService service;
     @Autowired
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     private RestaurantRepository repository;
+    @Autowired
+    private UserService userService;
 
 
     @Test
@@ -83,7 +84,6 @@ class RestaurantServiceTest extends AbstractServiceTest {
     @Test
     void deleteNotFound() throws Exception {
         assertThrows(NotFoundException.class, () -> service.delete(1));
-
     }
 
     @Test
@@ -92,54 +92,43 @@ class RestaurantServiceTest extends AbstractServiceTest {
         RESTAURANT3.setMenu(newMenu);
         service.update(RESTAURANT3);
         assertIterableEquals(newMenu, RESTAURANT3.getMenu());
-
-
     }
-
-//    @Test
-//    void increaseRating() throws Exception {
-//        int oldRating = RESTAURANT2.getRating();
-//        service.changeRating(RESTAURANT2.getId(), true);
-//        int newRating = RESTAURANT2.getRating();
-//        assertEquals(oldRating, newRating);
-//    }
-//
-//    @Test
-//    void decreaseRating() throws Exception {
-//        int oldRating = RESTAURANT3.getRating();
-//        service.changeRating(RESTAURANT3.getId(), false);
-//        assertEquals(oldRating, RESTAURANT3.getRating());
-//    }
 
     @Test
-    void changeRating() throws Exception {
-        int newRating = 42;
-        service.setRating(RESTAURANT1_ID, newRating);
-        assertEquals(newRating, service.get(RESTAURANT1_ID).getRating());
+    void increaseRating() throws Exception {
+        int oldRating = RESTAURANT2.getRating();
+        repository.incrementRating(RESTAURANT2.getId());
+        int newRating = RESTAURANT2.getRating();
+        assertEquals(oldRating, newRating);
     }
 
-    @Autowired
-    UserService userService;
+    @Test
+    void decreaseRating() throws Exception {
+        int oldRating = RESTAURANT3.getRating();
+        repository.decrementRating(RESTAURANT3.getId());
+        assertEquals(oldRating, RESTAURANT3.getRating());
+    }
+
     @Test
     void changeVote() throws Exception {
         User user = new User(USER);
         user.setVoted(true);
         user.setVotingTime(LocalDateTime.now().withHour(10));
 
-//        List<Integer> oldList = new ArrayList<>(user.getRatedRestaurants());
-////
-//        int old04Rating = service.get(100004).getRating();
-//        int old02Rating = service.get(100002).getRating();
+        List<Integer> oldList = new ArrayList<>(user.getRatedRestaurants());
+//
+        int old04Rating = service.get(100004).getRating();
+        int old02Rating = service.get(100002).getRating();
 
         service.voteForRestaurant(user, RESTAURANT1_ID);
+
+        int new04Rating = service.get(100004).getRating();
+        int new02Rating = service.get(100002).getRating();
 //
-//        int new04Rating = service.get(100004).getRating();
-//        int new02Rating = service.get(100002).getRating();
-////
-//        List<Integer> newList = new ArrayList<>(userService.getWithRestaurants(USER_ID).getRatedRestaurants());
-////
-//        assertTrue(old04Rating > new04Rating);
-//        assertTrue(old02Rating < new02Rating);
-//        assertEquals(oldList, newList);
+        List<Integer> newList = new ArrayList<>(userService.getWithRestaurants(USER_ID).getRatedRestaurants());
+//
+        assertTrue(old04Rating > new04Rating);
+        assertTrue(old02Rating < new02Rating);
+        assertEquals(oldList, newList);
     }
 }

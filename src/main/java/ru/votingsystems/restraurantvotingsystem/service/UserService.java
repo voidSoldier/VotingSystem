@@ -54,7 +54,7 @@ public class UserService implements UserDetailsService {
 
     // TESTS!!!!
     public User getWithRestaurants(int id) {
-        return repository.getWithRestaurants(id);
+        return repository.findUserById(id);
     }
 
     public User getByEmail(String email) {
@@ -63,7 +63,7 @@ public class UserService implements UserDetailsService {
 
     @CacheEvict(value = "users", allEntries = true)
     public boolean delete(int id) {
-        int result = repository.delete(id);
+        int result = repository.deleteUserById(id);
         if (result != 0) return true;
         else throw new NotFoundException("User doesn't exist.");
     }

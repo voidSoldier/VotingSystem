@@ -28,25 +28,26 @@ public class AdminRestController extends AbstractUserController {
 
     @GetMapping
     public List<User> getAll() {
-        return userService.getAll();
+        return super.getAll();
     }
 
     @Override
     @GetMapping("/{id}")
     public User get(@PathVariable int id) {
-        return userService.get(id);
+        return super.get(id);
     }
 
+    @Override
     @GetMapping("/by")
     public User getByEmail(@RequestParam String email) {
-        return userService.getByEmail(email);
+        return super.getByEmail(email);
     }
 
     @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
-        userService.delete(id);
+        super.delete(id);
     }
 
 
@@ -73,7 +74,7 @@ public class AdminRestController extends AbstractUserController {
     @PatchMapping("/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void enable(@PathVariable int id, @RequestParam boolean enabled) {
-        userService.enable(id, enabled);
+        super.enable(id, enabled);
     }
 
 }

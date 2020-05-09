@@ -1,6 +1,5 @@
 package ru.votingsystems.restraurantvotingsystem.to;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractUser;
 
@@ -8,10 +7,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
-//@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserTo extends AbstractBaseEntity implements Serializable, AbstractUser {
     private static final long serialVersionUID = 1L;
 
