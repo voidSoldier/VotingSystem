@@ -53,7 +53,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User getWithVotes(int id) {
-        return repository.findUserById(id);
+        return repository.getWithVotes(id);
     }
 
     public User getByEmail(String email) {

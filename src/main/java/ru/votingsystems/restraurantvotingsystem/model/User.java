@@ -7,6 +7,7 @@ import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -62,7 +63,8 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
     private Set<Role> roles;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @BatchSize(size = 200)
+//    @BatchSize(size = 200)
+    @OrderBy("voteDate DESC")
     private List<Vote> votes;
 
 

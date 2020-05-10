@@ -36,17 +36,17 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
                 .andExpect(USER_MATCHER.contentJson(USER));
     }
 
-    @Test
-    void getActivity() throws Exception {
-       ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
-                .with(userAuth(USER)))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-//                .andExpect(USER_TO_MATCHER.contentJson(new UserTo(USER)));
-
-        UserTo created = readFromJson(action, UserTo.class);
-//        USER_TO_MATCHER.assertMatch(created, new UserTo(USER));
-    }
+//    @Test
+//    void getActivity() throws Exception {
+//       ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
+//                .with(userAuth(USER)))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+////                .andExpect(USER_TO_MATCHER.contentJson(new UserTo(USER)));
+//
+//        UserTo created = readFromJson(action, UserTo.class);
+////        USER_TO_MATCHER.assertMatch(created, new UserTo(USER));
+//    }
 
     @Test
     void getUnAuth() throws Exception {
