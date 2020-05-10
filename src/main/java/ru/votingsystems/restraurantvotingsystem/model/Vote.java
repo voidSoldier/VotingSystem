@@ -20,18 +20,18 @@ public class Vote extends AbstractBaseEntity {
     @Column(name = "vote_date")
     private LocalDateTime voteDate;
 
-
     @NotBlank
     @Size(min = 2, max = 100)
     @Column(name = "restaurant_name", nullable = false)
     private String restaurantName;
 
     @NotNull
+    @Column(name = "restaurant_Id")
     private Integer restaurantId;
 
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @CollectionTable(name = "restaurant_menu", joinColumns = @JoinColumn(name = "vote_id"))
-    @Column(name = "menu")
+    @Column(name = "dish_info")
     @ElementCollection(fetch = FetchType.EAGER)
     @BatchSize(size = 200)
     private List<String> menu;
@@ -43,6 +43,10 @@ public class Vote extends AbstractBaseEntity {
     private User user;
 
     public Vote() {
+    }
+
+    public Vote(Vote v) {
+        this(v.getId(), v.getVoteDate(), v.getRestaurantName(), v.getMenu(), v.getUser(), v.getRestaurantId());
     }
 
     public Vote(Integer id, LocalDateTime voteDate, String restaurantName, List<String> menu, User user, int restaurantId) {
@@ -93,5 +97,14 @@ public class Vote extends AbstractBaseEntity {
 
     public void setMenu(List<String> menu) {
         this.menu = menu;
+    }
+
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "id=" + id + '\''  +
+                ", restaurantId=" + restaurantId + '\''  +
+                ", restaurantName='" + restaurantName + '\'' +
+                '}';
     }
 }

@@ -50,6 +50,11 @@ public abstract class AbstractUserController {
         return service.get(id);
     }
 
+    public UserTo getActivity(int id) {
+        log.info("get activity {}", id);
+       return service.getActivity(id);
+    }
+
     public User create(UserTo userTo) {
         log.info("create from to {}", userTo);
         return create(UserUtil.createNewFromTo(userTo));

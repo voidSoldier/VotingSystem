@@ -52,13 +52,17 @@ public class UserService implements UserDetailsService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("User doesn't exist."));
     }
 
-    // TESTS!!!!
-    public User getWithRestaurants(int id) {
+    public User getWithVotes(int id) {
         return repository.findUserById(id);
     }
 
     public User getByEmail(String email) {
         return repository.findUserByEmail(email);
+    }
+
+
+    public UserTo getActivity(int userId) {
+        return new UserTo(getWithVotes(userId));
     }
 
     @CacheEvict(value = "users", allEntries = true)

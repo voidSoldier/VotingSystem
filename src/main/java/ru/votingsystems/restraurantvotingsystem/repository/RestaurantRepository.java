@@ -29,12 +29,12 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
     //  https://stackoverflow.com/a/46013654/548473
     // with menu
-    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
-    List<Restaurant> findAll();
-
-    // with menu
-    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
-    Restaurant findRestaurantById(int id);
+//    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
+//    List<Restaurant> findAll();
+//
+//    // with menu
+//    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
+//    Restaurant findRestaurantById(int id);
 
 
 }

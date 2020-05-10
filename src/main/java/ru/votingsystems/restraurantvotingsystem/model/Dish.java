@@ -75,4 +75,13 @@ public class Dish extends AbstractBaseEntity {
                 && restaurant != null && restaurant.equals(that.restaurant);
     }
 
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                '}';
+    }
+
 }

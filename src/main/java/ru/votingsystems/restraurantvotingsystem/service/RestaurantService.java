@@ -14,7 +14,9 @@ import ru.votingsystems.restraurantvotingsystem.util.exception.VotingTimeoutNotE
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,17 +34,17 @@ public class RestaurantService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Restaurant doesn't exist."));
     }
 
-    public Restaurant getWithMenu(int id) {
-        return repository.findRestaurantById(id);
-    }
+//    public Restaurant getWithMenu(int id) {
+//        return repository.findRestaurantById(id);
+//    }
 
     public List<Restaurant> getAll() {
         return repository.findAll();
     }
 
-    public List<Restaurant> getAllWithMenu() {
-        return repository.findAll();
-    }
+//    public List<Restaurant> getAllWithMenu() {
+//        return repository.findAll();
+//    }
 
     public void update(Restaurant restaurant) {
         repository.save(restaurant);
@@ -66,7 +68,10 @@ public class RestaurantService {
 
     @Transactional
     public void voteForRestaurant(User user, int restaurantId) {
-        LocalDateTime votingTime = user.getVotingTime();
+        LocalDateTime votingTime = user.getVotingTime() == null ?
+                LocalDateTime.now() :
+                LocalDateTime.of(user.getVotingTime().toLocalDate(), user.getVotingTime().toLocalTime());
+
         LocalDateTime nowVoting = LocalDateTime.now();
 
         // voting first time
@@ -77,6 +82,7 @@ public class RestaurantService {
 //
             // voting the same day again to change the vote
             // possible if it's before 11:00 a.m.
+            user.setVoted(true);
         } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
             int lastRatedRestaurantId = getLastRatedRestaurantId(user, votingTime);
 
@@ -96,30 +102,25 @@ public class RestaurantService {
     }
 
     private void saveVote(int restaurantId, LocalDateTime voteTime, User user) {
-        List<Vote> votes = user.getVotes();
         Restaurant restaurant = get(restaurantId);
-
         List<String> menu = restaurant.getMenu()
                 .stream()
                 .map(d -> d.getName() + " - " + d.getPrice())
                 .collect(Collectors.toList());
 
-        votes.add(new Vote(null, voteTime, restaurant.getName(), menu, user, restaurant.getId()));
+        user.setVotes(Collections.singletonList(new Vote(null, voteTime, restaurant.getName(), menu, user, restaurant.getId())));
 
     }
 
     private int getLastRatedRestaurantId(User user, LocalDateTime voteTime) {
-        return user.getVotes()
-                .stream()
-                .filter(v -> v.getVoteDate().equals(voteTime))
-                .map(Vote::getRestaurantId)
-                .findAny().orElse(0);
+        List<Vote> votes = user.getVotes();
+        return votes.get(votes.size() - 1).getRestaurantId();
     }
 
     private void removeVote(User user, LocalDateTime voteTime) {
         user.setVotes(user.getVotes()
                 .stream()
-                .filter(v -> v.getVoteDate().equals(voteTime))
-                .collect(Collectors.toList()));
+                .filter(v -> !v.getVoteDate().equals(voteTime))
+                .collect(Collectors.toCollection(ArrayList::new)));
     }
 }

@@ -3,6 +3,8 @@ package ru.votingsystems.restraurantvotingsystem.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.votingsystems.restraurantvotingsystem.RTestData;
+import ru.votingsystems.restraurantvotingsystem.UTestData;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
@@ -16,8 +18,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static ru.votingsystems.restraurantvotingsystem.RTestData.*;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.USER;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.USER_ID;
+import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
 
 class RestaurantServiceTest extends AbstractServiceTest {
 
@@ -32,7 +33,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
 
     @Test
     void create() throws Exception {
-        Restaurant newRestaurant = getNew();
+        Restaurant newRestaurant = RTestData.getNew();
         Restaurant created = service.create(newRestaurant);
         int newId = created.getId();
         newRestaurant.setId(newId);
@@ -46,11 +47,12 @@ class RestaurantServiceTest extends AbstractServiceTest {
         RESTAURANT_MATCHER.assertMatch(restaurant, RESTAURANT1);
     }
 
-    @Test
-    void getWithMenu() throws Exception {
-        Restaurant restaurant = service.getWithMenu(RESTAURANT1_ID);
-        DISH_MATCHER.assertMatch(restaurant.getMenu(), RESTAURANT1.getMenu());
-    }
+//    @Test
+//    void getWithMenu() throws Exception {
+//        Restaurant restaurant = service.getWithMenu(RESTAURANT1_ID);
+//        List<Dish> menu = RESTAURANT1.getMenu();
+//        DISH_MATCHER.assertMatch(restaurant.getMenu(), menu);
+//    }
 
     @Test
     void getAll() throws Exception {
@@ -58,11 +60,11 @@ class RestaurantServiceTest extends AbstractServiceTest {
         RESTAURANT_MATCHER.assertMatch(RESTAURANTS, result);
     }
 
-    @Test
-    void getAllWithMenu() throws Exception {
-        List<Restaurant> result = service.getAllWithMenu();
-        RESTAURANT_MATCHER_WITH_MENU.assertMatch(RESTAURANTS, result);
-    }
+//    @Test
+//    void getAllWithMenu() throws Exception {
+//        List<Restaurant> result = service.getAllWithMenu();
+//        RESTAURANT_MATCHER_WITH_MENU.assertMatch(RESTAURANTS, result);
+//    }
 
     @Test
     void getNotFound() throws Exception {
@@ -71,7 +73,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
 
     @Test
     void update() throws Exception {
-        Restaurant updated = getUpdated();
+        Restaurant updated = RTestData.getUpdated();
         service.update(updated);
         RESTAURANT_MATCHER.assertMatch(service.get(RESTAURANT1_ID), updated);
     }
@@ -112,24 +114,22 @@ class RestaurantServiceTest extends AbstractServiceTest {
 
     @Test
     void changeVote() throws Exception {
-        User user = new User(USER);
-        user.setVoted(true);
-        user.setVotingTime(LocalDateTime.now().withHour(10));
+        User user = UTestData.getNew();
+        service.voteForRestaurant(user, RESTAURANT3.getId());
 
         List<Vote> oldList = new ArrayList<>(user.getVotes());
-//
-        int old04Rating = service.get(100004).getRating();
-        int old02Rating = service.get(100002).getRating();
+        int oldR3Rating = service.get(RESTAURANT3.getId()).getRating();
+        int oldR1Rating = service.get(RESTAURANT1_ID).getRating();
 
+        user.setVotingTime(LocalDateTime.now().withHour(10));
         service.voteForRestaurant(user, RESTAURANT1_ID);
 
-        int new04Rating = service.get(100004).getRating();
-        int new02Rating = service.get(100002).getRating();
-//
-        List<Vote> newList = new ArrayList<>(userService.getWithRestaurants(USER_ID).getVotes());
-//
-        assertTrue(old04Rating > new04Rating);
-        assertTrue(old02Rating < new02Rating);
-        assertEquals(oldList, newList);
+        int newR3Rating = service.get(RESTAURANT3.getId()).getRating();
+        int newR1Rating = service.get(RESTAURANT1_ID).getRating();
+        List<Vote> newList = new ArrayList<>(userService.getWithVotes(USER_ID).getVotes());
+
+        assertTrue(oldR3Rating > newR3Rating);
+        assertTrue(oldR1Rating < newR1Rating);
+        assertNotEquals(oldList, newList);
     }
 }

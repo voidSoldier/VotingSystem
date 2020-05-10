@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import ru.votingsystems.restraurantvotingsystem.model.Role;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
+import ru.votingsystems.restraurantvotingsystem.to.UserTo;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 
 import java.util.List;
@@ -22,7 +23,7 @@ class UserServiceTest extends AbstractServiceTest {
     private UserRepository repository;
 
 
-
+    @Test
     void create() throws Exception {
         User newUser = getNew();
         User created = service.create(new User(newUser));
@@ -61,10 +62,15 @@ class UserServiceTest extends AbstractServiceTest {
     }
 
     @Test
+    void getActivity() throws Exception {
+        UserTo ut = service.getActivity(USER_ID);
+        assertFalse(ut.getVotes() == null || ut.getVotes().isEmpty());
+    }
+
+    @Test
     void getWithRestaurants() throws Exception {
-        User user = service.getWithRestaurants(ADMIN_ID);
-//        USER_MATCHER_WITH_RESTAURANTS.assertMatch(user, ADMIN);
-        assertEquals(ADMIN.getVotes(), user.getVotes());
+        User user = service.getWithVotes(ADMIN_ID);
+        assertFalse(user.getVotes().isEmpty());
     }
 
     @Test

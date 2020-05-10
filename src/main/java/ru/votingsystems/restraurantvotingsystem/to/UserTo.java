@@ -2,12 +2,14 @@ package ru.votingsystems.restraurantvotingsystem.to;
 
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractUser;
+import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.model.Vote;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserTo extends AbstractBaseEntity implements Serializable, AbstractUser {
@@ -30,6 +32,11 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
 
 
     public UserTo() {
+    }
+
+    public UserTo(User u) {
+        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.getVotes());
+
     }
 
     public UserTo(Integer id, String name, String email, String password, List<Vote> restaurants) {
@@ -65,12 +72,12 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
         this.email = email;
     }
 
-    public List<Vote> getVotes() {
-        return votes;
+    public ArrayList<Vote> getVotes() {
+        return new ArrayList<>(votes);
     }
 
-    public void setVotes(List<Vote> restaurants) {
-        this.votes = restaurants;
+    public void setVotes(ArrayList<Vote> votes) {
+        this.votes = votes;
     }
 
     @Override
