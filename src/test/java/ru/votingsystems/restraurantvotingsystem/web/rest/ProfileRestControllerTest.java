@@ -15,7 +15,10 @@ import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
 import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,16 +39,32 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
                 .andExpect(USER_MATCHER.contentJson(USER));
     }
 
+    @Test
+    void getActivity() throws Exception {
+//        UserTo ut = new UserTo(USER);
+//        ut.setVotes(Arrays.asList(VOTE1, VOTE2));
+
+       ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
+                .with(userAuth(USER)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+//                .andExpect(USER_TO_MATCHER.contentJson(new UserTo(USER)));
+
+        UserTo withVotes = readFromJson(action, UserTo.class);
+        assertFalse(withVotes.getVotes().isEmpty());
+//        USER_TO_MATCHER.assertMatch(created, ut);
+//        VOTE_MATCHER.assertMatch(created.getVotes(), ut.getVotes());
+    }
+
 //    @Test
 //    void getActivity() throws Exception {
-//       ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
+//        ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
 //                .with(userAuth(USER)))
 //                .andExpect(status().isOk())
 //                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-////                .andExpect(USER_TO_MATCHER.contentJson(new UserTo(USER)));
-//
-//        UserTo created = readFromJson(action, UserTo.class);
-////        USER_TO_MATCHER.assertMatch(created, new UserTo(USER));
+//                .andExpect(USER_TO_MATCHER.contentJson(new UserTo(USER)));
+
+//        List<Vote> result = readListFromJsonMvcResult(action.andReturn(), Vote.class);
 //    }
 
     @Test

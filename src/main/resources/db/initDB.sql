@@ -77,6 +77,6 @@ CREATE TABLE restaurant_menu
 (
     vote_id   INTEGER      NOT NULL,
     dish_info VARCHAR(255) NOT NULL,
-    FOREIGN KEY (vote_id) REFERENCES user_votes (id) ON DELETE CASCADE
+    FOREIGN KEY (vote_id) REFERENCES USER_VOTES(id) ON DELETE CASCADE
 )
 

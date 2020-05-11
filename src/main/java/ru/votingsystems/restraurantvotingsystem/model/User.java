@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cache;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -62,9 +63,9 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
     @BatchSize(size = 200)
     private Set<Role> roles;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.REMOVE)//, cascade = CascadeType.REMOVE, orphanRemoval = true)
 //    @BatchSize(size = 200)
-    @OrderBy("voteDate DESC")
+//    @OrderBy("voteDate DESC")
     private List<Vote> votes;
 
 
@@ -104,7 +105,6 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
 
     public List<Vote> getVotes() {
         return votes == null ? new ArrayList<>() : votes;
-
     }
 
     public void setVotes(List<Vote> v) {

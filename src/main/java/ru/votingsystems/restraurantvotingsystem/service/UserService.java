@@ -1,5 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Scope;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.votingsystems.restraurantvotingsystem.model.User;
+import ru.votingsystems.restraurantvotingsystem.model.Vote;
 import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
+import ru.votingsystems.restraurantvotingsystem.repository.VoteRepository;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
 import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
@@ -56,13 +59,20 @@ public class UserService implements UserDetailsService {
         return repository.getWithVotes(id);
     }
 
+//    @Autowired
+//    private VoteRepository votoRepo;
+//    public List<Vote> getActivity(int id) {
+//        return votoRepo.findVotesByUserId(id);
+//    }
+
     public User getByEmail(String email) {
         return repository.findUserByEmail(email);
     }
 
-
+//    @CacheEvict(value = "users", allEntries = true)
     public UserTo getActivity(int userId) {
         return new UserTo(getWithVotes(userId));
+//        return getWithVotes(userId);
     }
 
     @CacheEvict(value = "users", allEntries = true)

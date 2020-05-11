@@ -1,5 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.Cache;
 
@@ -36,7 +37,7 @@ public class Vote extends AbstractBaseEntity {
     @BatchSize(size = 200)
     private List<String> menu;
 
-
+    @JsonIgnoreProperties("votes")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

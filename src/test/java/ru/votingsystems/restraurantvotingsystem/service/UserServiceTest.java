@@ -67,11 +67,11 @@ class UserServiceTest extends AbstractServiceTest {
         assertFalse(ut.getVotes() == null || ut.getVotes().isEmpty());
     }
 
-    @Test
-    void getWithRestaurants() throws Exception {
-        User user = service.getWithVotes(ADMIN_ID);
-        assertFalse(user.getVotes().isEmpty());
-    }
+//    @Test
+//    void getWithVotes() throws Exception {
+//        User user = service.getWithVotes(ADMIN_ID);
+//        assertFalse(user.getVotes().isEmpty());
+//    }
 
     @Test
     void getNotFound() throws Exception {

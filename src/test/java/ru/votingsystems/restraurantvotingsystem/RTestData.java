@@ -14,7 +14,7 @@ public class RTestData {
 
 
     public static TestMatcher<Restaurant> RESTAURANT_MATCHER = TestMatcher.usingFieldsComparator(Restaurant.class, "rating", "menu");
-    public static TestMatcher<Restaurant> RESTAURANT_MATCHER_WITH_MENU = TestMatcher.usingFieldsComparator(Restaurant.class, "rating");
+   // public static TestMatcher<Restaurant> RESTAURANT_MATCHER_WITH_MENU = TestMatcher.usingFieldsComparator(Restaurant.class, "rating");
     public static TestMatcher<Dish> DISH_MATCHER = TestMatcher.usingFieldsComparator(Dish.class, "id");
 
     public static final int RESTAURANT1_ID = START_SEQ + 2;

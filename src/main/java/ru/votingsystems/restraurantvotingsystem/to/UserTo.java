@@ -32,12 +32,14 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
 
 
     public UserTo() {
+
     }
+
 
     public UserTo(User u) {
         this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.getVotes());
-
     }
+
 
     public UserTo(Integer id, String name, String email, String password, List<Vote> restaurants) {
         super(id);
@@ -72,12 +74,16 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
         this.email = email;
     }
 
-    public ArrayList<Vote> getVotes() {
-        return new ArrayList<>(votes);
+    public List<Vote> getVotes() {
+        return votes == null ? new ArrayList<>() : votes;
     }
 
-    public void setVotes(ArrayList<Vote> votes) {
-        this.votes = votes;
+    public void setVotes(List<Vote> v) {
+        if (votes == null) {
+            votes = new ArrayList<>(v);
+        } else {
+            votes.addAll(v);
+        }
     }
 
     @Override
@@ -86,7 +92,7 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", restaurants='" + votes + '\'' +
+//                ", votes='" + votes + '\'' +
                 '}';
     }
 }

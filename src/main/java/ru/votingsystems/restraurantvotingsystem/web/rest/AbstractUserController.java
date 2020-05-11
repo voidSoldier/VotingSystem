@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
 import ru.votingsystems.restraurantvotingsystem.model.AbstractUser;
 import ru.votingsystems.restraurantvotingsystem.model.User;
+import ru.votingsystems.restraurantvotingsystem.model.Vote;
 import ru.votingsystems.restraurantvotingsystem.service.UserService;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
 import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
@@ -50,10 +51,18 @@ public abstract class AbstractUserController {
         return service.get(id);
     }
 
-    public UserTo getActivity(int id) {
-        log.info("get activity {}", id);
-       return service.getActivity(id);
-    }
+//    public UserTo getActivity(int id) {
+//        log.info("get activity {}", id);
+//       return service.getActivity(id);
+//    }
+
+
+//    public List<Vote> getActivity(int id) {
+//        log.info("get activity {}", id);
+//        return service.getActivity(id);
+//    }
+
+
 
     public User create(UserTo userTo) {
         log.info("create from to {}", userTo);

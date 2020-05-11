@@ -7,11 +7,13 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.votingsystems.restraurantvotingsystem.model.User;
+import ru.votingsystems.restraurantvotingsystem.model.Vote;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
 import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 import static ru.votingsystems.restraurantvotingsystem.web.SecurityUtil.authUserId;
 
@@ -40,8 +42,15 @@ public class ProfileRestController extends AbstractUserController {
 
     @GetMapping(value = "/activity/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserTo getActivity(@PathVariable int id) {
-        return super.getActivity(id);
+        return service.getActivity(id);
     }
+
+
+//    @GetMapping(value = "/activity/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public List<Vote> getActivity(@PathVariable int id) {
+//        return service.getActivity(id);
+//
+//    }
 
 
     @DeleteMapping("/{id}")
