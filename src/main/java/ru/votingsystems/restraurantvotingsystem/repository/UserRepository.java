@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 
+import javax.persistence.NamedSubgraph;
 import java.util.List;
 
 @Transactional(readOnly = true)

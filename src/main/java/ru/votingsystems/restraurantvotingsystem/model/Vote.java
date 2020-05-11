@@ -1,5 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.Cache;
@@ -67,7 +68,7 @@ public class Vote extends AbstractBaseEntity {
     public void setRestaurantId(Integer restaurantId) {
         this.restaurantId = restaurantId;
     }
-
+    @JsonIgnore
     public User getUser() {
         return user;
     }

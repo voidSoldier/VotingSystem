@@ -41,12 +41,12 @@ public class UserTo extends AbstractBaseEntity implements Serializable, Abstract
     }
 
 
-    public UserTo(Integer id, String name, String email, String password, List<Vote> restaurants) {
+    public UserTo(Integer id, String name, String email, String password, List<Vote> votes) {
         super(id);
         this.name = name;
         this.email = email;
         this.password = password;
-        this.votes = restaurants;
+        this.votes = votes;
     }
 
 

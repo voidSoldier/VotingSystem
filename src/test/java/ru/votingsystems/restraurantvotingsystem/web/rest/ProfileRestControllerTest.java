@@ -41,31 +41,18 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getActivity() throws Exception {
-//        UserTo ut = new UserTo(USER);
-//        ut.setVotes(Arrays.asList(VOTE1, VOTE2));
+        UserTo ut = new UserTo(USER);
+        ut.setVotes(Arrays.asList(VOTE1, VOTE2));
 
-       ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
+        ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
                 .with(userAuth(USER)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-//                .andExpect(USER_TO_MATCHER.contentJson(new UserTo(USER)));
 
         UserTo withVotes = readFromJson(action, UserTo.class);
         assertFalse(withVotes.getVotes().isEmpty());
-//        USER_TO_MATCHER.assertMatch(created, ut);
-//        VOTE_MATCHER.assertMatch(created.getVotes(), ut.getVotes());
+
     }
-
-//    @Test
-//    void getActivity() throws Exception {
-//        ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
-//                .with(userAuth(USER)))
-//                .andExpect(status().isOk())
-//                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-//                .andExpect(USER_TO_MATCHER.contentJson(new UserTo(USER)));
-
-//        List<Vote> result = readListFromJsonMvcResult(action.andReturn(), Vote.class);
-//    }
 
     @Test
     void getUnAuth() throws Exception {
