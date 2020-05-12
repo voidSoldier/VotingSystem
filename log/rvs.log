@@ -1402,3 +1402,914 @@ Caused by: java.lang.IllegalArgumentException: Could not retrieve URI for class 
 	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155)
 	at org.springframework.beans.AbstractNestablePropertyAccessor.convertIfNecessary(AbstractNestablePropertyAccessor.java:585)
 	... 133 common frames omitted
+2020-05-12 15:39:25,057 INFO  org.springframework.web.context.ContextLoader.initWebApplicationContext:271 - Root WebApplicationContext: initialization started
+2020-05-12 15:39:25,499 WARN  o.s.beans.factory.xml.XmlBeanDefinitionReader.warning:48 - Ignored XML validation warning
+org.xml.sax.SAXParseException: SchemaLocation: schemaLocation value = 'http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/security ' must have even number of URI's.
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.warning(ErrorHandlerWrapper.java:100)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:392)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(XMLSchemaValidator.java:511)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.storeLocations(XMLSchemaValidator.java:2603)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1915)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:829)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:374)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:613)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3063)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:836)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:534)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:888)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:824)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:246)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:77)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadDocument(XmlBeanDefinitionReader.java:430)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:388)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:305)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.importBeanDefinitionResource(DefaultBeanDefinitionDocumentReader.java:250)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseDefaultElement(DefaultBeanDefinitionDocumentReader.java:191)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:176)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:96)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:509)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:389)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:305)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:224)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:195)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:133)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:637)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:522)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4685)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5146)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:717)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:690)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:705)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1728)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:456)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:405)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at java.management/com.sun.jmx.remote.security.MBeanServerAccessController.invoke(MBeanServerAccessController.java:468)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1406)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:389)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:835)
+2020-05-12 15:39:25,544 INFO  o.s.security.core.SpringSecurityCoreVersion.performVersionChecks:81 - You are running with Spring Security Core 5.3.1.RELEASE
+2020-05-12 15:39:25,551 INFO  o.s.security.config.SecurityNamespaceHandler.<init>:79 - Spring Security 'config' module version is 5.3.1.RELEASE
+2020-05-12 15:39:25,612 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'hasRole('ADMIN')' for /rest/admin/**
+2020-05-12 15:39:25,612 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAnonymous()' for /rest/profile/register
+2020-05-12 15:39:25,613 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAuthenticated()' for /**
+2020-05-12 15:39:25,647 INFO  o.s.s.config.http.HttpSecurityBeanDefinitionParser.checkFilterChainOrder:314 - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.www.BasicAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2000, Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2500, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2800, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2900]
+2020-05-12 15:39:25,660 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'permitAll()' for /login
+2020-05-12 15:39:25,660 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAnonymous()' for /profile/register
+2020-05-12 15:39:25,661 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'hasRole('ADMIN')' for /**/admin/**
+2020-05-12 15:39:25,661 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAuthenticated()' for /**
+2020-05-12 15:39:25,671 INFO  o.s.s.config.http.HttpSecurityBeanDefinitionParser.checkFilterChainOrder:314 - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.csrf.CsrfFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 700, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1400, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#1; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2500, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2700, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2800, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#1>, order = 2900]
+2020-05-12 15:39:26,017 INFO  o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn:127 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-12 15:39:26,163 INFO  o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn:187 - Finished Spring Data repository scanning in 125ms. Found 2 JPA repository interfaces.
+2020-05-12 15:39:26,751 WARN  o.s.web.context.support.XmlWebApplicationContext.refresh:558 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [spring/spring-db.xml]: Cannot create inner bean 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#866246b' of type [org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] while setting bean property 'jpaVendorAdapter'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#866246b' defined in class path resource [spring/spring-db.xml]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+2020-05-12 15:39:26,756 ERROR org.springframework.web.context.ContextLoader.initWebApplicationContext:313 - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [spring/spring-db.xml]: Cannot create inner bean 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#866246b' of type [org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] while setting bean property 'jpaVendorAdapter'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#866246b' defined in class path resource [spring/spring-db.xml]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:389)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4685)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5146)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:717)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:690)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:705)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1728)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:456)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:405)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at java.management/com.sun.jmx.remote.security.MBeanServerAccessController.invoke(MBeanServerAccessController.java:468)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1406)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:389)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:835)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#866246b' defined in class path resource [spring/spring-db.xml]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:374)
+	... 61 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:91)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:109)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findEligibleAdvisors(AbstractAdvisorAutoProxyCreator.java:94)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.getAdvicesAndAdvisorsForBean(AbstractAdvisorAutoProxyCreator.java:76)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:347)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:299)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	... 63 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 81 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:91)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:109)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findEligibleAdvisors(AbstractAdvisorAutoProxyCreator.java:94)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.getAdvicesAndAdvisorsForBean(AbstractAdvisorAutoProxyCreator.java:76)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:347)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:299)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	... 87 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 105 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:389)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 115 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#3e016ee3' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:374)
+	... 125 common frames omitted
+Caused by: org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertIfNecessary(AbstractNestablePropertyAccessor.java:595)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertForProperty(AbstractNestablePropertyAccessor.java:604)
+	at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.convertForProperty(AbstractAutowireCapableBeanFactory.java:1748)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1704)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	... 127 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.propertyeditors.URIEditor.setAsText(URIEditor.java:114)
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429)
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402)
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertIfNecessary(AbstractNestablePropertyAccessor.java:585)
+	... 133 common frames omitted
+2020-05-12 15:40:53,557 INFO  org.springframework.web.context.ContextLoader.initWebApplicationContext:271 - Root WebApplicationContext: initialization started
+2020-05-12 15:40:53,870 WARN  o.s.beans.factory.xml.XmlBeanDefinitionReader.warning:48 - Ignored XML validation warning
+org.xml.sax.SAXParseException: SchemaLocation: schemaLocation value = 'http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/security ' must have even number of URI's.
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.warning(ErrorHandlerWrapper.java:100)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:392)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(XMLSchemaValidator.java:511)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.storeLocations(XMLSchemaValidator.java:2603)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1915)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:829)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:374)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:613)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3063)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:836)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:534)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:888)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:824)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:246)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:77)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadDocument(XmlBeanDefinitionReader.java:430)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:388)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:305)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.importBeanDefinitionResource(DefaultBeanDefinitionDocumentReader.java:250)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseDefaultElement(DefaultBeanDefinitionDocumentReader.java:191)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:176)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:96)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:509)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:389)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:305)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:224)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:195)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:133)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:637)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:522)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4685)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5146)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:717)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:690)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:705)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1728)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:456)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:405)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at java.management/com.sun.jmx.remote.security.MBeanServerAccessController.invoke(MBeanServerAccessController.java:468)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1406)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:389)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:835)
+2020-05-12 15:40:53,910 INFO  o.s.security.core.SpringSecurityCoreVersion.performVersionChecks:81 - You are running with Spring Security Core 5.3.1.RELEASE
+2020-05-12 15:40:53,916 INFO  o.s.security.config.SecurityNamespaceHandler.<init>:79 - Spring Security 'config' module version is 5.3.1.RELEASE
+2020-05-12 15:40:53,973 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'hasRole('ADMIN')' for /rest/admin/**
+2020-05-12 15:40:53,973 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAnonymous()' for /rest/profile/register
+2020-05-12 15:40:53,974 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAuthenticated()' for /**
+2020-05-12 15:40:54,004 INFO  o.s.s.config.http.HttpSecurityBeanDefinitionParser.checkFilterChainOrder:314 - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.www.BasicAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2000, Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2500, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2800, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2900]
+2020-05-12 15:40:54,018 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'permitAll()' for /login
+2020-05-12 15:40:54,019 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAnonymous()' for /profile/register
+2020-05-12 15:40:54,019 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'hasRole('ADMIN')' for /**/admin/**
+2020-05-12 15:40:54,019 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAuthenticated()' for /**
+2020-05-12 15:40:54,029 INFO  o.s.s.config.http.HttpSecurityBeanDefinitionParser.checkFilterChainOrder:314 - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.csrf.CsrfFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 700, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1400, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#1; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2500, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2700, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2800, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#1>, order = 2900]
+2020-05-12 15:40:54,437 INFO  o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn:127 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-12 15:40:54,574 INFO  o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn:187 - Finished Spring Data repository scanning in 116ms. Found 2 JPA repository interfaces.
+2020-05-12 15:40:55,159 WARN  o.s.web.context.support.XmlWebApplicationContext.refresh:558 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [spring/spring-db.xml]: Cannot create inner bean 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#253313c8' of type [org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] while setting bean property 'jpaVendorAdapter'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#253313c8' defined in class path resource [spring/spring-db.xml]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+2020-05-12 15:40:55,164 ERROR org.springframework.web.context.ContextLoader.initWebApplicationContext:313 - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [spring/spring-db.xml]: Cannot create inner bean 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#253313c8' of type [org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter] while setting bean property 'jpaVendorAdapter'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#253313c8' defined in class path resource [spring/spring-db.xml]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:389)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4685)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5146)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:717)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:690)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:705)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1728)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:456)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:405)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at java.management/com.sun.jmx.remote.security.MBeanServerAccessController.invoke(MBeanServerAccessController.java:468)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1406)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:389)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:835)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter#253313c8' defined in class path resource [spring/spring-db.xml]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:374)
+	... 61 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:91)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:109)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findEligibleAdvisors(AbstractAdvisorAutoProxyCreator.java:94)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.getAdvicesAndAdvisorsForBean(AbstractAdvisorAutoProxyCreator.java:76)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:347)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:299)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	... 63 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.annotation.AnnotationCacheOperationSource#0': Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 81 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.config.internalJCacheAdvisor': Cannot resolve reference to bean 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0' while setting bean property 'cacheOperationSource'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:91)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:109)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findEligibleAdvisors(AbstractAdvisorAutoProxyCreator.java:94)
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.getAdvicesAndAdvisorsForBean(AbstractAdvisorAutoProxyCreator.java:76)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:347)
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:299)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	... 87 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.interceptor.DefaultJCacheOperationSource#0': Cannot resolve reference to bean 'ehCacheManager' while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 105 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ehCacheManager' defined in class path resource [spring/spring-cache.xml]: Cannot create inner bean 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' of type [org.springframework.cache.jcache.JCacheManagerFactoryBean] while setting bean property 'cacheManager'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:389)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:127)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 115 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cache.jcache.JCacheManagerFactoryBean#6b036dc2' defined in class path resource [spring/spring-cache.xml]: Initialization of bean failed; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveInnerBean(BeanDefinitionValueResolver.java:374)
+	... 125 common frames omitted
+Caused by: org.springframework.beans.TypeMismatchException: Failed to convert property value of type 'java.lang.String' to required type 'java.net.URI' for property 'cacheManagerUri'; nested exception is java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertIfNecessary(AbstractNestablePropertyAccessor.java:595)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertForProperty(AbstractNestablePropertyAccessor.java:604)
+	at org.springframework.beans.BeanWrapperImpl.convertForProperty(BeanWrapperImpl.java:219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.convertForProperty(AbstractAutowireCapableBeanFactory.java:1748)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1704)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	... 127 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not retrieve URI for class path resource [cache/ehcache.xml]: class path resource [cache/ehcache.xml] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.propertyeditors.URIEditor.setAsText(URIEditor.java:114)
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429)
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402)
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155)
+	at org.springframework.beans.AbstractNestablePropertyAccessor.convertIfNecessary(AbstractNestablePropertyAccessor.java:585)
+	... 133 common frames omitted
+2020-05-12 15:42:33,799 INFO  org.springframework.web.context.ContextLoader.initWebApplicationContext:271 - Root WebApplicationContext: initialization started
+2020-05-12 15:42:34,046 WARN  o.s.beans.factory.xml.XmlBeanDefinitionReader.warning:48 - Ignored XML validation warning
+org.xml.sax.SAXParseException: SchemaLocation: schemaLocation value = 'http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/security ' must have even number of URI's.
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.warning(ErrorHandlerWrapper.java:100)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:392)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(XMLSchemaValidator.java:511)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.storeLocations(XMLSchemaValidator.java:2603)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1915)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:829)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:374)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:613)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3063)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:836)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:534)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:888)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:824)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:246)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:77)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadDocument(XmlBeanDefinitionReader.java:430)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:388)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:305)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.importBeanDefinitionResource(DefaultBeanDefinitionDocumentReader.java:250)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseDefaultElement(DefaultBeanDefinitionDocumentReader.java:191)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:176)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:96)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:509)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:389)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:305)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:224)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:195)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:133)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:637)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:522)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4685)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5146)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:717)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:690)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:705)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1728)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:456)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:405)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at java.management/com.sun.jmx.remote.security.MBeanServerAccessController.invoke(MBeanServerAccessController.java:468)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1406)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:389)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:835)
+2020-05-12 15:42:34,105 INFO  o.s.security.core.SpringSecurityCoreVersion.performVersionChecks:81 - You are running with Spring Security Core 5.3.1.RELEASE
+2020-05-12 15:42:34,111 INFO  o.s.security.config.SecurityNamespaceHandler.<init>:79 - Spring Security 'config' module version is 5.3.1.RELEASE
+2020-05-12 15:42:34,182 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'hasRole('ADMIN')' for /rest/admin/**
+2020-05-12 15:42:34,182 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAnonymous()' for /rest/profile/register
+2020-05-12 15:42:34,184 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAuthenticated()' for /**
+2020-05-12 15:42:34,217 INFO  o.s.s.config.http.HttpSecurityBeanDefinitionParser.checkFilterChainOrder:314 - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.www.BasicAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2000, Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2500, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2800, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2900]
+2020-05-12 15:42:34,233 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'permitAll()' for /login
+2020-05-12 15:42:34,234 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAnonymous()' for /profile/register
+2020-05-12 15:42:34,234 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'hasRole('ADMIN')' for /**/admin/**
+2020-05-12 15:42:34,234 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAuthenticated()' for /**
+2020-05-12 15:42:34,246 INFO  o.s.s.config.http.HttpSecurityBeanDefinitionParser.checkFilterChainOrder:314 - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.csrf.CsrfFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 700, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1400, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#1; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2500, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2700, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2800, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#1>, order = 2900]
+2020-05-12 15:42:34,633 INFO  o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn:127 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-12 15:42:34,773 INFO  o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn:187 - Finished Spring Data repository scanning in 121ms. Found 2 JPA repository interfaces.
+2020-05-12 15:42:35,447 INFO  org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-12 15:42:35,613 INFO  org.hibernate.Version.logVersion:44 - HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-12 15:42:35,899 INFO  org.hibernate.annotations.common.Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-12 15:42:36,585 INFO  org.hibernate.dialect.Dialect.<init>:172 - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+2020-05-12 15:42:37,430 INFO  org.hibernate.validator.internal.util.Version.<clinit>:21 - HV000001: Hibernate Validator 6.1.2.Final
+2020-05-12 15:42:37,949 WARN  org.hibernate.orm.cache.createCache:108 - HHH90001006: Missing cache[ru.votingsystems.restraurantvotingsystem.model.Vote.menu] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2020-05-12 15:42:38,116 INFO  org.ehcache.core.EhcacheManager.createCache:305 - Cache 'ru.votingsystems.restraurantvotingsystem.model.Vote.menu' created in EhcacheManager.
+2020-05-12 15:42:38,155 WARN  org.hibernate.orm.cache.createCache:108 - HHH90001006: Missing cache[ru.votingsystems.restraurantvotingsystem.model.User] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2020-05-12 15:42:38,160 INFO  org.ehcache.core.EhcacheManager.createCache:305 - Cache 'ru.votingsystems.restraurantvotingsystem.model.User' created in EhcacheManager.
+2020-05-12 15:42:38,166 WARN  org.hibernate.orm.cache.createCache:108 - HHH90001006: Missing cache[ru.votingsystems.restraurantvotingsystem.model.User.roles] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2020-05-12 15:42:38,169 INFO  org.ehcache.core.EhcacheManager.createCache:305 - Cache 'ru.votingsystems.restraurantvotingsystem.model.User.roles' created in EhcacheManager.
+2020-05-12 15:42:38,914 INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-12 15:42:38,932 INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:416 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-12 15:42:38,949 INFO  o.s.security.web.DefaultSecurityFilterChain.<init>:43 - Creating filter chain: Ant [pattern='/resources/**'], []
+2020-05-12 15:42:39,309 INFO  o.s.security.web.DefaultSecurityFilterChain.<init>:43 - Creating filter chain: Ant [pattern='/rest/**'], [org.springframework.security.web.context.SecurityContextPersistenceFilter@4561ec5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@767bb4d9, org.springframework.security.web.header.HeaderWriterFilter@4b51de0c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@27bd1bd2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ad21754, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@386460e1, org.springframework.security.web.access.ExceptionTranslationFilter@23a4e25d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6fc004b]
+2020-05-12 15:42:39,420 INFO  o.s.security.web.DefaultSecurityFilterChain.<init>:43 - Creating filter chain: any request, [org.springframework.security.web.context.SecurityContextPersistenceFilter@1f9550c7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@187a2565, org.springframework.security.web.header.HeaderWriterFilter@16dbb290, org.springframework.security.web.csrf.CsrfFilter@377b7d71, org.springframework.security.web.authentication.logout.LogoutFilter@5d74ef40, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5b96f3bb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@344e8ce9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@30ad0df8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51349389, org.springframework.security.web.session.SessionManagementFilter@41a4cb02, org.springframework.security.web.access.ExceptionTranslationFilter@70ee87f7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4dc20de1]
+2020-05-12 15:42:39,448 INFO  o.s.s.config.http.DefaultFilterChainValidator.checkLoginPageIsntProtected:154 - Checking whether login URL '/login' is accessible with your configuration
+2020-05-12 15:42:40,466 INFO  org.springframework.web.context.ContextLoader.initWebApplicationContext:307 - Root WebApplicationContext initialized in 6661 ms
+2020-05-12 15:42:40,619 INFO  org.springframework.web.servlet.DispatcherServlet.initServletBean:525 - Initializing Servlet 'mvc-dispatcher'
+2020-05-12 15:42:40,676 INFO  o.s.security.config.SecurityNamespaceHandler.<init>:79 - Spring Security 'config' module version is 5.3.1.RELEASE
+2020-05-12 15:42:40,686 INFO  o.s.s.c.m.GlobalMethodSecurityBeanDefinitionParser.parse:210 - Expressions were enabled for method security but no SecurityExpressionHandler was configured. All hasPermission() expressions will evaluate to false.
+2020-05-12 15:42:41,732 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache:297 - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2020-05-12 15:42:41,828 INFO  org.springframework.web.servlet.DispatcherServlet.initServletBean:547 - Completed initialization in 1208 ms
+2020-05-12 15:43:34,155 INFO  r.v.r.web.rest.AdminRestController.getAll:45 - getAll
+2020-05-12 15:44:39,106 INFO  r.v.r.web.rest.AdminRestController.get:50 - get 100001
+2020-05-12 15:45:30,435 INFO  r.v.r.web.rest.ProfileRestController.create:55 - create from to UserTo{id=null, name='New User', email='test@mail.ru', votes='null'}
+2020-05-12 15:45:30,440 INFO  r.v.r.web.rest.ProfileRestController.create:60 - create User{id=null, name='New User', email='test@mail.ru', registered='Tue May 12 15:45:30 YEKT 2020', roles='[USER]', votes='[]'}
+2020-05-12 15:46:28,152 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, Exception)
+2020-05-12 15:46:28,154 ERROR r.v.r.web.CustomExceptionHandler.logExceptionInfo:68 - exception at request  http://localhost:8080/restaurantvoting/rest/profile: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2020-05-12 15:46:28,155 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-05-12 15:46:36,847 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, Exception)
+2020-05-12 15:46:36,848 ERROR r.v.r.web.CustomExceptionHandler.logExceptionInfo:68 - exception at request  http://localhost:8080/restaurantvoting/rest/profile: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2020-05-12 15:46:36,848 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-05-12 15:46:48,606 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, Exception)
+2020-05-12 15:46:48,606 ERROR r.v.r.web.CustomExceptionHandler.logExceptionInfo:68 - exception at request  http://localhost:8080/restaurantvoting/rest/profile: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2020-05-12 15:46:48,606 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-05-12 15:47:47,499 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#illegalRequestDataError(HttpServletRequest, Exception)
+2020-05-12 15:47:47,500 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
+2020-05-12 15:47:47,500 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]]
+2020-05-12 15:47:51,562 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#illegalRequestDataError(HttpServletRequest, Exception)
+2020-05-12 15:47:51,562 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
+2020-05-12 15:47:51,563 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]]
+2020-05-12 15:48:00,081 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#illegalRequestDataError(HttpServletRequest, Exception)
+2020-05-12 15:48:00,081 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
+2020-05-12 15:48:00,081 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]]
+2020-05-12 15:48:13,499 INFO  r.v.r.web.rest.RestaurantRestController.inputNewRestaurant:41 - inputNewRestaurant Restaurant{id=null, name='newRestaurant', menu='null'}
+2020-05-12 15:48:47,081 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#illegalRequestDataError(HttpServletRequest, Exception)
+2020-05-12 15:48:47,081 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "dateTime" (class ru.votingsystems.restraurantvotingsystem.model.Restaurant), not marked as ignorable (3 known properties: "id", "rating", "name"])
+ at [Source: (PushbackInputStream); line: 1, column: 14] (through reference chain: ru.votingsystems.restraurantvotingsystem.model.Restaurant["dateTime"])
+2020-05-12 15:48:47,081 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized field "dateTime" (class ru.votingsystems.restraurantvotingsystem.model.Restaurant), not marked as ignorable; nested exception is com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "dateTime" (class ru.votingsystems.restraurantvotingsystem.model.Restaurant), not marked as ignorable (3 known properties: "id", "rating", "name"])
+ at [Source: (PushbackInputStream); line: 1, column: 14] (through reference chain: ru.votingsystems.restraurantvotingsystem.model.Restaurant["dateTime"])]
+2020-05-12 15:48:53,189 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#illegalRequestDataError(HttpServletRequest, Exception)
+2020-05-12 15:48:53,189 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "dateTime" (class ru.votingsystems.restraurantvotingsystem.model.Restaurant), not marked as ignorable (3 known properties: "id", "rating", "name"])
+ at [Source: (PushbackInputStream); line: 1, column: 14] (through reference chain: ru.votingsystems.restraurantvotingsystem.model.Restaurant["dateTime"])
+2020-05-12 15:48:53,190 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized field "dateTime" (class ru.votingsystems.restraurantvotingsystem.model.Restaurant), not marked as ignorable; nested exception is com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "dateTime" (class ru.votingsystems.restraurantvotingsystem.model.Restaurant), not marked as ignorable (3 known properties: "id", "rating", "name"])
+ at [Source: (PushbackInputStream); line: 1, column: 14] (through reference chain: ru.votingsystems.restraurantvotingsystem.model.Restaurant["dateTime"])]
+2020-05-12 15:50:21,424 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, NotFoundException)
+2020-05-12 15:50:21,425 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.
+2020-05-12 15:50:21,425 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.]
+2020-05-12 15:50:48,771 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, NotFoundException)
+2020-05-12 15:50:48,771 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.
+2020-05-12 15:50:48,771 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.]
+2020-05-12 15:50:57,281 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, NotFoundException)
+2020-05-12 15:50:57,282 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.
+2020-05-12 15:50:57,282 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.]
+2020-05-12 15:51:11,328 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, NotFoundException)
+2020-05-12 15:51:11,329 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.
+2020-05-12 15:51:11,330 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.]
+2020-05-12 15:53:47,399 INFO  r.v.r.web.rest.RestaurantRestController.inputNewRestaurant:41 - inputNewRestaurant Restaurant{id=null, name='newRestaurant', menu='null'}
+2020-05-12 15:54:19,022 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, NotFoundException)
+2020-05-12 15:54:19,022 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.
+2020-05-12 15:54:19,023 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.]
+2020-05-12 15:55:18,121 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, NotFoundException)
+2020-05-12 15:55:18,121 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.
+2020-05-12 15:55:18,122 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.]
+2020-05-12 15:55:40,633 INFO  r.v.r.web.rest.RestaurantRestController.inputNewRestaurant:41 - inputNewRestaurant Restaurant{id=null, name='newRestaurant', menu='null'}
+2020-05-12 15:56:09,658 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, NotFoundException)
+2020-05-12 15:56:09,658 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.
+2020-05-12 15:56:09,659 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.]
+2020-05-12 15:57:44,338 INFO  r.v.r.web.rest.AdminRestController.getAll:45 - getAll
+2020-05-12 15:57:57,746 INFO  r.v.r.web.rest.AdminRestController.get:50 - get 100001
+2020-05-12 15:58:12,106 INFO  r.v.r.web.rest.AdminRestController.get:50 - get 100001
+2020-05-12 15:58:27,253 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#bindValidationError(HttpServletRequest, Exception)
+2020-05-12 15:58:27,253 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/profile/register: org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<ru.votingsystems.restraurantvotingsystem.model.User> ru.votingsystems.restraurantvotingsystem.web.rest.ProfileRestController.register(ru.votingsystems.restraurantvotingsystem.to.UserTo): [Field error in object 'userTo' on field 'email': rejected value [test@mail.ru]; codes [User with this email already exists.userTo.email,User with this email already exists.email,User with this email already exists.java.lang.String,User with this email already exists]; arguments []; default message [null]] 
+2020-05-12 15:58:27,254 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<ru.votingsystems.restraurantvotingsystem.model.User> ru.votingsystems.restraurantvotingsystem.web.rest.ProfileRestController.register(ru.votingsystems.restraurantvotingsystem.to.UserTo): [Field error in object 'userTo' on field 'email': rejected value [test@mail.ru]; codes [User with this email already exists.userTo.email,User with this email already exists.email,User with this email already exists.java.lang.String,User with this email already exists]; arguments []; default message [null]] ]
+2020-05-12 15:59:05,796 INFO  r.v.r.web.rest.ProfileRestController.create:55 - create from to UserTo{id=null, name='New User', email='tes1t@mail.ru', votes='null'}
+2020-05-12 15:59:05,797 INFO  r.v.r.web.rest.ProfileRestController.create:60 - create User{id=null, name='New User', email='tes1t@mail.ru', registered='Tue May 12 15:59:05 YEKT 2020', roles='[USER]', votes='[]'}
+2020-05-12 15:59:26,710 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, Exception)
+2020-05-12 15:59:26,710 ERROR r.v.r.web.CustomExceptionHandler.logExceptionInfo:68 - exception at request  http://localhost:8080/restaurantvoting/rest/profile: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2020-05-12 15:59:26,711 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-05-12 16:00:57,304 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, NotFoundException)
+2020-05-12 16:00:57,304 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.
+2020-05-12 16:00:57,305 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException: Restaurant doesn't exist.]
+2020-05-12 16:03:13,858 INFO  r.v.r.web.rest.RestaurantRestController.inputNewRestaurant:41 - inputNewRestaurant Restaurant{id=null, name='newRestaurant', menu='null'}
+2020-05-12 16:03:34,304 INFO  r.v.r.web.rest.RestaurantRestController.inputNewRestaurant:41 - inputNewRestaurant Restaurant{id=null, name='updatedRestaurant', menu='null'}
+2020-05-12 16:03:47,585 INFO  r.v.r.web.rest.RestaurantRestController.inputNewRestaurant:41 - inputNewRestaurant Restaurant{id=null, name='updatedRestaurant', menu='null'}
+2020-05-12 16:04:22,248 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#illegalRequestDataError(HttpServletRequest, Exception)
+2020-05-12 16:04:22,249 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
+2020-05-12 16:04:22,249 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]]
+2020-05-12 16:10:01,924 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#handleError(HttpServletRequest, Exception)
+2020-05-12 16:10:01,924 ERROR r.v.r.web.CustomExceptionHandler.logExceptionInfo:68 - exception at request  http://localhost:8080/restaurantvoting/rest/profile: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+2020-05-12 16:10:01,925 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-05-12 16:11:11,503 INFO  org.springframework.web.context.ContextLoader.initWebApplicationContext:271 - Root WebApplicationContext: initialization started
+2020-05-12 16:11:11,767 WARN  o.s.beans.factory.xml.XmlBeanDefinitionReader.warning:48 - Ignored XML validation warning
+org.xml.sax.SAXParseException: SchemaLocation: schemaLocation value = 'http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/security ' must have even number of URI's.
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.warning(ErrorHandlerWrapper.java:100)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:392)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:284)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(XMLSchemaValidator.java:511)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.storeLocations(XMLSchemaValidator.java:2603)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1915)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:829)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:374)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:613)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3063)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:836)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:112)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:534)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:888)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:824)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:246)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:77)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadDocument(XmlBeanDefinitionReader.java:430)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:388)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:305)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.importBeanDefinitionResource(DefaultBeanDefinitionDocumentReader.java:250)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseDefaultElement(DefaultBeanDefinitionDocumentReader.java:191)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:176)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:149)
+	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:96)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:509)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:389)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:336)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:305)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:224)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:195)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:133)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:637)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:522)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:401)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:292)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:103)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4685)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5146)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:717)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:690)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:705)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1728)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:456)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:405)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:289)
+	at java.management/com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:809)
+	at java.management/com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at java.management/com.sun.jmx.remote.security.MBeanServerAccessController.invoke(MBeanServerAccessController.java:468)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1466)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1307)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1406)
+	at java.management.rmi/javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:827)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:689)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:389)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:835)
+2020-05-12 16:11:11,834 INFO  o.s.security.core.SpringSecurityCoreVersion.performVersionChecks:81 - You are running with Spring Security Core 5.3.1.RELEASE
+2020-05-12 16:11:11,842 INFO  o.s.security.config.SecurityNamespaceHandler.<init>:79 - Spring Security 'config' module version is 5.3.1.RELEASE
+2020-05-12 16:11:11,914 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'hasRole('ADMIN')' for /rest/admin/**
+2020-05-12 16:11:11,915 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAnonymous()' for /rest/profile/register
+2020-05-12 16:11:11,916 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAuthenticated()' for /**
+2020-05-12 16:11:11,947 INFO  o.s.s.config.http.HttpSecurityBeanDefinitionParser.checkFilterChainOrder:314 - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.authentication.www.BasicAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2000, Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#0; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2500, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2800, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#0>, order = 2900]
+2020-05-12 16:11:11,961 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'permitAll()' for /login
+2020-05-12 16:11:11,961 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAnonymous()' for /profile/register
+2020-05-12 16:11:11,962 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'hasRole('ADMIN')' for /**/admin/**
+2020-05-12 16:11:11,962 INFO  o.s.s.c.h.FilterInvocationSecurityMetadataSourceParser.parseInterceptUrlsForFilterInvocationRequestMap:194 - Creating access control expression attribute 'isAuthenticated()' for /**
+2020-05-12 16:11:11,972 INFO  o.s.s.config.http.HttpSecurityBeanDefinitionParser.checkFilterChainOrder:314 - Checking sorted filter chain: [Root bean: class [org.springframework.security.web.context.SecurityContextPersistenceFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 200, Root bean: class [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 400, Root bean: class [org.springframework.security.web.header.HeaderWriterFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 500, Root bean: class [org.springframework.security.web.csrf.CsrfFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 700, Root bean: class [org.springframework.security.web.authentication.logout.LogoutFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 800, <org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter#0>, order = 1400, Root bean: class [org.springframework.security.web.savedrequest.RequestCacheAwareFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2100, Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.security.config.http.HttpConfigurationBuilder$SecurityContextHolderAwareRequestFilterBeanFactory#1; factoryMethodName=getBean; initMethodName=null; destroyMethodName=null, order = 2200, Root bean: class [org.springframework.security.web.authentication.AnonymousAuthenticationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2500, Root bean: class [org.springframework.security.web.session.SessionManagementFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2700, Root bean: class [org.springframework.security.web.access.ExceptionTranslationFilter]; scope=; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null, order = 2800, <org.springframework.security.web.access.intercept.FilterSecurityInterceptor#1>, order = 2900]
+2020-05-12 16:11:12,298 INFO  o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn:127 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-12 16:11:12,438 INFO  o.s.d.r.config.RepositoryConfigurationDelegate.registerRepositoriesIn:187 - Finished Spring Data repository scanning in 117ms. Found 2 JPA repository interfaces.
+2020-05-12 16:11:13,116 INFO  org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-12 16:11:13,286 INFO  org.hibernate.Version.logVersion:44 - HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-05-12 16:11:13,577 INFO  org.hibernate.annotations.common.Version.<clinit>:49 - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-12 16:11:14,228 INFO  org.hibernate.dialect.Dialect.<init>:172 - HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+2020-05-12 16:11:15,043 INFO  org.hibernate.validator.internal.util.Version.<clinit>:21 - HV000001: Hibernate Validator 6.1.2.Final
+2020-05-12 16:11:15,541 WARN  org.hibernate.orm.cache.createCache:108 - HHH90001006: Missing cache[ru.votingsystems.restraurantvotingsystem.model.Vote.menu] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2020-05-12 16:11:15,700 INFO  org.ehcache.core.EhcacheManager.createCache:305 - Cache 'ru.votingsystems.restraurantvotingsystem.model.Vote.menu' created in EhcacheManager.
+2020-05-12 16:11:15,722 WARN  org.hibernate.orm.cache.createCache:108 - HHH90001006: Missing cache[ru.votingsystems.restraurantvotingsystem.model.User.roles] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2020-05-12 16:11:15,725 INFO  org.ehcache.core.EhcacheManager.createCache:305 - Cache 'ru.votingsystems.restraurantvotingsystem.model.User.roles' created in EhcacheManager.
+2020-05-12 16:11:15,726 WARN  org.hibernate.orm.cache.createCache:108 - HHH90001006: Missing cache[ru.votingsystems.restraurantvotingsystem.model.User] was created on-the-fly. The created cache will use a provider-specific default configuration: make sure you defined one. You can disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2020-05-12 16:11:15,728 INFO  org.ehcache.core.EhcacheManager.createCache:305 - Cache 'ru.votingsystems.restraurantvotingsystem.model.User' created in EhcacheManager.
+2020-05-12 16:11:16,481 INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator.initiateService:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-12 16:11:16,499 INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:416 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-12 16:11:16,517 INFO  o.s.security.web.DefaultSecurityFilterChain.<init>:43 - Creating filter chain: Ant [pattern='/resources/**'], []
+2020-05-12 16:11:16,858 INFO  o.s.security.web.DefaultSecurityFilterChain.<init>:43 - Creating filter chain: Ant [pattern='/rest/**'], [org.springframework.security.web.context.SecurityContextPersistenceFilter@58551a0e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5a6789d4, org.springframework.security.web.header.HeaderWriterFilter@4e4197c9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@593fff23, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ee53e39, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f8d865a, org.springframework.security.web.access.ExceptionTranslationFilter@642713a5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2bee9673]
+2020-05-12 16:11:16,980 INFO  o.s.security.web.DefaultSecurityFilterChain.<init>:43 - Creating filter chain: any request, [org.springframework.security.web.context.SecurityContextPersistenceFilter@23806c05, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@f0a866e, org.springframework.security.web.header.HeaderWriterFilter@2b984809, org.springframework.security.web.csrf.CsrfFilter@1ce77af8, org.springframework.security.web.authentication.logout.LogoutFilter@169adf0a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1f038d73, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@778c805, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c95c732, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3de08950, org.springframework.security.web.session.SessionManagementFilter@5d9b1065, org.springframework.security.web.access.ExceptionTranslationFilter@bde0f06, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@30099a12]
+2020-05-12 16:11:17,004 INFO  o.s.s.config.http.DefaultFilterChainValidator.checkLoginPageIsntProtected:154 - Checking whether login URL '/login' is accessible with your configuration
+2020-05-12 16:11:18,084 INFO  org.springframework.web.context.ContextLoader.initWebApplicationContext:307 - Root WebApplicationContext initialized in 6576 ms
+2020-05-12 16:11:18,232 INFO  org.springframework.web.servlet.DispatcherServlet.initServletBean:525 - Initializing Servlet 'mvc-dispatcher'
+2020-05-12 16:11:18,275 INFO  o.s.security.config.SecurityNamespaceHandler.<init>:79 - Spring Security 'config' module version is 5.3.1.RELEASE
+2020-05-12 16:11:18,282 INFO  o.s.s.c.m.GlobalMethodSecurityBeanDefinitionParser.parse:210 - Expressions were enabled for method security but no SecurityExpressionHandler was configured. All hasPermission() expressions will evaluate to false.
+2020-05-12 16:11:19,329 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache:297 - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2020-05-12 16:11:19,441 INFO  org.springframework.web.servlet.DispatcherServlet.initServletBean:547 - Completed initialization in 1208 ms
+2020-05-12 16:12:38,178 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#illegalRequestDataError(HttpServletRequest, Exception)
+2020-05-12 16:12:38,183 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100003: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
+2020-05-12 16:12:38,183 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]]
+2020-05-12 16:14:08,285 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException:398 - Using @ExceptionHandler ru.votingsystems.restraurantvotingsystem.web.CustomExceptionHandler#illegalRequestDataError(HttpServletRequest, Exception)
+2020-05-12 16:14:08,285 WARN  r.v.r.web.CustomExceptionHandler.logExceptionInfo:70 - exception at request  http://localhost:8080/restaurantvoting/rest/restaurants/100023: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
+2020-05-12 16:14:08,286 DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.resolveException:145 - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<ru.votingsystems.restraurantvotingsystem.model.Dish>` out of START_OBJECT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]]

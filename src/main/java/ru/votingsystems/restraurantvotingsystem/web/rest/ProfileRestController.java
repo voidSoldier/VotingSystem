@@ -40,9 +40,9 @@ public class ProfileRestController extends AbstractUserController {
 //        super.delete(authUser.getId());
 //    }
 
-    @GetMapping(value = "/activity/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserTo getActivity(@PathVariable int id) {
-        return service.getActivity(id);
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserTo getActivity() {
+        return service.getActivity(authUserId());
     }
 
 

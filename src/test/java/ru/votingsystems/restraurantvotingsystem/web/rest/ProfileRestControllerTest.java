@@ -38,7 +38,7 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getActivity() throws Exception {
-     ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
+     ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL)
                 .with(userAuth(USER)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
