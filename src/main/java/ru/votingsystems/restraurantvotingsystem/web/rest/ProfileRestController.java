@@ -46,13 +46,6 @@ public class ProfileRestController extends AbstractUserController {
     }
 
 
-//    @GetMapping(value = "/activity/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<Vote> getActivity(@PathVariable int id) {
-//        return service.getActivity(id);
-//
-//    }
-
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {

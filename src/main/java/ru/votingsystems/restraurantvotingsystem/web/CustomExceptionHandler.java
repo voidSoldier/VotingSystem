@@ -69,9 +69,6 @@ public class CustomExceptionHandler {
         } else {
             log.warn(msg);
         }
-
-//        e.printStackTrace();
     }
-
 
 }

@@ -34,17 +34,9 @@ public class RestaurantService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Restaurant doesn't exist."));
     }
 
-//    public Restaurant getWithMenu(int id) {
-//        return repository.findRestaurantById(id);
-//    }
-
     public List<Restaurant> getAll() {
         return repository.findAll();
     }
-
-//    public List<Restaurant> getAllWithMenu() {
-//        return repository.findAll();
-//    }
 
     public void update(Restaurant restaurant) {
         repository.save(restaurant);
@@ -96,9 +88,6 @@ public class RestaurantService {
 
         user.setVotingTime(nowVoting);
         saveVote(restaurantId, nowVoting, user);
-
-//        user.setRatedRestaurants(allRestaurants); // needed?
-//        userRepository.save(user);   // needed?
     }
 
     private void saveVote(int restaurantId, LocalDateTime voteTime, User user) {

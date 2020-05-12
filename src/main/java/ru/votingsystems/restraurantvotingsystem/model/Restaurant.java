@@ -3,6 +3,7 @@ package ru.votingsystems.restraurantvotingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -20,23 +21,12 @@ public class Restaurant extends AbstractBaseEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-
-    //    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")
     @BatchSize(size = 200)
     private List<Dish> menu;
 
-
     @Column(name = "rating")
     private int rating = 0;
-
-
-//    @ManyToMany
-//    @JoinTable(name = "rated_restaurants",
-//            joinColumns = {@JoinColumn(name = "restaurant_id", referencedColumnName = "id"),
-//                    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")},
-//            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-//    private List<User> users;
 
     public Restaurant() {
     }

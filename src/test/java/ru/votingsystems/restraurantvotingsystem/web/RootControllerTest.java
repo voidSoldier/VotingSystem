@@ -7,14 +7,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.userAuth;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.ADMIN;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.USER;
+import static ru.votingsystems.restraurantvotingsystem.UserTestData.ADMIN;
+import static ru.votingsystems.restraurantvotingsystem.UserTestData.USER;
 
 class RootControllerTest extends AbstractControllerTest {
 
-    /*
-    ПРОВЕРИТЬ!!!!!
-     */
     @Test
     void getUsers() throws Exception {
         perform(get("/users")

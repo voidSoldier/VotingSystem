@@ -10,11 +10,10 @@ import java.util.List;
 
 import static ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity.START_SEQ;
 
-public class RTestData {
+public class RestaurantTestData {
 
 
     public static TestMatcher<Restaurant> RESTAURANT_MATCHER = TestMatcher.usingFieldsComparator(Restaurant.class, "rating", "menu");
-   // public static TestMatcher<Restaurant> RESTAURANT_MATCHER_WITH_MENU = TestMatcher.usingFieldsComparator(Restaurant.class, "rating");
     public static TestMatcher<Dish> DISH_MATCHER = TestMatcher.usingFieldsComparator(Dish.class, "id");
 
     public static final int RESTAURANT1_ID = START_SEQ + 2;
@@ -48,9 +47,6 @@ public class RTestData {
     public static final List<Restaurant> RESTAURANTS = List.of(RESTAURANT1, RESTAURANT2, RESTAURANT3);
 
     public static Restaurant getNew() {
-//        Restaurant newRestaurant = new Restaurant(null, "New Restaurant");
-//        newRestaurant.setMenu(Collections.singletonList(new Dish(null, "new dish", 0, newRestaurant)));
-//        return newRestaurant;
         return new Restaurant(null, "NEW", new ArrayList<>());
     }
 

@@ -3,8 +3,8 @@ package ru.votingsystems.restraurantvotingsystem.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.votingsystems.restraurantvotingsystem.RTestData;
-import ru.votingsystems.restraurantvotingsystem.UTestData;
+import ru.votingsystems.restraurantvotingsystem.RestaurantTestData;
+import ru.votingsystems.restraurantvotingsystem.UserTestData;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static ru.votingsystems.restraurantvotingsystem.RTestData.*;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
+import static ru.votingsystems.restraurantvotingsystem.RestaurantTestData.*;
+import static ru.votingsystems.restraurantvotingsystem.UserTestData.*;
 
 class RestaurantServiceTest extends AbstractServiceTest {
 
@@ -33,7 +33,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
 
     @Test
     void create() throws Exception {
-        Restaurant newRestaurant = RTestData.getNew();
+        Restaurant newRestaurant = RestaurantTestData.getNew();
         Restaurant created = service.create(newRestaurant);
         int newId = created.getId();
         newRestaurant.setId(newId);
@@ -47,24 +47,11 @@ class RestaurantServiceTest extends AbstractServiceTest {
         RESTAURANT_MATCHER.assertMatch(restaurant, RESTAURANT1);
     }
 
-//    @Test
-//    void getWithMenu() throws Exception {
-//        Restaurant restaurant = service.getWithMenu(RESTAURANT1_ID);
-//        List<Dish> menu = RESTAURANT1.getMenu();
-//        DISH_MATCHER.assertMatch(restaurant.getMenu(), menu);
-//    }
-
     @Test
     void getAll() throws Exception {
         List<Restaurant> result = service.getAll();
         RESTAURANT_MATCHER.assertMatch(RESTAURANTS, result);
     }
-
-//    @Test
-//    void getAllWithMenu() throws Exception {
-//        List<Restaurant> result = service.getAllWithMenu();
-//        RESTAURANT_MATCHER_WITH_MENU.assertMatch(RESTAURANTS, result);
-//    }
 
     @Test
     void getNotFound() throws Exception {
@@ -73,7 +60,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
 
     @Test
     void update() throws Exception {
-        Restaurant updated = RTestData.getUpdated();
+        Restaurant updated = RestaurantTestData.getUpdated();
         service.update(updated);
         RESTAURANT_MATCHER.assertMatch(service.get(RESTAURANT1_ID), updated);
     }
@@ -114,7 +101,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
 
     @Test
     void changeVote() throws Exception {
-        User user = UTestData.getNew();
+        User user = UserTestData.getNew();
         service.voteForRestaurant(user, RESTAURANT3.getId());
 
         List<Vote> oldList = new ArrayList<>(user.getVotes());

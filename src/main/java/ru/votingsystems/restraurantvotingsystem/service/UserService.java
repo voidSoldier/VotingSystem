@@ -38,10 +38,6 @@ public class UserService implements UserDetailsService {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }
-//public UserService(UserRepository repository) {
-//    this.repository = repository;
-//
-//}
 
     @Cacheable("users")
     public List<User> getAll() {
@@ -56,20 +52,13 @@ public class UserService implements UserDetailsService {
         return repository.getWithVotes(id);
     }
 
-//    @Autowired
-//    private VoteRepository votoRepo;
-//    public List<Vote> getActivity(int id) {
-//        return votoRepo.findVotesByUserId(id);
-//    }
 
     public User getByEmail(String email) {
         return repository.findUserByEmail(email);
     }
 
-//    @CacheEvict(value = "users", allEntries = true)
     public UserTo getActivity(int userId) {
         return new UserTo(getWithVotes(userId));
-//        return getWithVotes(userId);
     }
 
     @CacheEvict(value = "users", allEntries = true)
@@ -79,17 +68,10 @@ public class UserService implements UserDetailsService {
         else throw new NotFoundException("User doesn't exist.");
     }
 
-//    @CacheEvict(value = "users", allEntries = true)
-//    @Transactional
-//    public void update(int id, User user) {
-//        repository.save(user);
-//    }
-
     @CacheEvict(value = "users", allEntries = true)
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
         prepareAndSave(user);
-//        repository.save(user);
     }
 
     @CacheEvict(value = "users", allEntries = true)
@@ -105,7 +87,6 @@ public class UserService implements UserDetailsService {
     public User create(@Valid User user) {
         return repository.save(user);
     }
-
 
 
     @CacheEvict(value = "users", allEntries = true)

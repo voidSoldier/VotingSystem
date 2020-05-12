@@ -51,19 +51,6 @@ public abstract class AbstractUserController {
         return service.get(id);
     }
 
-//    public UserTo getActivity(int id) {
-//        log.info("get activity {}", id);
-//       return service.getActivity(id);
-//    }
-
-
-//    public List<Vote> getActivity(int id) {
-//        log.info("get activity {}", id);
-//        return service.getActivity(id);
-//    }
-
-
-
     public User create(UserTo userTo) {
         log.info("create from to {}", userTo);
         return create(UserUtil.createNewFromTo(userTo));
@@ -88,18 +75,6 @@ public abstract class AbstractUserController {
             throw new BindException(binder.getBindingResult());
         }
     }
-
-//    public void update(User user, int id) {
-//        log.info("update {} with id={}", user, id);
-//        assureIdConsistent(user, id);
-//        service.update(user);
-//    }
-//
-//    public void update(UserTo userTo, int id) {
-//        log.info("update {} with id={}", userTo, id);
-//        assureIdConsistent(userTo, id);
-//        service.update(userTo);
-//    }
 
     public User getByEmail(String email) {
         log.info("getByEmail {}", email);

@@ -7,7 +7,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.votingsystems.restraurantvotingsystem.UTestData;
+import ru.votingsystems.restraurantvotingsystem.UserTestData;
 import ru.votingsystems.restraurantvotingsystem.model.Role;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.UserService;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.*;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
+import static ru.votingsystems.restraurantvotingsystem.UserTestData.*;
 
 
 public class AdminRestControllerTest extends AbstractControllerTest {
@@ -40,10 +40,7 @@ public class AdminRestControllerTest extends AbstractControllerTest {
                 .andExpect(USER_MATCHER.contentJson(ADMIN));
 
         User created = readFromJson(action, User.class);
-        int newId = created.getId();
-//        newUser.setId(newId);
         USER_MATCHER.assertMatch(created, ADMIN);
-//        USER_MATCHER.assertMatch(userService.get(newId), newUser);
     }
 
     @Test
@@ -105,11 +102,11 @@ public class AdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void update() throws Exception {
-        User updated = UTestData.getUpdated();
+        User updated = UserTestData.getUpdated();
         perform(MockMvcRequestBuilders.put(REST_URL + USER_ID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(ADMIN))
-                .content(UTestData.jsonWithPassword(updated, "newPass")))
+                .content(UserTestData.jsonWithPassword(updated, "newPass")))
                 .andExpect(status().isNoContent());
 
         USER_MATCHER.assertMatch(userService.get(USER_ID), updated);
@@ -117,12 +114,11 @@ public class AdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void createWithLocation() throws Exception {
-        User newUser = UTestData.getNew();
+        User newUser = UserTestData.getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(ADMIN))
-                .content(UTestData.jsonWithPassword(newUser, "newPass")))
-//                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .content(UserTestData.jsonWithPassword(newUser, "newPass")))
                 .andExpect(status().isCreated());
 
         User created = readFromJson(action, User.class);

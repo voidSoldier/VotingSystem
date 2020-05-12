@@ -13,10 +13,6 @@ import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-/*
-  ПРОВЕРИТЬ!!!!!
-   */
-
 public class TestUtil {
     public static String getContent(MvcResult result) throws UnsupportedEncodingException {
         return result.getResponse().getContentAsString();
@@ -34,10 +30,10 @@ public class TestUtil {
         return JsonUtil.readValues(getContent(result), clazz);
     }
 
-    public static void mockAuthorize(User user) {
-        SecurityContextHolder.getContext().setAuthentication(
-                new UsernamePasswordAuthenticationToken(new AuthorizedUser(user), null, user.getRoles()));
-    }
+//    public static void mockAuthorize(User user) {
+//        SecurityContextHolder.getContext().setAuthentication(
+//                new UsernamePasswordAuthenticationToken(new AuthorizedUser(user), null, user.getRoles()));
+//    }
 
     public static RequestPostProcessor userHttpBasic(User user) {
         return SecurityMockMvcRequestPostProcessors.httpBasic(user.getEmail(), user.getPassword());

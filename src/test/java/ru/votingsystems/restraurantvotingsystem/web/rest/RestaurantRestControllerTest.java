@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import ru.votingsystems.restraurantvotingsystem.RTestData;
+import ru.votingsystems.restraurantvotingsystem.RestaurantTestData;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
@@ -20,11 +20,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.votingsystems.restraurantvotingsystem.RTestData.*;
+import static ru.votingsystems.restraurantvotingsystem.RestaurantTestData.*;
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.readFromJson;
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.userAuth;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.ADMIN;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.USER;
+import static ru.votingsystems.restraurantvotingsystem.UserTestData.ADMIN;
+import static ru.votingsystems.restraurantvotingsystem.UserTestData.USER;
 
 public class RestaurantRestControllerTest extends AbstractControllerTest {
 
@@ -47,7 +47,6 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
         newRestaurant.setId(newId);
         RESTAURANT_MATCHER.assertMatch(created, newRestaurant);
         RESTAURANT_MATCHER.assertMatch(service.get(newId), newRestaurant);
-//        DISH_MATCHER.assertMatch(created.getMenu(), newRestaurant.getMenu());
     }
 
     @Test
@@ -71,7 +70,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     void update() throws Exception {
-        Restaurant updated = RTestData.getUpdated();
+        Restaurant updated = RestaurantTestData.getUpdated();
 
         perform(MockMvcRequestBuilders.put(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -112,7 +111,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
         user.setVoted(true);
         user.setVotingTime(LocalDateTime.now().minusDays(2));
 
-        perform(MockMvcRequestBuilders.put(REST_URL + RTestData.RESTAURANT1_ID)
+        perform(MockMvcRequestBuilders.put(REST_URL + RestaurantTestData.RESTAURANT1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(user))
                 .with(userAuth(USER)))
@@ -125,7 +124,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
         user.setVoted(true);
         user.setVotingTime(LocalDateTime.now());
 
-        perform(MockMvcRequestBuilders.put(REST_URL + RTestData.RESTAURANT1_ID)
+        perform(MockMvcRequestBuilders.put(REST_URL + RestaurantTestData.RESTAURANT1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(user))
                 .with(userAuth(USER)))
@@ -137,7 +136,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
     void voteFirstTime() throws Exception {
         User user = new User(USER);
 
-        perform(MockMvcRequestBuilders.put(REST_URL + RTestData.RESTAURANT1_ID)
+        perform(MockMvcRequestBuilders.put(REST_URL + RestaurantTestData.RESTAURANT1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(user))
                 .with(userAuth(USER)))

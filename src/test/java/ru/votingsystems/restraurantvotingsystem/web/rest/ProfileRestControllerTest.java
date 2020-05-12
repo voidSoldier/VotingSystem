@@ -8,22 +8,19 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.votingsystems.restraurantvotingsystem.model.User;
-import ru.votingsystems.restraurantvotingsystem.model.Vote;
 import ru.votingsystems.restraurantvotingsystem.service.UserService;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
 import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
 import ru.votingsystems.restraurantvotingsystem.web.json.JsonUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static ru.votingsystems.restraurantvotingsystem.TestUtil.*;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
+import static ru.votingsystems.restraurantvotingsystem.UserTestData.*;
 
 public class ProfileRestControllerTest extends AbstractControllerTest {
     @Autowired
@@ -41,10 +38,7 @@ public class ProfileRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getActivity() throws Exception {
-        UserTo ut = new UserTo(USER);
-        ut.setVotes(Arrays.asList(VOTE1, VOTE2));
-
-        ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
+     ResultActions action = perform(MockMvcRequestBuilders.get(REST_URL +  "activity/" + USER_ID)
                 .with(userAuth(USER)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));

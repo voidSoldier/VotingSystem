@@ -44,7 +44,6 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
 
     @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-//    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date registered;
 
     @Column(name = "voting_time")
@@ -63,9 +62,9 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
     @BatchSize(size = 200)
     private Set<Role> roles;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.REMOVE)//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-//    @BatchSize(size = 200)
-//    @OrderBy("voteDate DESC")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.REMOVE)
+    @BatchSize(size = 200)
+    @OrderBy("voteDate DESC")
     private List<Vote> votes;
 
 

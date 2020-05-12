@@ -13,7 +13,7 @@ import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static ru.votingsystems.restraurantvotingsystem.UTestData.*;
+import static ru.votingsystems.restraurantvotingsystem.UserTestData.*;
 
 class UserServiceTest extends AbstractServiceTest {
 
@@ -39,16 +39,6 @@ class UserServiceTest extends AbstractServiceTest {
                 service.create(new User(null, "Duplicate", "user@yandex.ru", "newPass", Role.USER)));
     }
 
-
-//    @Test
-//    void createWithException() throws Exception {
-//        validateRootCause(() -> service.create(new User(null, "  ", "mail@yandex.ru", "password", Role.USER)), ConstraintViolationException.class);
-//        validateRootCause(() -> service.create(new User(null, "User", "  ", "password", Role.USER)), ConstraintViolationException.class);
-//        validateRootCause(() -> service.create(new User(null, "User", "mail@yandex.ru", "  ", Role.USER)), ConstraintViolationException.class);
-//        validateRootCause(() -> service.create(new User(null, "User", "mail@yandex.ru", "password", 9, true, new Date(), Set.of())), ConstraintViolationException.class);
-//        validateRootCause(() -> service.create(new User(null, "User", "mail@yandex.ru", "password", 10001, true, new Date(), Set.of())), ConstraintViolationException.class);
-//    }
-
     @Test
     void getAll() throws Exception {
         List<User> all = service.getAll();
@@ -66,12 +56,6 @@ class UserServiceTest extends AbstractServiceTest {
         UserTo ut = service.getActivity(USER_ID);
         assertFalse(ut.getVotes() == null || ut.getVotes().isEmpty());
     }
-
-//    @Test
-//    void getWithVotes() throws Exception {
-//        User user = service.getWithVotes(ADMIN_ID);
-//        assertFalse(user.getVotes().isEmpty());
-//    }
 
     @Test
     void getNotFound() throws Exception {
