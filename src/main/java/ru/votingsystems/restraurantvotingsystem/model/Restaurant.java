@@ -3,7 +3,6 @@ package ru.votingsystems.restraurantvotingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -29,6 +28,11 @@ public class Restaurant extends AbstractBaseEntity {
     private int rating = 0;
 
     public Restaurant() {
+    }
+
+    public Restaurant(Restaurant r) {
+        this(r.getId(), r.getName(), r.getMenu());
+        this.setRating((r.getRating()));
     }
 
     public Restaurant(Integer id, String name) {

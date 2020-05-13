@@ -48,7 +48,7 @@ public class UserService implements UserDetailsService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("User doesn't exist."));
     }
 
-    public User getWithVotes(int id) {
+    private User getWithVotes(int id) {
         return repository.getWithVotes(id);
     }
 
@@ -57,6 +57,8 @@ public class UserService implements UserDetailsService {
         return repository.findUserByEmail(email);
     }
 
+    @Cacheable("userWithVotes")
+    @Transactional
     public UserTo getActivity(int userId) {
         return new UserTo(getWithVotes(userId));
     }

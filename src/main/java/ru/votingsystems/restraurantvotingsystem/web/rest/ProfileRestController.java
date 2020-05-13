@@ -3,19 +3,17 @@ package ru.votingsystems.restraurantvotingsystem.web.rest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.votingsystems.restraurantvotingsystem.model.User;
-import ru.votingsystems.restraurantvotingsystem.model.Vote;
 import ru.votingsystems.restraurantvotingsystem.to.UserTo;
-import ru.votingsystems.restraurantvotingsystem.util.UserUtil;
+import ru.votingsystems.restraurantvotingsystem.web.AuthorizedUser;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 
-import static ru.votingsystems.restraurantvotingsystem.web.SecurityUtil.authUserId;
 
 
 @RestController
@@ -24,32 +22,23 @@ public class ProfileRestController extends AbstractUserController {
 
     static final String REST_URL = "/rest/profile";
 
-//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    public User get(@AuthenticationPrincipal AuthorizedUser authUser) {
-//        return super.get(authUser.getId());
-//    }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public User get(@PathVariable int id) {
-        return super.get(id);
+    public User get(@AuthenticationPrincipal AuthorizedUser authUser) {
+        return super.get(authUser.getId());
     }
 
-//    @DeleteMapping
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void delete(@AuthenticationPrincipal AuthorizedUser authUser) {
-//        super.delete(authUser.getId());
-//    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public UserTo getActivity() {
-        return service.getActivity(authUserId());
+    public UserTo getActivity(@AuthenticationPrincipal AuthorizedUser authUser) {
+        return service.getActivity(authUser.getId());
     }
 
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable int id) {
-        super.delete(id);
+    public void delete(@AuthenticationPrincipal AuthorizedUser authUser) {
+        super.delete(authUser.getId());
     }
 
 
@@ -62,17 +51,11 @@ public class ProfileRestController extends AbstractUserController {
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-//    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void update(@RequestBody UserTo userTo, @AuthenticationPrincipal AuthorizedUser authUser) throws BindException {
-//        checkAndValidateForUpdate(userTo, authUser.getId());
-//        service.update(userTo);
-//    }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@RequestBody UserTo userTo) throws BindException {
-        checkAndValidateForUpdate(userTo, authUserId());
+    public void update(@RequestBody UserTo userTo, @AuthenticationPrincipal AuthorizedUser authUser) throws BindException {
+        checkAndValidateForUpdate(userTo, authUser.getId());
         service.update(userTo);
     }
 

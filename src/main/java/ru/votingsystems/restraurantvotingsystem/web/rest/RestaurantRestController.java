@@ -6,16 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.service.RestaurantService;
+import ru.votingsystems.restraurantvotingsystem.web.AuthorizedUser;
 
 import java.net.URI;
 import java.util.List;
 
+import static ru.votingsystems.restraurantvotingsystem.util.ValidationUtil.assureIdConsistent;
 import static ru.votingsystems.restraurantvotingsystem.util.ValidationUtil.checkNew;
 
 
@@ -30,7 +33,10 @@ public class RestaurantRestController {
     private RestaurantService service;
 
     @PutMapping("/{restaurantId}")
-    public void vote(@RequestBody User user, @PathVariable int restaurantId) {
+    public void vote(@AuthenticationPrincipal AuthorizedUser authUser,
+                     @RequestBody User user, @PathVariable int restaurantId) {
+
+        assureIdConsistent(user, authUser.getId());
         log.info("user {} is voting for restaurant with id {}", user.getId(), restaurantId);
 
         service.voteForRestaurant(user, restaurantId);

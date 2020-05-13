@@ -4,15 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    <import resource="spring-cache.xml"/>-->
+    <import resource="spring-cache.xml"/>
     <import resource="spring-security.xml"/>
 
-    <!-- Not necessary, already included with component-scan -->
-    <!--<context:annotation-config/>-->
-
-<!--    <bean class="ru.votingsystems.restraurantvotingsystem.service.RestaurantService">-->
-<!--        <constructor-arg name="repository" ref="crudRestaurantRepository"/>-->
-<!--    </bean>-->
     <context:component-scan base-package="ru.votingsystems.**.service"/>
     <context:component-scan base-package="ru.votingsystems.**.repository"/>
 

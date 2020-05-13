@@ -61,7 +61,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
     @Test
     void update() throws Exception {
         Restaurant updated = RestaurantTestData.getUpdated();
-        service.update(updated);
+        service.update(new Restaurant(updated));
         RESTAURANT_MATCHER.assertMatch(service.get(RESTAURANT1_ID), updated);
     }
 
@@ -113,7 +113,7 @@ class RestaurantServiceTest extends AbstractServiceTest {
 
         int newR3Rating = service.get(RESTAURANT3.getId()).getRating();
         int newR1Rating = service.get(RESTAURANT1_ID).getRating();
-        List<Vote> newList = new ArrayList<>(userService.getWithVotes(USER_ID).getVotes());
+        List<Vote> newList = new ArrayList<>(userService.getActivity(USER_ID).getVotes());
 
         assertTrue(oldR3Rating > newR3Rating);
         assertTrue(oldR1Rating < newR1Rating);

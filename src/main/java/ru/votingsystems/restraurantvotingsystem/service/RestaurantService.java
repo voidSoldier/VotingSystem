@@ -1,13 +1,14 @@
 package ru.votingsystems.restraurantvotingsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ru.votingsystems.restraurantvotingsystem.model.Dish;
 import ru.votingsystems.restraurantvotingsystem.model.Restaurant;
 import ru.votingsystems.restraurantvotingsystem.model.User;
 import ru.votingsystems.restraurantvotingsystem.model.Vote;
 import ru.votingsystems.restraurantvotingsystem.repository.RestaurantRepository;
-import ru.votingsystems.restraurantvotingsystem.repository.UserRepository;
 import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 import ru.votingsystems.restraurantvotingsystem.util.exception.VotingTimeoutNotExpiredException;
 
@@ -15,7 +16,6 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;

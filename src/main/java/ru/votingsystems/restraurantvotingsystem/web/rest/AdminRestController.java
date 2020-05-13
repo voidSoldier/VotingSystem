@@ -32,13 +32,13 @@ public class AdminRestController extends AbstractUserController {
     }
 
     @Override
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public User get(@PathVariable int id) {
         return super.get(id);
     }
 
     @Override
-    @GetMapping("/by")
+    @GetMapping(value = "/by", produces = MediaType.APPLICATION_JSON_VALUE)
     public User getByEmail(@RequestParam String email) {
         return super.getByEmail(email);
     }
