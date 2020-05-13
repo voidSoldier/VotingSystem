@@ -1,9 +1,9 @@
-G# Restaurant Voting System
+# Restaurant Voting System
 
 The voting system helps to decide where to have lunch. 
 Users can vote for preferable restaurant by increasing its rating.
 
-### Technologies applied in the project:
+## Technologies applied in the project:
 - Spring 5
 - Spring Data 2
 - Spring Security 5
@@ -14,7 +14,7 @@ Users can vote for preferable restaurant by increasing its rating.
 - Testing: Junit 5 and Hamcrest
 - Ehcache
 
-G# CURL commands:
+## CURL commands:
 ### curl samples (application deployed in application context `restaurantvotingsystem`).
 > For windows use `Git Bash`
 
