@@ -8,6 +8,7 @@ Users can vote for preferable restaurant by increasing its rating.
 - Spring Data 2
 - Spring Security 5
 - Maven
+- Tomcat 9
 - Hibernate 5 
 - HSQLDB
 - Logging: Logback and SLF4G

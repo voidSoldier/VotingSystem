@@ -74,14 +74,7 @@
                         <containerId>tomcat9x</containerId>
                         <systemProperties>
                             <file.encoding>UTF-8</file.encoding>
-<!--                            <spring.profiles.active>tomcat,datajpa</spring.profiles.active>-->
                         </systemProperties>
-<!--                        <dependencies>-->
-<!--                            <dependency>-->
-<!--                                <groupId>org.postgresql</groupId>-->
-<!--                                <artifactId>postgresql</artifactId>-->
-<!--                            </dependency>-->
-<!--                        </dependencies>-->
                     </container>
                     <configuration>
                         <configfiles>

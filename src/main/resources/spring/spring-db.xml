@@ -13,7 +13,6 @@
 
 
     <context:component-scan base-package="ru.votingsystems.**.service"/>
-    <!--        <context:component-scan base-package="ru.votingsystems.**.repository"/>-->
     <jpa:repositories base-package="ru.votingsystems.**.repository"/>
 
 
@@ -69,6 +68,4 @@
           p:url="${database.url}"
           p:username="${database.username}"
           p:password="${database.password}"/>
-    <!--    p:url="jdbc:hsqldb://localhost:5432/RestaurantVotingSystem"-->
-    <!--          p:url="H:\Java\temp\Restaurant VS"-->
 </beans>

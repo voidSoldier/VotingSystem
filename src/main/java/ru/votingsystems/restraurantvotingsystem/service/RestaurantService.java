@@ -71,7 +71,7 @@ public class RestaurantService {
         if (!user.isVoted() ||
                 nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
             repository.incrementRating(restaurantId);
-//
+
             // voting the same day again to change the vote
             // possible if it's before 11:00 a.m.
             user.setVoted(true);
