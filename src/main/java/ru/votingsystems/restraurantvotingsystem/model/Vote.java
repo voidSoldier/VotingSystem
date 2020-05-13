@@ -68,6 +68,7 @@ public class Vote extends AbstractBaseEntity {
     public void setRestaurantId(Integer restaurantId) {
         this.restaurantId = restaurantId;
     }
+
     @JsonIgnore
     public User getUser() {
         return user;
@@ -104,8 +105,8 @@ public class Vote extends AbstractBaseEntity {
     @Override
     public String toString() {
         return "Vote{" +
-                "id=" + id + '\''  +
-                ", restaurantId=" + restaurantId + '\''  +
+                "id=" + id + '\'' +
+                ", restaurantId=" + restaurantId + '\'' +
                 ", restaurantName='" + restaurantName + '\'' +
                 '}';
     }

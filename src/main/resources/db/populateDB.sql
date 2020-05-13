@@ -30,9 +30,6 @@ INSERT INTO user_votes (user_id, vote_date, restaurant_name, restaurant_id)
 VALUES (100000, '2020-01-30 10:00:00', 'MamaS House', 100002),
        (100001, '2020-01-30 20:00:00', 'My own Company', 100003),
        (100000, '2020-01-31 0:00:00', 'HoundS Pit', 100004);
---     100014
---     100015
---     100016
 
 
 INSERT INTO dishes (restaurant_id, name, price)

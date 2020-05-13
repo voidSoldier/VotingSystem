@@ -12,7 +12,6 @@ public class RootController {
         return "redirect:restaurants";
     }
 
-    //    @Secured("ROLE_ADMIN")
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/users")
     public String getUsers() {

@@ -5,7 +5,6 @@
     <jmxConfigurator/>
 
     <appender name="file" class="ch.qos.logback.core.FileAppender">
-<!--        <file>${TOPJAVA_ROOT}/log/rvs.log</file>-->
 
 <!--        CHANGE TO systemEnvironment variable?-->
         <file>C:/Users/NOIR-SAN/RestaurantVotingSystem/log/rvs.log</file>
@@ -24,7 +23,6 @@
     </appender>
 
     <logger name="ru.votingsystems.restraurantvotingsystem" level="debug"/>
-    <!--<logger name="org.springframework.web.servlet" level="debug"/>-->
     <logger name="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" level="debug"/>
 
     <root level="info">
