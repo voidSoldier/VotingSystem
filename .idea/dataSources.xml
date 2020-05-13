@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="voting-system (HSQLDB)" uuid="e89e08b0-d5e0-4877-94e1-409a455038bb">
+    <data-source source="LOCAL" name="HSQLDB (Local) - Restaurant VS" uuid="5cd3d3cf-f80f-4d0a-8c3a-627ab5536d04">
       <driver-ref>hsqldb.local</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
-      <jdbc-url>jdbc:hsqldb:file:H:/Java/temp/votingSystem/hsqldb</jdbc-url>
+      <jdbc-url>jdbc:hsqldb:file:H:/Java/temp/Restaurant VS/</jdbc-url>
     </data-source>
   </component>
 </project>

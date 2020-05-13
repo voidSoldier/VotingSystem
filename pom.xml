@@ -9,24 +9,22 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>Restaurant Voting System</name>
-    <!--    <url>http://topjava.herokuapp.com/</url>-->
+<!--    <url>http://topjava.herokuapp.com/</url>-->
 
     <properties>
         <java.version>12</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <spring.version>5.2.0.RELEASE</spring.version>
-        <spring-data-jpa.version>2.2.5.RELEASE</spring-data-jpa.version>
+        <spring.version>5.2.5.RELEASE</spring.version>
+        <spring.security.version>5.3.1.RELEASE</spring.security.version>
+        <spring-data-jpa.version>2.2.6.RELEASE</spring-data-jpa.version>
         <jackson-json.version>2.10.3</jackson-json.version>
         <tomcat.version>9.0.31</tomcat.version>
 
         <!-- Logging -->
         <logback.version>1.2.3</logback.version>
         <slf4j.version>1.7.30</slf4j.version>
-
-        <!--DB-->
-        <!--        <postgresql.version>42.2.10</postgresql.version>-->
 
         <!--    Tests  -->
         <junit.jupiter.version>5.6.1</junit.jupiter.version>
@@ -40,12 +38,6 @@
         <!--Tools-->
         <ehcache.version>3.8.1</ehcache.version>
 
-        <!--webjars-->
-        <webjars-bootstrap.version>4.4.1</webjars-bootstrap.version>
-        <webjars-jquery.version>3.4.1</webjars-jquery.version>
-        <webjars-datetimepicker.version>2.5.20</webjars-datetimepicker.version>
-        <webjars-noty.version>3.1.4</webjars-noty.version>
-        <webjars-datatables.version>1.10.20</webjars-datatables.version>
     </properties>
 
     <build>
@@ -82,14 +74,14 @@
                         <containerId>tomcat9x</containerId>
                         <systemProperties>
                             <file.encoding>UTF-8</file.encoding>
-                            <!--                            <spring.profiles.active>tomcat,datajpa</spring.profiles.active>-->
+<!--                            <spring.profiles.active>tomcat,datajpa</spring.profiles.active>-->
                         </systemProperties>
-                        <!--                        <dependencies>-->
-                        <!--                            <dependency>-->
-                        <!--                                <groupId>org.postgresql</groupId>-->
-                        <!--                                <artifactId>postgresql</artifactId>-->
-                        <!--                            </dependency>-->
-                        <!--                        </dependencies>-->
+<!--                        <dependencies>-->
+<!--                            <dependency>-->
+<!--                                <groupId>org.postgresql</groupId>-->
+<!--                                <artifactId>postgresql</artifactId>-->
+<!--                            </dependency>-->
+<!--                        </dependencies>-->
                     </container>
                     <configuration>
                         <configfiles>
@@ -103,7 +95,7 @@
                     <deployables>
                         <deployable>
                             <groupId>ru.votingsystems</groupId>
-                            <artifactId>rastaurantvotingsystem</artifactId>
+                            <artifactId>restaurantvotingsystem</artifactId>
                             <type>war</type>
                             <properties>
                                 <context>${project.build.finalName}</context>
@@ -117,18 +109,6 @@
 
     <dependencies>
 
-        <!-- DB-->
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.5.0</version>
-        </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>javax.annotation</groupId>-->
-        <!--            <artifactId>javax.annotation-api</artifactId>-->
-        <!--            <version>1.3.1</version>-->
-        <!--        </dependency>-->
 
         <!-- Logging with SLF4J & LogBack -->
         <dependency>
@@ -142,13 +122,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>${slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -167,6 +140,18 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring-data-jpa.version}</version>
+        </dependency>
+
+        <!--security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
         </dependency>
 
         <!--- ORM -->
@@ -207,14 +192,8 @@
             <version>${ehcache.version}</version>
         </dependency>
 
-        <!--https://medium.com/criciumadev/its-time-migrating-to-java-11-5eb3868354f9-->
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>2.4.0-b180830.0438</version>
-        </dependency>
 
-        <!--Web-->
+        <!-- Web-->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-servlet-api</artifactId>
@@ -233,54 +212,6 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
-        <!-- Webjars (static dependencies distributed as JAR files) -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>${webjars-jquery.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>${webjars-bootstrap.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.webjars</groupId>
-                    <artifactId>jquery</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>datatables</artifactId>
-            <version>${webjars-datatables.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.webjars</groupId>
-                    <artifactId>jquery</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>datetimepicker</artifactId>
-            <version>${webjars-datetimepicker.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.webjars.bower</groupId>
-                    <artifactId>jquery</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.webjars.bower</groupId>
-                    <artifactId>php-date-formatter</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>noty</artifactId>
-            <version>${webjars-noty.version}</version>
-        </dependency>
 
         <!--JSON-->
         <dependency>
@@ -320,11 +251,36 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>${spring.security.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.15.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.6.1</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 

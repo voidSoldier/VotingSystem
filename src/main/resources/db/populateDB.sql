@@ -1,64 +1,61 @@
-DELETE FROM user_roles;
-DELETE FROM users;
-DELETE FROM restaurants;
-DELETE FROM menus;
-DELETE FROM dishes;
+DELETE
+FROM user_votes;
+DELETE
+FROM user_roles;
+DELETE
+FROM users;
+DELETE
+FROM restaurants;
+DELETE
+FROM dishes;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (name, email, password)
-VALUES ('User', 'user@yandex.ru', 'password'),
-       ('Admin', 'admin@gmail.com', 'admin');
+VALUES ('User', 'user@yandex.ru', '{noop}password'),
+       ('Admin', 'admin@gmail.com', '{noop}admin');
 
 INSERT INTO user_roles (role, user_id)
-VALUES ('ROLE_USER', 100000),
-       ('ROLE_USER', 100001),
-       ('ROLE_ADMIN', 100001);
+VALUES ('USER', 100000),
+       ('USER', 100001),
+       ('ADMIN', 100001);
 
 
 INSERT INTO restaurants (name, rating)
-VALUES ('MamaS house', 0),
-       ('My own Company', 0),
-       ('HoundS Pit', 0);
+VALUES ('MamaS House', 2),
+       ('My own Company', 3),
+       ('HoundS Pit', 10);
 
 
+INSERT INTO user_votes (user_id, vote_date, restaurant_name, restaurant_id)
+VALUES (100000, '2020-01-30 10:00:00', 'MamaS House', 100002),
+       (100001, '2020-01-30 20:00:00', 'My own Company', 100003),
+       (100000, '2020-01-31 0:00:00', 'HoundS Pit', 100004);
+--     100014
+--     100015
+--     100016
 
-INSERT INTO menus (restaurant_id)
-VALUES (100002),
---        menu_id: 100005
-       (100003),
---        menu_id: 100006
-       (100004),
---        menu_id: 100007
-       (100002),
---        menu_id: 100008!!
-       (100003),
---        menu_id: 100009!!
-       (100004),
---        menu_id: 100010!!
-       (100002);
---        menu_id: 100011!!
 
-INSERT INTO dishes (menu_id, name, price)
-VALUES (100005, 'soup', 10.99),
-       (100010, 'soup', 10.99),
-       (100006, 'roastbeef', 13.02),
-       (100008, 'roastbeef', 13.02),
-       (100011, 'roastbeef', 13.02),
-       (100007, 'pancakes', 5.10),
-       (100009, 'pancakes', 5.10),
-       (100007, 'fried eggs', 11.00),
-       (100009, 'fried eggs', 11.00),
-       (100005, 'muffin', 6.33),
-       (100010, 'muffin', 6.33),
-       (100006, 'cheesburger', 7.55),
-       (100008, 'cheesburger', 7.55),
-       (100011, 'cheesburger', 7.55),
-       (100007, 'pizza', 15.00),
-       (100009, 'pizza', 15.00),
-       (100007, 'lasagna', 14.20),
-       (100009, 'lasagna', 14.20),
-       (100005, 'icecream', 12.10),
-       (100010, 'icecream', 12.10),
-       (100006, 'vanilla cake', 17.00),
-       (100008, 'vanilla cake', 17.00),
-       (100011, 'vanilla cake', 17.00);
+INSERT INTO dishes (restaurant_id, name, price)
+VALUES (100002, 'soup', 10.99),
+       (100002, 'roast beef', 13.02),
+       (100002, 'fried eggs', 11.00),
+       (100002, 'muffin', 6.33),
+       (100003, 'pancakes', 5.10),
+       (100003, 'ice cream', 12.10),
+       (100003, 'vanilla cake', 17.00),
+       (100004, 'cheeseburger', 7.55),
+       (100004, 'pizza', 15.00),
+       (100004, 'lasagna', 14.20);
+
+
+INSERT INTO restaurant_menu (vote_id, dish_info)
+VALUES (100005, 'soup - 10.99'),
+       (100005, 'roast beef - 13.02'),
+       (100005, 'fried eggs - 11.00'),
+       (100005, 'muffin - 6.33'),
+       (100006, 'pancakes - 5.10'),
+       (100006, 'ice cream - 12.10'),
+       (100006, 'vanilla cake - 17.00'),
+       (100007, 'cheeseburger - 7.55'),
+       (100007, 'pizza - 15.00'),
+       (100007, 'lasagna - 14.20');

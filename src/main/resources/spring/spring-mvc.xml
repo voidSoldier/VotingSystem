@@ -1,13 +1,21 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
     <bean class="ru.votingsystems.restraurantvotingsystem.web.json.JacksonObjectMapper" id="objectMapper" factory-method="getMapper"/>
 
-    <mvc:annotation-driven conversion-service="conversionService">
+    <!-- serve static resources (*.html, ...) from src/main/webapp/ -->
+    <!--https://stackoverflow.com/a/44393203/548473-->
+    <!--<mvc:default-servlet-handler/>-->
+
+    <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
+
+    <mvc:annotation-driven >
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="objectMapper" ref="objectMapper"/>
@@ -21,6 +29,9 @@
                 </property>
             </bean>
         </mvc:message-converters>
+        <mvc:argument-resolvers>
+            <bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver "/>
+        </mvc:argument-resolvers>
     </mvc:annotation-driven>
 
 <!--    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">-->
@@ -38,28 +49,41 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <!-- use WebJars so Javascript and CSS libs can be declared as Maven dependencies (Bootstrap, jQuery...) -->
-    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+<!--    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>-->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp"/>
 
-<!--
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-          p:cacheSeconds="60"
-          p:defaultEncoding="UTF-8">
-        <property name="basenames">
-            <list>
-                <value>messages/app</value>
-            </list>
-        </property>
-    </bean>
--->
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-          p:cacheSeconds="5"
-          p:defaultEncoding="UTF-8">
-<!--        C:/Users/NOIR-SAN/RestaurantVotingSystem/-->
-        <property name="basenames" value="file:///#{systemEnvironment['TOPJAVA_ROOT']}/config/messages/app"/>
-        <property name="fallbackToSystemLocale" value="false"/>
-    </bean>
+    <!--
+        <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+              p:cacheSeconds="60"
+              p:defaultEncoding="UTF-8">
+            <property name="basenames">
+                <list>
+                    <value>messages/app</value>
+                </list>
+            </property>
+        </bean>
+    -->
+<!--    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"-->
+<!--          p:cacheSeconds="5"-->
+<!--          p:defaultEncoding="UTF-8">-->
+<!--        <property name="basenames" value="file:///#{systemEnvironment['TOPJAVA_ROOT']}/config/messages/app"/>-->
+<!--        <property name="fallbackToSystemLocale" value="false"/>-->
+<!--    </bean>-->
+
+<!--    <bean class="org.springframework.context.support.MessageSourceAccessor">-->
+<!--        <constructor-arg ref="messageSource"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">-->
+<!--        <property name="defaultLocale" value="ru"/>-->
+<!--    </bean>-->
+
+<!--    <mvc:interceptors>-->
+<!--        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">-->
+<!--            <property name="paramName" value="lang"/>-->
+<!--        </bean>-->
+<!--    </mvc:interceptors>-->
 </beans>
