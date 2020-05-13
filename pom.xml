@@ -74,14 +74,14 @@
                         <containerId>tomcat9x</containerId>
                         <systemProperties>
                             <file.encoding>UTF-8</file.encoding>
-                            <spring.profiles.active>tomcat,datajpa</spring.profiles.active>
+<!--                            <spring.profiles.active>tomcat,datajpa</spring.profiles.active>-->
                         </systemProperties>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.postgresql</groupId>
-                                <artifactId>postgresql</artifactId>
-                            </dependency>
-                        </dependencies>
+<!--                        <dependencies>-->
+<!--                            <dependency>-->
+<!--                                <groupId>org.postgresql</groupId>-->
+<!--                                <artifactId>postgresql</artifactId>-->
+<!--                            </dependency>-->
+<!--                        </dependencies>-->
                     </container>
                     <configuration>
                         <configfiles>
@@ -94,8 +94,8 @@
                     </configuration>
                     <deployables>
                         <deployable>
-                            <groupId>ru.javawebinar</groupId>
-                            <artifactId>topjava</artifactId>
+                            <groupId>ru.votingsystems</groupId>
+                            <artifactId>restaurantvotingsystem</artifactId>
                             <type>war</type>
                             <properties>
                                 <context>${project.build.finalName}</context>

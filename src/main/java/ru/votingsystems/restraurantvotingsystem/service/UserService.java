@@ -57,7 +57,6 @@ public class UserService implements UserDetailsService {
         return repository.findUserByEmail(email);
     }
 
-    @Cacheable("userWithVotes")
     @Transactional
     public UserTo getActivity(int userId) {
         return new UserTo(getWithVotes(userId));
