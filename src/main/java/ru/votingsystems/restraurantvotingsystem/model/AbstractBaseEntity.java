@@ -32,7 +32,6 @@ public abstract class AbstractBaseEntity implements Serializable {
         return id;
     }
 
-
     public boolean isNew() {
         return getId() == null;
     }

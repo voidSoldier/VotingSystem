@@ -1,6 +1,5 @@
 package ru.votingsystems.restraurantvotingsystem.model;
 
-
 import org.springframework.security.core.GrantedAuthority;
 
 

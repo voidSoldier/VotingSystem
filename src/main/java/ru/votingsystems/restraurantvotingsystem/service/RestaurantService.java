@@ -34,30 +34,38 @@ public class RestaurantService {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Restaurant doesn't exist."));
     }
 
+    @Cacheable("restaurants")
     public List<Restaurant> getAll() {
         return repository.findAll();
     }
 
+    @CacheEvict(value = "restaurants", allEntries = true)
     public void update(Restaurant restaurant) {
         repository.save(restaurant);
     }
 
+    @CacheEvict(value = "restaurants", allEntries = true)
     public boolean delete(int id) {
         int result = repository.deleteRestaurantById(id);
         if (result != 0) return true;
         else throw new NotFoundException("Restaurant doesn't exist.");
     }
 
+    @CacheEvict(value = "restaurants", allEntries = true)
     public Restaurant create(Restaurant newRestaurant) {
         return repository.save(newRestaurant);
     }
 
+
+    @CacheEvict(value = "restaurants", allEntries = true)
     @Transactional
     public void setNewMenu(int restaurantId, List<Dish> dishes) {
         Restaurant restaurant = get(restaurantId);
         restaurant.setMenu(dishes);
     }
 
+
+    @CacheEvict(value = "restaurants", allEntries = true)
     @Transactional
     public void voteForRestaurant(User user, int restaurantId) {
         LocalDateTime votingTime = user.getVotingTime() == null ?
@@ -70,17 +78,17 @@ public class RestaurantService {
         // or on the next day
         if (!user.isVoted() ||
                 nowVoting.minusDays(1).compareTo(votingTime) >= 0) {
+
             repository.incrementRating(restaurantId);
+            user.setVoted(true);
 
             // voting the same day again to change the vote
-            // possible if it's before 11:00 a.m.
-            user.setVoted(true);
+            // only possible if it's before 11:00 a.m.
         } else if (votingTime.toLocalTime().isBefore(LocalTime.of(11, 0))) {
-            int lastRatedRestaurantId = getLastRatedRestaurantId(user, votingTime);
 
+            int lastRatedRestaurantId = getLastRatedRestaurantId(user);
             repository.decrementRating(lastRatedRestaurantId);
             repository.incrementRating(restaurantId);
-
             removeVote(user, votingTime);
         } else {
             throw new VotingTimeoutNotExpiredException("You cannot vote now! \r\nPlease wait for voting timeout to expire.");
@@ -92,6 +100,8 @@ public class RestaurantService {
 
     private void saveVote(int restaurantId, LocalDateTime voteTime, User user) {
         Restaurant restaurant = get(restaurantId);
+        // restaurant's menu is stored in user's voting activity as List of Strings
+        // (so it's detached from today's menu stored in DB)
         List<String> menu = restaurant.getMenu()
                 .stream()
                 .map(d -> d.getName() + " - " + d.getPrice())
@@ -101,7 +111,7 @@ public class RestaurantService {
 
     }
 
-    private int getLastRatedRestaurantId(User user, LocalDateTime voteTime) {
+    private int getLastRatedRestaurantId(User user) {
         List<Vote> votes = user.getVotes();
         return votes.get(votes.size() - 1).getRestaurantId();
     }

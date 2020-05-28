@@ -1,7 +1,18 @@
 # Restaurant Voting System
 
 The voting system helps to decide where to have lunch. 
-Users can vote for preferable restaurant by increasing its rating.
+Users can vote for preferable restaurant by increasing its rating.  
+  
+2 types of users: admin and regular users.
+Admin can input a restaurant and its lunch menu of the day (2-5 items usually, just a dish name and price).
+Menu changes each day (admins do the updates).
+Users can vote on which restaurant they want to have lunch at.
+Only one vote counted per user.
+If user votes again the same day:
+    If it's before 11:00 we assume that they changed their mind;
+    If it's after 11:00 then it's too late, vote can't be changed.
+
+
 
 ## Technologies applied in the project:
 - Spring 5

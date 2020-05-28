@@ -7,7 +7,7 @@ DROP TABLE restaurants IF EXISTS;
 
 DROP SEQUENCE global_seq IF EXISTS;
 
-CREATE SEQUENCE GLOBAL_SEQ AS INTEGER START WITH 100000;
+CREATE SEQUENCE global_seq AS INTEGER START WITH 100000;
 
 CREATE TABLE users
 (
@@ -20,7 +20,6 @@ CREATE TABLE users
     has_voted   BOOLEAN   DEFAULT FALSE NOT NULL,
     voting_time DATETIME
 );
-
 CREATE UNIQUE INDEX users_unique_email_idx ON USERS (email);
 
 CREATE TABLE restaurants
@@ -29,7 +28,6 @@ CREATE TABLE restaurants
     name   VARCHAR(255)      NOT NULL,
     rating INTEGER DEFAULT 0 NOT NULL
 );
-CREATE UNIQUE INDEX id_name_unique_idx ON restaurants (id, name);
 
 
 CREATE TABLE dishes

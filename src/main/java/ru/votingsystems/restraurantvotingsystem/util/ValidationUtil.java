@@ -1,7 +1,6 @@
 package ru.votingsystems.restraurantvotingsystem.util;
 
 import ru.votingsystems.restraurantvotingsystem.model.AbstractBaseEntity;
-import ru.votingsystems.restraurantvotingsystem.util.exception.NotFoundException;
 
 public class ValidationUtil {
 

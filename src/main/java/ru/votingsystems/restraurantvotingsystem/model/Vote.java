@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "user_votes")
+@Table(name = "user_votes", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "vote_date"}, name = "vote_date_unique_idx")})
 public class Vote extends AbstractBaseEntity {
 
     @NotNull
