@@ -1,4 +1,5 @@
 # Restaurant Voting System
+> !Dishes without dates
 
 The voting system helps to decide where to have lunch. 
 Users can vote for preferable restaurant by increasing its rating.  
@@ -11,7 +12,6 @@ Only one vote counted per user.
 If user votes again the same day:
     If it's before 11:00 we assume that they changed their mind;
     If it's after 11:00 then it's too late, vote can't be changed.
-
 
 
 ## Technologies applied in the project:
