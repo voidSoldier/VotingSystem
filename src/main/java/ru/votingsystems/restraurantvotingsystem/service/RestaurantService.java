@@ -30,13 +30,15 @@ public class RestaurantService {
         this.repository = repository;
     }
 
-    public Restaurant get(int id) {
-        return repository.findById(id).orElseThrow(() -> new NotFoundException("Restaurant doesn't exist."));
+    public Restaurant get(int id) throws NotFoundException {
+        Restaurant r = repository.getRestaurantsWithMenuByDate(id, LocalDateTime.now().toLocalDate());
+        if (r != null) return r;
+        else throw new NotFoundException("Restaurant doesn't exist.");
     }
 
     @Cacheable("restaurants")
     public List<Restaurant> getAll() {
-        return repository.findAll();
+        return repository.getAllByMenu(LocalDateTime.now().toLocalDate());
     }
 
     @CacheEvict(value = "restaurants", allEntries = true)
@@ -100,15 +102,15 @@ public class RestaurantService {
 
     private void saveVote(int restaurantId, LocalDateTime voteTime, User user) {
         Restaurant restaurant = get(restaurantId);
-        // restaurant's menu is stored in user's voting activity as List of Strings
-        // (so it's detached from today's menu stored in DB)
-        List<String> menu = restaurant.getMenu()
-                .stream()
-                .map(d -> d.getName() + " - " + d.getPrice())
-                .collect(Collectors.toList());
+        // restaurant's menu is stored in user's voting activity as a String
+        // (so it's actual to the voting date)
 
-        user.setVotes(Collections.singletonList(new Vote(null, voteTime, restaurant.getName(), menu, user, restaurant.getId())));
+        StringBuilder sb = new StringBuilder();
+        for (Dish d : restaurant.getMenu()) {
+            sb.append(d.getName()).append(" - ").append(d.getPrice()).append("\n");
+        }
 
+        user.setVotes(Collections.singletonList(new Vote(null, voteTime, restaurant.getName(), sb.toString(), user, restaurant.getId())));
     }
 
     private int getLastRatedRestaurantId(User user) {

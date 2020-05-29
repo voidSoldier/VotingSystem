@@ -21,4 +21,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u FROM User u WHERE u.id=?1")
     User getWithVotes(int id);
 
+//    @EntityGraph(attributePaths = {"votes"}, type = EntityGraph.EntityGraphType.LOAD)
+//    @Query("SELECT u FROM User u  JOIN FETCH u.votes v WHERE u.id=?1 AND ")
+//    User getWithVotes(int id);
+
 }

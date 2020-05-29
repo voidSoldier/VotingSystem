@@ -114,7 +114,6 @@ public class User extends AbstractBaseEntity implements Serializable, AbstractUs
         }
     }
 
-
     public String getName() {
         return name;
     }

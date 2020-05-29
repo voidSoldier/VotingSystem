@@ -6,7 +6,11 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "dishes")
@@ -19,6 +23,10 @@ public class Dish extends AbstractBaseEntity {
 
     @Column(name = "price")
     private double price;
+
+    @Column(name = "menu_date", nullable = false, columnDefinition = "timestamp default now()")
+    @NotNull
+    private LocalDate menu_date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
@@ -34,6 +42,16 @@ public class Dish extends AbstractBaseEntity {
         this.name = name;
         this.price = price;
         this.restaurant = restaurant;
+        menu_date = LocalDateTime.now().toLocalDate();
+    }
+
+
+    public LocalDate getMenu_date() {
+        return menu_date;
+    }
+
+    public void setMenu_date(LocalDate menu_date) {
+        this.menu_date = menu_date;
     }
 
     public Restaurant getRestaurant() {

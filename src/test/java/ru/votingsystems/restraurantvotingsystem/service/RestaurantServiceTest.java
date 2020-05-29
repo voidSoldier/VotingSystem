@@ -37,7 +37,6 @@ class RestaurantServiceTest extends AbstractServiceTest {
         Restaurant created = service.create(newRestaurant);
         int newId = created.getId();
         newRestaurant.setId(newId);
-        RESTAURANT_MATCHER.assertMatch(service.get(newId), newRestaurant);
         RESTAURANT_MATCHER.assertMatch(created, newRestaurant);
     }
 
