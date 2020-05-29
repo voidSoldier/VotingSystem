@@ -2,17 +2,14 @@ package ru.votingsystems.restraurantvotingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "user_votes", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "vote_date"}, name = "vote_date_unique_idx")})
@@ -31,12 +28,10 @@ public class Vote extends AbstractBaseEntity {
     @Column(name = "restaurant_Id")
     private Integer restaurantId;
 
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @CollectionTable(name = "restaurant_menu", joinColumns = @JoinColumn(name = "vote_id"))
-    @Column(name = "dish_info")
-    @ElementCollection(fetch = FetchType.EAGER)
-    @BatchSize(size = 200)
-    private List<String> menu;
+    @NotBlank
+    @Size(min = 5)
+    @Column(name = "menu", nullable = false)
+    private String menuAtTheDate;
 
     @JsonIgnoreProperties("votes")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -48,18 +43,35 @@ public class Vote extends AbstractBaseEntity {
     }
 
     public Vote(Vote v) {
-        this(v.getId(), v.getVoteDate(), v.getRestaurantName(), v.getMenu(), v.getUser(), v.getRestaurantId());
+        this(v.getId(), v.getVoteDate(), v.getRestaurantName(), v.getMenuAtTheDate(), v.getUser(), v.getRestaurantId());
     }
 
-    public Vote(Integer id, LocalDateTime voteDate, String restaurantName, List<String> menu, User user, int restaurantId) {
+
+    public Vote(Integer id, LocalDateTime voteDate, String restaurantName, String menuAtTheDate, User user, int restaurantId) {
         super(id);
         this.voteDate = voteDate;
         this.restaurantName = restaurantName;
-        this.menu = menu;
+        this.menuAtTheDate = menuAtTheDate;
         this.user = user;
         this.restaurantId = restaurantId;
     }
 
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public String getMenuAtTheDate() {
+        return menuAtTheDate;
+    }
+
+    public void setMenuAtTheDate(String menuAtTheDate) {
+        this.menuAtTheDate = menuAtTheDate;
+    }
 
     public Integer getRestaurantId() {
         return restaurantId;
@@ -84,22 +96,6 @@ public class Vote extends AbstractBaseEntity {
 
     public void setVoteDate(LocalDateTime voteDate) {
         this.voteDate = voteDate;
-    }
-
-    public String getRestaurantName() {
-        return restaurantName;
-    }
-
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
-    }
-
-    public List<String> getMenu() {
-        return menu;
-    }
-
-    public void setMenu(List<String> menu) {
-        this.menu = menu;
     }
 
     @Override

@@ -52,10 +52,10 @@ public class UserService implements UserDetailsService {
         return repository.getWithVotes(id);
     }
 
-
     public User getByEmail(String email) {
         return repository.findUserByEmail(email);
     }
+
 
     @Transactional
     public UserTo getActivity(int userId) {
