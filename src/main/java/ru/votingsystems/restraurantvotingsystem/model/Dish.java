@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "dishes")
@@ -26,7 +25,7 @@ public class Dish extends AbstractBaseEntity {
 
     @Column(name = "menu_date", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-    private LocalDate menu_date;
+    private LocalDate menuDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
@@ -42,16 +41,16 @@ public class Dish extends AbstractBaseEntity {
         this.name = name;
         this.price = price;
         this.restaurant = restaurant;
-        menu_date = LocalDateTime.now().toLocalDate();
+        menuDate = LocalDateTime.now().toLocalDate();
     }
 
 
-    public LocalDate getMenu_date() {
-        return menu_date;
+    public LocalDate getMenuDate() {
+        return menuDate;
     }
 
-    public void setMenu_date(LocalDate menu_date) {
-        this.menu_date = menu_date;
+    public void setMenuDate(LocalDate menu_date) {
+        this.menuDate = menu_date;
     }
 
     public Restaurant getRestaurant() {

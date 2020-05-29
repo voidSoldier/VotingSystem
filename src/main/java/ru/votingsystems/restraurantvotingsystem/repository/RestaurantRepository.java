@@ -29,12 +29,12 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     void decrementRating(@Param("id") int id);
 
 
-    @Query("SELECT r FROM Restaurant r JOIN FETCH r.menu d WHERE r.id = ?1 AND d.menu_date = ?2")
+    @Query("SELECT r FROM Restaurant r JOIN FETCH r.menu d WHERE r.id = ?1 AND d.menuDate = ?2")
     Restaurant getRestaurantsWithMenuByDate(int id, LocalDate menuDate);
 
 
     @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("SELECT r FROM Restaurant r JOIN FETCH r.menu d WHERE d.menu_date=:date")
+    @Query("SELECT r FROM Restaurant r JOIN FETCH r.menu d WHERE d.menuDate=:date")
     List<Restaurant> getAllByMenu(@Param("date") LocalDate menuDate);
 
 }
